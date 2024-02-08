@@ -22,11 +22,11 @@ class QuotesController {
       case LanguageCode.gr:
         _currentQuote = await QuotesRepository.getGermanQuote(minLength: min, maxLength: max);
       case LanguageCode.fr:
-        _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
+        _currentQuote = await QuotesRepository.getFrenchQuote(minLength: min, maxLength: max);
       case LanguageCode.it:
-        _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
+        _currentQuote = await QuotesRepository.getItalianQuote(minLength: min, maxLength: max);
       case LanguageCode.ch:
-        _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
+        _currentQuote = await QuotesRepository.getChineseQuote(minLength: min, maxLength: max);
     }
 
     return _currentQuote;
@@ -47,11 +47,11 @@ class QuotesController {
       case LanguageCode.gr:
         _currentQuote = await QuotesRepository.getGermanQuote(minLength: min, maxLength: max);
       case LanguageCode.fr:
-        _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
+        _currentQuote = await QuotesRepository.getFrenchQuote(minLength: min, maxLength: max);
       case LanguageCode.it:
-        _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
+        _currentQuote = await QuotesRepository.getItalianQuote(minLength: min, maxLength: max);
       case LanguageCode.ch:
-        _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
+        _currentQuote = await QuotesRepository.getChineseQuote(minLength: min, maxLength: max);
     }
 
     return _currentQuote;
@@ -72,11 +72,11 @@ class QuotesController {
       case LanguageCode.gr:
         _currentQuote = await QuotesRepository.getGermanQuote(minLength: min, maxLength: max);
       case LanguageCode.fr:
-        _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
+        _currentQuote = await QuotesRepository.getFrenchQuote(minLength: min, maxLength: max);
       case LanguageCode.it:
-        _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
+        _currentQuote = await QuotesRepository.getItalianQuote(minLength: min, maxLength: max);
       case LanguageCode.ch:
-        _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
+        _currentQuote = await QuotesRepository.getChineseQuote(minLength: min, maxLength: max);
     }
 
     return _currentQuote;

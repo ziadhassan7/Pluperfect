@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
-import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/hear/hear_states.dart';
 import '../../../../read/logic/utils/speaker_controller.dart';
+import 'hear_states.dart';
 
 
 class HearCubit extends Cubit<HearStates>{

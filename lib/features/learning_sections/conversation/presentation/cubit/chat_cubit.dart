@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../../../core/custom_log.dart';
-import '../../../../../../../core/openai/openai_client.dart';
-import '../../../../../../../core/text_to_speech/text_to_speech_client.dart';
-import '../../../logic/utils/chat_input_controller.dart';
+import '../../../../../../core/custom_log.dart';
+import '../../../../../../core/openai/openai_client.dart';
+import '../../../../../../core/text_to_speech/text_to_speech_client.dart';
+import '../../logic/utils/chat_input_controller.dart';
 import 'package:pluperfect/core/record_audio/recorder_client.dart';
 import 'chat_state.dart';
 

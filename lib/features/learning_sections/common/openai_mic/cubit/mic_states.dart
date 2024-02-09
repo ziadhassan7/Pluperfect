@@ -7,7 +7,7 @@ abstract class MicStates extends Equatable {
 
 // Idle
 class IdleState extends MicStates {
-  final AzureModel? response;
+  final String? response;
 
   const IdleState({this.response});
 

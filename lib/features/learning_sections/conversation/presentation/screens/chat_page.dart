@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/core/constants/colors.dart';
 import 'package:pluperfect/core/styles/padding.dart';
-import 'package:pluperfect/features/learning_sections/conversation/presentation/views/mic_button.dart';
-import '../cubit/chat/chat_cubit.dart';
-import '../cubit/chat/chat_state.dart';
+import 'package:pluperfect/features/learning_sections/common/openai_mic/view/mic_button.dart';
+import '../cubit/chat_cubit.dart';
+import '../cubit/chat_state.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -59,7 +59,10 @@ class _ChatPageState extends State<ChatPage> {
               ),
 
 
-              const MicButton(),
+              OpenaiMicButton(onResponse: (userInput) {
+                //trigger a score widget
+                context.read<ChatCubit>().startListening();
+              },),
             ],
           ),
         ),

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/hear/hear_cubit.dart';
-import '../../../common/azure_mic/cubit/mic_cubit.dart';
-import '../../../common/azure_mic/cubit/mic_states.dart';
+import '../../azure_mic/cubit/mic_cubit.dart';
+import '../../azure_mic/cubit/mic_states.dart';
 
 
-class MicButton extends StatelessWidget {
-  const MicButton({super.key});
+class OpenaiMicButton extends StatelessWidget {
+  const OpenaiMicButton({super.key, required this.onResponse});
+
+  final Function(String) onResponse;
 
   @override
   Widget build(BuildContext context) {

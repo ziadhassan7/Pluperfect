@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
+import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/core/translate/translate_util.dart';
 
 class TranslationView extends StatelessWidget {
@@ -9,18 +10,24 @@ class TranslationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: getTranslation(word),
-      builder: (context, AsyncSnapshot<String> snapshot){
+    return Padding(
+      padding: const CustomPadding(vertical: 12, horizontal: 12),
 
-        if(snapshot.hasData){
-          String translation = snapshot.data!;
-          return TextView(translation);
+      child: FutureBuilder(
+        future: getTranslation(word),
+        builder: (context, AsyncSnapshot<String> snapshot){
 
-        } else {
-          return const Center(child: CircularProgressIndicator(),);
+          if(snapshot.hasData){
+            String translation = snapshot.data!;
+            return Align(
+                alignment: Alignment.topRight,
+                child: TextView(translation, scale: TypeScale.arabic,));
+
+          } else {
+            return const Center(child: CircularProgressIndicator(),);
+          }
         }
-      }
+      ),
     );
   }
 

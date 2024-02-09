@@ -57,9 +57,10 @@ class ReadPage extends StatelessWidget {
                   /// Quotes
                   QuoteBox(level),
 
-                  const ScoreWidget(),
 
                   const Spacer(),
+
+                  const ScoreWidget(),
 
 
                   /// Navigation

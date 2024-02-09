@@ -62,6 +62,6 @@ class AzureMicButton extends StatelessWidget {
   }
 
   Widget button(String icon, bool shouldAnimate){
-    return Lottie.asset(icon, height: 150, width: 150, fit: BoxFit.fill, animate: shouldAnimate);
+    return Lottie.asset(icon, height: 120, width: 120, fit: BoxFit.fill, animate: shouldAnimate);
   }
 }

@@ -38,7 +38,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     MicStates state = context.watch<AzureMicCubit>().state;
 
     return Container(
-      padding: const CustomPadding(vertical: 26),
+      padding: const CustomPadding(vertical: 0, horizontal: 38),
       decoration: BoxDecoration(
         color: ColorTheme.onBackground,
         borderRadius: const BorderRadius.only(

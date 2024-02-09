@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pluperfect/core/constants/colors.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/views/quote_box.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/views/screen_touch/screen_touch_detector.dart';
@@ -24,7 +24,7 @@ class ReadPage extends StatelessWidget {
       onPopInvoked: (didPop)=> ContextMenu.close(), ////close any context menu opened
 
       child: Scaffold(
-        backgroundColor: const Color.fromRGBO(250, 251, 255, 1), //rgba(250, 251, 255, 1)
+        backgroundColor: ColorTheme.background,
 
         body: SafeArea(
           child: Stack(
@@ -32,43 +32,40 @@ class ReadPage extends StatelessWidget {
 
               const ScreenTouchDetector(),
 
-              Padding(
-                padding: const CustomPadding(vertical: 24, horizontal: 38),
-                child: Column(
-                  children: [
+              Column(
+                children: [
 
-                    ///Top Widget
-                    Padding(
-                      padding: const CustomPadding(bottom: 20, horizontal: 8),
-                      child: Row(
-                        children: [
-                          InkWell(
-                              onTap: () {
-                                //close any context menu opened
-                                ContextMenu.close();
-                                Navigator.pop(context);
-                              },
-                              child: const Icon(Icons.close_rounded, color: black, size: 28,)),
+                  ///Top Widget
+                  Padding(
+                    padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
+                    child: Row(
+                      children: [
+                        InkWell(
+                            onTap: () {
+                              //close any context menu opened
+                              ContextMenu.close();
+                              Navigator.pop(context);
+                            },
+                            child: Icon(Icons.close_rounded, color: ColorTheme.text, size: 28,)),
 
-                          const Center(child: QuoteProgressBar(),),
-                        ],
-                      ),
+                        const Center(child: QuoteProgressBar(),),
+                      ],
                     ),
+                  ),
 
 
-                    /// Quotes
-                    QuoteBox(level),
+                  /// Quotes
+                  QuoteBox(level),
 
-                    const ScoreWidget(),
+                  const ScoreWidget(),
 
-                    const Spacer(),
+                  const Spacer(),
 
 
-                    /// Navigation
-                    BottomNavigation(level),
+                  /// Navigation
+                  BottomNavigation(level),
 
-                  ],
-                ),
+                ],
               ),
             ],
           ),

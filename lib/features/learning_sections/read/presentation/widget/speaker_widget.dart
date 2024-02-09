@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pluperfect/core/constants/colors.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/cubit/speaker/speak_cubit.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/cubit/speaker/speaker_states.dart';
 
@@ -10,6 +10,9 @@ class SpeakerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    Color color = ColorTheme.text;
+
     return BlocBuilder<SpeakerCubit, SpeakerStates>(
       builder: (_, state) {
 
@@ -18,7 +21,7 @@ class SpeakerWidget extends StatelessWidget {
           return IconButton(
             onPressed: () async => await context.read<SpeakerCubit>().speak(),
 
-            icon: const Icon(Icons.volume_up_rounded, color: black, size: 28,),
+            icon: Icon(Icons.volume_up_rounded, color: color, size: 28,),
           );
         }
 
@@ -27,7 +30,7 @@ class SpeakerWidget extends StatelessWidget {
           return IconButton(
             onPressed: () async => await context.read<SpeakerCubit>().stop(),
 
-            icon: const Icon(Icons.stop, color: black, size: 28,),
+            icon: Icon(Icons.stop, color: color, size: 28,),
           );
         }
 

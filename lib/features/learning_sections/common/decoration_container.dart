@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pluperfect/core/constants/colors.dart';
 import 'package:pluperfect/core/styles/box_decoration.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 
 class DecorationContainer extends StatelessWidget {
@@ -13,7 +14,7 @@ class DecorationContainer extends StatelessWidget {
     return Container(
       padding: const CustomPadding(top: 20, horizontal: 20, bottom: 10),
       decoration: CustomDecoration(
-          backgroundColor: white,
+          backgroundColor: ColorTheme.onBackground,
           radius: 30,
           borderColor: greyOpacity30,
           borderWidth: 2

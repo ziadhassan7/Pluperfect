@@ -4,6 +4,8 @@ import 'package:pluperfect/core/custom_dialog/custom_dialog.dart';
 import 'package:pluperfect/features/learning_sections/common/decoration_container.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/dialogs/translation_dialog_view.dart';
 import 'package:pluperfect/features/learning_sections/read/logic/utils/level_controller.dart';
+import '../../../../../core/styles/color_theme.dart';
+import '../../../../../core/styles/padding.dart';
 import '../widget/quote_widget.dart';
 import '../widget/speaker_widget.dart';
 
@@ -14,26 +16,29 @@ class QuoteBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecorationContainer(
+    return Padding(
+      padding: const CustomPadding(vertical: 20, horizontal: 38),
+      child: DecorationContainer(
 
-      child: Column(
-        children: [
-          QuotesWidget(level),
+        child: Column(
+          children: [
+            QuotesWidget(level),
 
-          const SizedBox(height: 6,),
+            const SizedBox(height: 6,),
 
-          Row(
-            children: [
+            Row(
+              children: [
 
-              const Spacer(),
+                const Spacer(),
 
-              translateButton(context),
+                translateButton(context),
 
 
-              const SpeakerWidget(),
-            ],
-          ),
-        ],
+                const SpeakerWidget(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -48,7 +53,7 @@ class QuoteBox extends StatelessWidget {
           CustomUhh(context, view: const TranslationDialogView());
 
         },
-        icon: SvgPicture.asset("assets/translate.svg")
+        icon: SvgPicture.asset("assets/translate.svg", color: ColorTheme.text)
     );
   }
 }

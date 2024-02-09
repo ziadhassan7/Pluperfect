@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/audio/audio_client.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import '../../../../../core/file_util.dart';
 import '../../../common/azure_mic/cubit/mic_cubit.dart';
@@ -39,8 +40,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
     return Container(
       height: 170,
       padding: const CustomPadding(vertical: 26),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: ColorTheme.onBackground,
+        borderRadius: const BorderRadius.only(
             topRight: Radius.circular(40.0),
             topLeft: Radius.circular(40.0),
       ),),

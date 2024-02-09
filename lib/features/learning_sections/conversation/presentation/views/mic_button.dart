@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/hear/hear_cubit.dart';
-import '../../../common/mic/cubit/mic_cubit.dart';
-import '../../../common/mic/cubit/mic_states.dart';
+import '../../../common/azure_mic/cubit/mic_cubit.dart';
+import '../../../common/azure_mic/cubit/mic_states.dart';
+
 
 class MicButton extends StatelessWidget {
   const MicButton({super.key});
@@ -12,13 +13,13 @@ class MicButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onPanStart: (details){
-        context.read<MicCubit>().listen();
+        context.read<AzureMicCubit>().listen();
       },
       onPanEnd: (details){
-        context.read<MicCubit>().stop();
+        context.read<AzureMicCubit>().stop();
       },
 
-      child: BlocBuilder<MicCubit, MicStates>(
+      child: BlocBuilder<AzureMicCubit, MicStates>(
         builder: (context, state) {
 
           if(state is ListeningState){
@@ -28,7 +29,7 @@ class MicButton extends StatelessWidget {
           if(state is IdleState){
             if(state.response != null){
               //trigger a score widget
-              context.read<HearCubit>().score();
+              context.read<HearCubit>().score(state.response!);
             }
             return idleButton();
           }

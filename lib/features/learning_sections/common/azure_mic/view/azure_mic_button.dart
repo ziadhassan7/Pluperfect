@@ -1,38 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pluperfect/core/azure_speech/azure_model.dart';
 import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/hear/hear_cubit.dart';
 import '../cubit/mic_cubit.dart';
 import '../cubit/mic_states.dart';
 
-class MicButton extends StatelessWidget {
-  const MicButton({super.key});
+class AzureMicButton extends StatelessWidget {
+  const AzureMicButton({super.key, required this.onResponse});
+
+  final Function(AzureModel) onResponse;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onPanStart: (details){
-        context.read<MicCubit>().listen();
+        context.read<AzureMicCubit>().listen();
       },
       onPanEnd: (details){
-        context.read<MicCubit>().stop();
+        context.read<AzureMicCubit>().stop();
       },
 
-      child: BlocBuilder<MicCubit, MicStates>(
+      child: BlocBuilder<AzureMicCubit, MicStates>(
         builder: (context, state) {
 
+          //Listening...
           if(state is ListeningState){
             return stopButton();
           }
 
+          //Response
           if(state is IdleState){
             if(state.response != null){
               //trigger a score widget
-              context.read<HearCubit>().score();
+              onResponse(state.response!);
             }
             return idleButton();
           }
 
+          //Loading
+          if(state is LoadingState){
+            return const CircularProgressIndicator();
+          }
+
+          //Idle
           return idleButton();
         }
       ),

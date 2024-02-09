@@ -4,6 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/audio/audio_client.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import '../../../../../core/file_util.dart';
+import '../../../common/azure_mic/cubit/mic_cubit.dart';
+import '../../../common/azure_mic/cubit/mic_states.dart';
+import '../../../common/azure_mic/view/azure_mic_button.dart';
 import '../../logic/utils/level_controller.dart';
 import '../cubit/quotes/quotes_cubit.dart';
 
@@ -31,21 +34,42 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
 
+    MicStates state = context.watch<AzureMicCubit>().state;
 
-    return Padding(
+    return Container(
+      height: 170,
       padding: const CustomPadding(vertical: 26),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(40.0),
+            topLeft: Radius.circular(40.0),
+      ),),
 
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          button(
-            icon: 'assets/hear_button.svg',
-            onPressed: ()=> audioClient.play(),
+
+          Visibility(
+            visible: visibility(state),
+            child: button(
+              icon: 'assets/hear_button.svg',
+              onPressed: ()=> audioClient.play(),
+            ),
           ),
 
-          button(
-            icon: 'assets/next_button.svg',
-            onPressed: ()=> context.read<QuotesCubit>().refresh(widget.level),
+          Center(child: AzureMicButton(
+            onResponse: (userInput){
+              //trigger a score widget
+              context.read<QuotesCubit>().checkScore(userInput);
+            }
+          )),
+
+          Visibility(
+            visible: visibility(state),
+            child: button(
+              icon: 'assets/next_button.svg',
+              onPressed: ()=> context.read<QuotesCubit>().refresh(widget.level),
+            ),
           )
         ],
       ),
@@ -65,5 +89,14 @@ class _BottomNavigationState extends State<BottomNavigation> {
     String audioFilePath = '$appPath/audioFile.wav';
 
     return audioFilePath;
+  }
+
+
+  bool visibility(MicStates state){
+    if(state is IdleState){
+      return state.response != null;
+    }
+
+    return false;
   }
 }

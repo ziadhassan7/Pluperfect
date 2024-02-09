@@ -17,13 +17,6 @@ class QuotesCubit extends Cubit<QuoteStates>{
 
     List<Words>? words = userInput.nBest?.first.words;
 
-
-    for(Words word in words!){
-      Log.p("${word.word}");
-      Log.p("${word.accuracyScore}");
-      Log.p("_________");
-    }
-
     if(words != null){
 
       List<Words> processedWords = ScoreController.processSentence(words, QuotesController.currentQuote);

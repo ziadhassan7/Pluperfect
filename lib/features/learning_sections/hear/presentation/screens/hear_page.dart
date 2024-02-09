@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/styles/padding.dart';
-import '../../../common/mic/view/mic_button.dart';
+import '../../../common/azure_mic/view/azure_mic_button.dart';
+import '../cubit/hear/hear_cubit.dart';
 import '../views/hear_box.dart';
 
 class HearPage extends StatelessWidget {
@@ -44,7 +46,12 @@ class HearPage extends StatelessWidget {
 
                   const Spacer(),
 
-                  const MicButton(),
+                  AzureMicButton(
+                    onResponse: (userInput){
+                      //trigger a score widget
+                      context.read<HearCubit>().score(userInput);
+                    },
+                  ),
 
                   /// Navigation
                   //BottomNavigation(level),

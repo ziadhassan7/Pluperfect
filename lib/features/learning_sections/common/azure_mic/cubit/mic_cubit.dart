@@ -7,9 +7,9 @@ import '../../../../../../core/azure_speech/azure_speech.dart';
 import 'mic_states.dart';
 
 
-class MicCubit extends Cubit<MicStates>{
+class AzureMicCubit extends Cubit<MicStates>{
 
-  MicCubit() : super(const IdleState());
+  AzureMicCubit() : super(const IdleState());
 
   listen(){
     RecorderClient.start();

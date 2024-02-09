@@ -4,6 +4,7 @@ import 'package:pluperfect/core/constants/colors.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/views/context_menu/translation_view.dart';
 import '../../../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../../../core/styles/box_decoration.dart';
+import '../../../../../../core/styles/color_theme.dart';
 import '../../../../../../core/styles/padding.dart';
 
 
@@ -34,7 +35,7 @@ class ContextMenuView extends StatelessWidget {
           width: width, height: height,
           decoration: CustomDecoration(
               radius: radius,
-              backgroundColor: white
+              backgroundColor: ColorTheme.onBackground
           ),
 
           child: Column(
@@ -52,7 +53,7 @@ class ContextMenuView extends StatelessWidget {
 
                       SizedBox(width: width*0.1,),
 
-                      Expanded(child: TextView(selectedText, weight: FontWeight.bold,)),
+                      Expanded(child: TextView(selectedText, weight: FontWeight.bold, color: black,)),
 
                       const Icon(Icons.volume_up_rounded),
                     ],

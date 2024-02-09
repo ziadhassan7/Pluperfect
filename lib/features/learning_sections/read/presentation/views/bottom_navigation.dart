@@ -38,7 +38,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
     MicStates state = context.watch<AzureMicCubit>().state;
 
     return Container(
-      height: 170,
       padding: const CustomPadding(vertical: 26),
       decoration: BoxDecoration(
         color: ColorTheme.onBackground,
@@ -82,7 +81,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     return GestureDetector(
       onTap: onPressed,
 
-      child: SvgPicture.asset(icon),
+      child: SvgPicture.asset(icon, color: ColorTheme.text,),
     );
   }
 

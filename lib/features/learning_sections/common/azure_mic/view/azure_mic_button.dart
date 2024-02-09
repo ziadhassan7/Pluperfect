@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pluperfect/core/azure_speech/azure_model.dart';
-import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/hear/hear_cubit.dart';
 import '../cubit/mic_cubit.dart';
 import '../cubit/mic_states.dart';
 
@@ -63,6 +62,6 @@ class AzureMicButton extends StatelessWidget {
   }
 
   Widget button(String icon, bool shouldAnimate){
-    return Lottie.asset(icon, height: 250, width: 250, fit: BoxFit.fill, animate: shouldAnimate);
+    return Lottie.asset(icon, height: 150, width: 150, fit: BoxFit.fill, animate: shouldAnimate);
   }
 }

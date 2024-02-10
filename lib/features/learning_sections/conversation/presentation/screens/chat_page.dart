@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/core/constants/colors.dart';
 import 'package:pluperfect/core/styles/padding.dart';
-import 'package:pluperfect/features/learning_sections/common/openai_mic/view/mic_button.dart';
+import 'package:pluperfect/features/learning_sections/common/mic/openai_mic/view/mic_button.dart';
 import '../cubit/chat_cubit.dart';
 import '../cubit/chat_state.dart';
 

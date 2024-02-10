@@ -5,9 +5,9 @@ import 'package:pluperfect/core/audio/audio_client.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import '../../../../../core/file_util.dart';
-import '../../../common/azure_mic/cubit/mic_cubit.dart';
-import '../../../common/azure_mic/cubit/mic_states.dart';
-import '../../../common/azure_mic/view/azure_mic_button.dart';
+import '../../../common/mic/azure_mic/cubit/mic_cubit.dart';
+import '../../../common/mic/azure_mic/cubit/mic_states.dart';
+import '../../../common/mic/azure_mic/view/azure_mic.dart';
 import '../../logic/utils/level_controller.dart';
 import '../cubit/quotes/quotes_cubit.dart';
 
@@ -58,7 +58,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
             ),
           ),
 
-          Center(child: AzureMicButton(
+          Center(child: AzureMic(
+            color: ColorTheme.violet,
             onResponse: (userInput){
               //trigger a score widget
               context.read<QuotesCubit>().checkScore(userInput);

@@ -19,6 +19,7 @@ class QuoteBox extends StatelessWidget {
     return Padding(
       padding: const CustomPadding(vertical: 20, horizontal: 38),
       child: DecorationContainer(
+        padding: const CustomPadding(top: 20, horizontal: 20, bottom: 10),
 
         child: Column(
           children: [

@@ -1,35 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class ListeningAnimation extends StatelessWidget {
-  const ListeningAnimation({super.key, required this.color});
+class SpeakingAnimation extends StatelessWidget {
+  const SpeakingAnimation({super.key, this.size = 120, required this.color});
 
+  final double size;
   final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return button('assets/animations/listen.json', true);
+    return button('assets/animations/speak.json', true);
   }
 
-
-  Widget button(String icon, bool shouldAnimate) {
+  Widget button(String icon, bool shouldAnimate){
     return Lottie.asset(
       icon,
-      height: 120,
-      width: 120,
-      fit: BoxFit.fill,
+      height: size, width: size, fit: BoxFit.fill,
       animate: shouldAnimate,
       frameRate: FrameRate.max,
 
       delegates: LottieDelegates(
         values: [
-
           ValueDelegate.color(
-            const ['**'], //name of the layer. ex: ['transparent2', '**']
+            const ['**'],
             value: color,
           ),
         ],
       ),
+
     );
   }
 }

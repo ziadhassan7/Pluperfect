@@ -6,9 +6,9 @@ import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/hear/hear_cubit.dart';
 import '../../../../../core/file_util.dart';
-import '../../../common/azure_mic/cubit/mic_cubit.dart';
-import '../../../common/azure_mic/cubit/mic_states.dart';
-import '../../../common/azure_mic/view/azure_mic_2.dart';
+import '../../../common/mic/azure_mic/cubit/mic_cubit.dart';
+import '../../../common/mic/azure_mic/cubit/mic_states.dart';
+import '../../../common/mic/azure_mic/view/azure_mic.dart';
 
 
 class BottomNavigation extends StatefulWidget {
@@ -56,7 +56,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
             ),
           ),
 
-          Center(child: AzureMic2(
+          Center(child: AzureMic(
+              color: ColorTheme.green,
               onResponse: (userInput){
                 //trigger a score widget
                 context.read<HearCubit>().score(userInput);

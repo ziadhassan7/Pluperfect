@@ -5,15 +5,20 @@ import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 
 class DecorationContainer extends StatelessWidget {
-  const DecorationContainer({super.key, required this.child,});
+  const DecorationContainer({
+    super.key,
+    this.padding,
+    required this.child,
+  });
 
   final Widget child;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const CustomPadding(top: 20, horizontal: 20, bottom: 10),
+      padding: padding ?? const CustomPadding(vertical: 20, horizontal: 20,),
       decoration: CustomDecoration(
           backgroundColor: ColorTheme.onBackground,
           radius: 30,

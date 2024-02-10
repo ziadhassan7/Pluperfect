@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
 import '../../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../../core/styles/padding.dart';
 import '../../../common/decoration_container.dart';
-import '../../../common/listening_animation.dart';
+import '../../../common/speaking_animation.dart';
 import '../cubit/hear/hear_cubit.dart';
 import '../cubit/hear/hear_states.dart';
 
@@ -44,7 +45,7 @@ class _HearBoxState extends State<HearBox> {
             //Speaking
             if(state is SpeakingState){
 
-              return const ListeningAnimation();
+              return SpeakingAnimation(color: ColorTheme.green,);
             }
 
             //Idle

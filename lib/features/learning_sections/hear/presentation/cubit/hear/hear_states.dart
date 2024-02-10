@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:pluperfect/core/azure_speech/azure_model.dart';
 
 abstract class HearStates extends Equatable {
   const HearStates();
@@ -31,10 +32,10 @@ class IdleState extends HearStates {
 
 // Score
 class ScoreState extends HearStates {
-  final String score;
+  final AzureModel result;
 
-  const ScoreState(this.score);
+  const ScoreState(this.result);
 
   @override
-  List<Object> get props => [score];
+  List<Object> get props => [result];
 }

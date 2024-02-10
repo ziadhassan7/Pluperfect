@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/constants/colors.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
 import '../../../../../core/styles/padding.dart';
-import '../../../common/azure_mic/view/azure_mic_button.dart';
-import '../cubit/hear/hear_cubit.dart';
+import '../views/bottom_navigation.dart';
 import '../views/hear_box.dart';
+import '../views/hear_score_widget.dart';
 
 class HearPage extends StatelessWidget {
   const HearPage({super.key});
@@ -12,52 +11,41 @@ class HearPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(250, 251, 255, 1), //rgba(250, 251, 255, 1)
+      backgroundColor: ColorTheme.background,
 
       body: SafeArea(
         child: Stack(
           children: [
 
-            Padding(
-              padding: const CustomPadding(vertical: 24, horizontal: 38),
+            Column(
+              children: [
 
-              child: Column(
-                children: [
+                ///Top Widget
+                Padding(
+                  padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
+                  child: Row(
+                    children: [
+                      InkWell(
+                        onTap: () => Navigator.pop(context),
+                        child: Icon(Icons.close_rounded, color: ColorTheme.text, size: 28,)),
 
-                  ///Top Widget
-                  Padding(
-                    padding: const CustomPadding(bottom: 20, horizontal: 8),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          onTap: () => Navigator.pop(context),
-                          child: const Icon(Icons.close_rounded, color: black, size: 28,)),
-
-                        //const Center(child: ScreenProgressBar(),),
-                      ],
-                    ),
+                      //const Center(child: ScreenProgressBar(),),
+                    ],
                   ),
+                ),
 
 
-                  /// Quotes
-                  const HearBox(),
+                /// Quotes
+                const HearBox(),
 
-                  //const ScoreWidget(), //your score
+                const Spacer(),
 
-                  const Spacer(),
+                const HearScoreWidget(), //your score
 
-                  AzureMicButton(
-                    onResponse: (userInput){
-                      //trigger a score widget
-                      context.read<HearCubit>().score(userInput);
-                    },
-                  ),
+                /// Navigation
+                const BottomNavigation(),
 
-                  /// Navigation
-                  //BottomNavigation(level),
-
-                ],
-              ),
+              ],
             ),
           ],
         ),

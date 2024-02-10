@@ -17,7 +17,7 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(height: 50,),
 
           SettingsItemSwitch(
-              title: 'LocalTxt.darkMode',
+              title: LocalTxt.darkMode,
               iconPath: 'assets/dark_mode.svg',
               onTap: (newValue) {
                 context.read<ThemeCubit>().switchThemeTo(isDark: newValue);

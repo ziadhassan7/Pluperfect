@@ -7,7 +7,7 @@ import '../../logic/utils/level_controller.dart';
 import '../views/bottom_navigation.dart';
 import '../views/context_menu/context_menu.dart';
 import '../views/quote_prgress_bar.dart';
-import '../widget/score_widget.dart';
+import '../views/read_score_widget.dart';
 
 class ReadPage extends StatelessWidget {
   const ReadPage(
@@ -60,7 +60,7 @@ class ReadPage extends StatelessWidget {
 
                   const Spacer(),
 
-                  const ScoreWidget(),
+                  const ReadScoreWidget(),
 
 
                   /// Navigation

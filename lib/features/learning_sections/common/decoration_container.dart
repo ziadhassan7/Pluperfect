@@ -12,6 +12,7 @@ class DecorationContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       padding: const CustomPadding(top: 20, horizontal: 20, bottom: 10),
       decoration: CustomDecoration(
           backgroundColor: ColorTheme.onBackground,

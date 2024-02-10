@@ -1,58 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/core/styles/padding.dart';
-import '../../../../../core/azure_speech/azure_model.dart';
-import '../cubit/quotes/quote_states.dart';
-import '../cubit/quotes/quotes_cubit.dart';
 
 
 class ScoreWidget extends StatelessWidget {
-  const ScoreWidget({super.key});
+  const ScoreWidget({super.key, required this.pronScore, required this.fluencyScore, required this.accuracyScore});
+
+  final double pronScore;
+  final double fluencyScore;
+  final double accuracyScore;
 
   @override
   Widget build(BuildContext context) {
 
-    QuoteStates state = context.watch<QuotesCubit>().state;
+    int score = processScore(pronScore, fluencyScore, accuracyScore);
 
-    if(state is ScoreState){
+    return Padding(
+      padding: const CustomPadding(vertical: 28, horizontal: 38),
 
-      AzureModel result = state.result;
+      child: Row(
+        children: [
+          const TextView("Your Score is:", scale: TypeScale.headline2,),
 
-      double pronScore = result.nBest!.first.pronScore!;
-      double fluencyScore = result.nBest!.first.fluencyScore!;
-      double accurateScore = result.nBest!.first.accuracyScore!;
+          const Spacer(),
 
-      //This is so harsh on the user
-      int score = processScore(pronScore, fluencyScore, accurateScore);
-
-
-      return Padding(
-        padding: const CustomPadding(vertical: 28, horizontal: 38),
-
-        child: Row(
-          children: [
-            const TextView("Your Score is:", scale: TypeScale.headline2,),
-
-            const Spacer(),
-
-            CircularPercentIndicator(
-              radius: 36.0,
-              lineWidth: 10.0,
-              percent: score/100,
-              center: TextView("$score"),
-              animation: true,
-              animationDuration: 2500,
-              progressColor: getIndicatorColor(score),
-              circularStrokeCap: CircularStrokeCap.round,
-            )
-          ],
-        ),
-      );
-    }
-
-    return const SizedBox.shrink();
+          CircularPercentIndicator(
+            radius: 36.0,
+            lineWidth: 10.0,
+            percent: score/100,
+            center: TextView("$score"),
+            animation: true,
+            animationDuration: 2500,
+            progressColor: getIndicatorColor(score),
+            circularStrokeCap: CircularStrokeCap.round,
+          )
+        ],
+      ),
+    );
   }
 
 

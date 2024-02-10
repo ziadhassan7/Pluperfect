@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pluperfect/core/constants/colors.dart';
 
 class SpeakingAnimation extends StatelessWidget {
   const SpeakingAnimation({super.key, this.size = 120, required this.color});
@@ -13,21 +14,28 @@ class SpeakingAnimation extends StatelessWidget {
   }
 
   Widget button(String icon, bool shouldAnimate){
-    return Lottie.asset(
-      icon,
-      height: size, width: size, fit: BoxFit.fill,
-      animate: shouldAnimate,
-      frameRate: FrameRate.max,
-
-      delegates: LottieDelegates(
-        values: [
-          ValueDelegate.color(
-            const ['**'],
-            value: color,
-          ),
-        ],
+    return ColorFiltered(
+      colorFilter: ColorFilter.mode(
+        color,
+        BlendMode.modulate, //Original Color has to be WHITE
       ),
 
+      child: Lottie.asset(
+        icon,
+        height: size, width: size, fit: BoxFit.fill,
+        animate: shouldAnimate,
+        frameRate: FrameRate.max,
+
+        delegates: LottieDelegates(
+          values: [
+            ValueDelegate.color(
+              const ['**'],
+              value: black,
+            ),
+          ],
+        ),
+
+      ),
     );
   }
 }

@@ -45,7 +45,7 @@ class _HearBoxState extends State<HearBox> {
             //Speaking
             if(state is SpeakingState){
 
-              return SpeakingAnimation(color: ColorTheme.green,);
+              return SpeakingAnimation(color: ColorTheme.green,); //ColorTheme.text
             }
 
             //Idle

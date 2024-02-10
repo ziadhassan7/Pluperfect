@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pluperfect/core/constants/colors.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
 
 class SpeakingAnimation extends StatelessWidget {
-  const SpeakingAnimation({super.key, this.size = 120, required this.color});
+  const SpeakingAnimation({super.key, this.size = 120, this.color});
 
   final double size;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class SpeakingAnimation extends StatelessWidget {
   Widget button(String icon, bool shouldAnimate){
     return ColorFiltered(
       colorFilter: ColorFilter.mode(
-        color,
+        color ?? ColorTheme.text,
         BlendMode.modulate, //Original Color has to be WHITE
       ),
 

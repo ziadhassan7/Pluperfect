@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
-import 'package:pluperfect/core/constants/colors.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
+import 'package:pluperfect/features/learning_sections/common/listening_animation.dart';
+import 'package:pluperfect/features/learning_sections/common/mic/azure_mic/view/azure_mic.dart';
 import 'package:pluperfect/features/learning_sections/common/mic/openai_mic/view/mic_button.dart';
+import 'package:pluperfect/features/learning_sections/common/speaking_animation.dart';
 import '../cubit/chat_cubit.dart';
 import '../cubit/chat_state.dart';
 
@@ -29,7 +32,7 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context){
 
     return Scaffold(
-      backgroundColor: backgroundLight,
+      backgroundColor: ColorTheme.background,
 
       body: Padding(
         padding: const CustomPadding(vertical: 10, horizontal: 25),
@@ -43,7 +46,7 @@ class _ChatPageState extends State<ChatPage> {
                   builder: (context, state) {
 
                     if(state is IdleState){
-                      return const Text("Start Speaking!");
+                      return const TextView("Start Speaking!", scale: TypeScale.headline3,);
                     }
 
                     if(state is ListenState){
@@ -59,10 +62,12 @@ class _ChatPageState extends State<ChatPage> {
               ),
 
 
-              OpenaiMicButton(onResponse: (userInput) {
-                //trigger a score widget
-                context.read<ChatCubit>().startListening();
-              },),
+              AzureMic(
+                onResponse: (userInput) {
+                  //trigger a score widget
+                  context.read<ChatCubit>().startListening();
+                },
+                color: ColorTheme.blue,),
             ],
           ),
         ),
@@ -72,6 +77,6 @@ class _ChatPageState extends State<ChatPage> {
 
 
   Widget listenWidget(){
-    return Image.asset('assets/animations/user_speaking.gif');
+    return SpeakingAnimation(color: ColorTheme.blue);
   }
 }

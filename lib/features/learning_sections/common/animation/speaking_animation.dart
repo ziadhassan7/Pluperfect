@@ -31,7 +31,7 @@ class SpeakingAnimation extends StatelessWidget {
           values: [
             ValueDelegate.color(
               const ['**'],
-              value: black,
+              value: white, //color
             ),
           ],
         ),

@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import '../../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../../core/styles/padding.dart';
+import '../../../common/animation/speaking_animation.dart';
 import '../../../common/decoration_container.dart';
-import '../../../common/speaking_animation.dart';
 import '../cubit/hear/hear_cubit.dart';
 import '../cubit/hear/hear_states.dart';
 

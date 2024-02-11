@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/azure_speech/azure_model.dart';
 import 'package:pluperfect/core/styles/padding.dart';
-import '../../../listening_animation.dart';
+import 'package:pluperfect/features/learning_sections/common/loading_widget.dart';
+import '../../../animation/listening_animation.dart';
 import '../../mic_widget.dart';
 import '../cubit/mic_cubit.dart';
 import '../cubit/mic_states.dart';
@@ -43,10 +44,7 @@ class AzureMic extends StatelessWidget {
 
             //Loading
             if(state is LoadingState){
-              return const Padding(
-                padding: CustomPadding.all(32),
-                child: CircularProgressIndicator(),
-              );
+              return LoadingWidget(color: color,);
             }
 
             //Idle

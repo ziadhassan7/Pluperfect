@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
+import 'package:pluperfect/core/constants/colors.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
-import 'package:pluperfect/core/styles/padding.dart';
-import 'package:pluperfect/features/learning_sections/common/listening_animation.dart';
-import 'package:pluperfect/features/learning_sections/common/mic/azure_mic/view/azure_mic.dart';
-import 'package:pluperfect/features/learning_sections/common/mic/openai_mic/view/mic_button.dart';
-import 'package:pluperfect/features/learning_sections/common/speaking_animation.dart';
+import 'package:pluperfect/features/learning_sections/conversation/presentation/view/bottom_navigation.dart';
+import '../../../../../core/styles/padding.dart';
+import '../view/loading_animation.dart';
+import '../../../common/animation/speaking_animation.dart';
 import '../cubit/chat_cubit.dart';
 import '../cubit/chat_state.dart';
 
@@ -34,40 +34,43 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       backgroundColor: ColorTheme.background,
 
-      body: Padding(
-        padding: const CustomPadding(vertical: 10, horizontal: 25),
-
+      body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
 
-              BlocBuilder<ChatCubit, ChatStates>(
-                  builder: (context, state) {
+              ///Chat Box
+              Padding(
+                padding: const CustomPadding(vertical: 45, horizontal: 25),
 
-                    if(state is IdleState){
-                      return const TextView("Start Speaking!", scale: TypeScale.headline3,);
+                child: BlocBuilder<ChatCubit, ChatStates>(
+                    builder: (context, state) {
+
+                      if(state is LoadingState){
+
+                        return const Center(child: LoadingAnimation(),);
+                      }
+
+                      if(state is ListenState){
+                        return listenWidget();
+                      }
+
+                      if(state is ResponseState){
+                        return TextView(state.input ?? "", scale: TypeScale.headline3,);
+                      }
+
+                      return const SizedBox.shrink();
                     }
-
-                    if(state is ListenState){
-                      return listenWidget();
-                    }
-
-                    if(state is ResponseState){
-                      return TextView(state.input ?? "", scale: TypeScale.headline3,);
-                    }
-
-                    return const Center(child: CircularProgressIndicator(),);
-                  }
+                ),
               ),
 
 
-              AzureMic(
-                onResponse: (userInput) {
-                  //trigger a score widget
-                  context.read<ChatCubit>().startListening();
-                },
-                color: ColorTheme.blue,),
+              /// Bottom View
+              const Spacer(),
+
+
+              const BottomNavigation(),
             ],
           ),
         ),
@@ -77,6 +80,6 @@ class _ChatPageState extends State<ChatPage> {
 
 
   Widget listenWidget(){
-    return SpeakingAnimation(color: ColorTheme.blue);
+    return SpeakingAnimation(size: 400,);
   }
 }

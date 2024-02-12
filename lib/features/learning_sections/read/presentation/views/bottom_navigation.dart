@@ -9,7 +9,7 @@ import '../../../common/mic/azure_mic/cubit/mic_cubit.dart';
 import '../../../common/mic/azure_mic/cubit/mic_states.dart';
 import '../../../common/mic/azure_mic/view/azure_mic.dart';
 import '../../logic/utils/level_controller.dart';
-import '../cubit/quotes/quotes_cubit.dart';
+import '../cubit/quotes/quote_cubit.dart';
 
 
 class BottomNavigation extends StatefulWidget {
@@ -62,7 +62,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             color: ColorTheme.violet,
             onResponse: (userInput){
               //trigger a score widget
-              context.read<QuotesCubit>().checkScore(userInput);
+              context.read<QuoteCubit>().checkScore(userInput);
             }
           )),
 
@@ -70,7 +70,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             visible: visibility(state),
             child: button(
               icon: 'assets/next_button.svg',
-              onPressed: ()=> context.read<QuotesCubit>().refresh(widget.level),
+              onPressed: ()=> context.read<QuoteCubit>().refresh(widget.level),
             ),
           )
         ],

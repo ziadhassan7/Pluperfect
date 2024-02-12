@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/hear/hear_cubit.dart';
+import 'package:pluperfect/features/learning_sections/common/mic/openai_mic/cubit/openai_mic_cubit.dart';
+import 'package:pluperfect/features/learning_sections/common/mic/openai_mic/cubit/openai_mic_states.dart';
+import '../../../../../../core/styles/padding.dart';
 import '../../../animation/listening_animation.dart';
-import '../../../mic/azure_mic/cubit/mic_cubit.dart';
-import '../../../mic/azure_mic/cubit/mic_states.dart';
+import '../../../loading_widget.dart';
 import '../../mic_widget.dart';
 
 
@@ -18,27 +18,35 @@ class OpenaiMicButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onPanStart: (details){
-        context.read<AzureMicCubit>().listen();
+        context.read<OpenaiMicCubit>().listen();
       },
       onPanEnd: (details){
-        context.read<AzureMicCubit>().stop();
+        context.read<OpenaiMicCubit>().stop();
       },
 
-      child: BlocBuilder<AzureMicCubit, MicStates>(
+      child: BlocBuilder<OpenaiMicCubit, OpenaiMicStates>(
         builder: (context, state) {
 
+          //Listening...
           if(state is ListeningState){
             return listenButton();
           }
 
+          //Response
           if(state is IdleState){
             if(state.response != null){
-              //trigger a score widget
-              context.read<HearCubit>().score(state.response!);
+              //trigger on response
+              onResponse(state.response!);
             }
             return idleButton();
           }
 
+          //Loading
+          if(state is LoadingState){
+            return LoadingWidget(color: color,);
+          }
+
+          //Idle
           return idleButton();
         }
       ),
@@ -50,10 +58,10 @@ class OpenaiMicButton extends StatelessWidget {
   }
 
   Widget idleButton(){
-    return MicWidget(color: color);
+    return Padding(
+      padding: const CustomPadding.all(28),
+      child: MicWidget(color: color),
+    );
   }
 
-  Widget button(String icon){
-    return SvgPicture.asset(icon);
-  }
 }

@@ -11,8 +11,8 @@ class IdleState extends ChatStates {
   List<Object> get props => [];
 }
 
-// Listing
-class ListenState extends ChatStates {
+// Speak
+class SpeakState extends ChatStates {
 
   @override
   List<Object> get props => [];

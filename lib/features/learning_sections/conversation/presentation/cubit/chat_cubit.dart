@@ -1,26 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pluperfect/core/azure_speech/azure_model.dart';
 import '../../../../../../core/custom_log.dart';
-import '../../../../../../core/openai/openai_client.dart';
 import '../../../../../../core/text_to_speech/text_to_speech_client.dart';
 import '../../logic/utils/chat_input_controller.dart';
-import 'package:pluperfect/core/record_audio/recorder_client.dart';
 import 'chat_state.dart';
-
-
-// Start State
-// Open Speech (Trigger Event) -> Listen (Listen State) ->
-// After listen -> send response (Show Loading State) ->
-// Response (Response State)
 
 
 class ChatCubit extends Cubit<ChatStates>{
   ChatCubit() : super(IdleState());
 
-
-  /// Open
-  // LoadingState
-  // open gemini , "Let's Start" -> speak
-  // ResponseState
 
   openInteraction() async {
     emit(LoadingState());
@@ -39,54 +27,23 @@ class ChatCubit extends Cubit<ChatStates>{
   }
 
 
-  /// Start Speaking
-  // ListenState
-  // Speech to text
-  // send response
-  // LoadingState
-  // ResponseState
 
-  startListening() async {
-    //Listen
-    RecorderClient.start();
-    //emit listening state
-    emit(ListenState());
-  }
+  sendInput(AzureModel userInput) async {
 
-
-  stop(){
+    String? input = userInput.displayText;
 
     emit(LoadingState());
 
-    RecorderClient.stop().then((String? audioFilePath) async {
-      if(audioFilePath != null){
-
-        try {
-          String result = await OpenAIClient.speechToText(audioFilePath);
-          _send(result);
-
-        } catch (e){
-          emit(IdleState());
-        }
+    try{
+      if(input != null){
+        //Get Gemini response
+        String? response = await ChatInputController.getChatAnswer(input);
+        //speak
+        await _speak(response);
 
       } else {
-        emit(IdleState());
+        Log("Chat Cubit", const ResponseState("Didn't hear what you said?!"));
       }
-    });
-
-  }
-
-
-  Future _send(String input) async {
-
-    try{
-      //Get Gemini response
-      String? response = await ChatInputController.getChatAnswer(input);
-      //emit response
-      emit(ResponseState(response));
-      //speak
-      await _speak(response);
-
     } catch (e){
       Log("Chat Cubit", ResponseState(e.toString()));
     }
@@ -96,7 +53,13 @@ class ChatCubit extends Cubit<ChatStates>{
 
     if(response != null) {
       await TTSClient.speak(response);
+      emit(SpeakState());
     }
+
+    //on Speak Complete , emit response
+    TTSClient.onComplete(() => emit(ResponseState(response)));
   }
+
+
 
 }

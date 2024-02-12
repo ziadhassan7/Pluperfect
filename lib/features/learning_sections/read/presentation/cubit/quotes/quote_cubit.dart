@@ -3,12 +3,11 @@ import 'package:pluperfect/core/azure_speech/azure_model.dart';
 import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
 import 'package:pluperfect/features/learning_sections/read/logic/utils/score_controller.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/cubit/quotes/quote_states.dart';
-import '../../../../../../core/custom_log.dart';
 import '../../../logic/utils/level_controller.dart';
 
 
-class QuotesCubit extends Cubit<QuoteStates>{
-  QuotesCubit() : super(LoadingState());
+class QuoteCubit extends Cubit<QuoteStates>{
+  QuoteCubit() : super(LoadingState());
 
   String? quoteBody;
 

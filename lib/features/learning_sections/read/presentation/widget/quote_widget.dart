@@ -4,7 +4,7 @@ import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/cubit/quotes/quote_states.dart';
 import '../../../../../core/azure_speech/azure_model.dart';
 import '../../logic/utils/level_controller.dart';
-import '../cubit/quotes/quotes_cubit.dart';
+import '../cubit/quotes/quote_cubit.dart';
 import '../views/context_menu/context_menu.dart';
 
 class QuotesWidget extends StatefulWidget {
@@ -24,13 +24,13 @@ class _QuotesWidgetState extends State<QuotesWidget> {
     super.initState();
     //Initial quote
     WidgetsBinding.instance
-        .addPostFrameCallback((_) => context.read<QuotesCubit>().refresh(widget.level));
+        .addPostFrameCallback((_) => context.read<QuoteCubit>().refresh(widget.level));
   }
 
   @override
   Widget build(BuildContext context) {
 
-    QuoteStates state = context.watch<QuotesCubit>().state;
+    QuoteStates state = context.watch<QuoteCubit>().state;
 
     if(state is ResponseState){
 

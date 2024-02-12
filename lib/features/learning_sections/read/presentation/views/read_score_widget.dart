@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/features/learning_sections/common/score_widget.dart';
 import '../../../../../core/azure_speech/azure_model.dart';
 import '../cubit/quotes/quote_states.dart';
-import '../cubit/quotes/quotes_cubit.dart';
+import '../cubit/quotes/quote_cubit.dart';
 
 
 class ReadScoreWidget extends StatelessWidget {
@@ -12,7 +12,7 @@ class ReadScoreWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    QuoteStates state = context.watch<QuotesCubit>().state;
+    QuoteStates state = context.watch<QuoteCubit>().state;
 
     if(state is ScoreState){
 

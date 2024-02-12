@@ -13,7 +13,7 @@ import 'features/learning_sections/common/mic/openai_mic/cubit/openai_mic_cubit.
 import 'features/learning_sections/conversation/presentation/cubit/chat_cubit.dart';
 import 'features/learning_sections/hear/presentation/cubit/hear/hear_cubit.dart';
 import 'features/learning_sections/read/presentation/cubit/mic/mic_cubit.dart';
-import 'features/learning_sections/read/presentation/cubit/quotes/quotes_cubit.dart';
+import 'features/learning_sections/read/presentation/cubit/quotes/quote_cubit.dart';
 import 'injection.dart' as inject;
 
 Future<void> main() async {
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: ((context) => ThemeCubit()),),
-        BlocProvider(create: ((context) => QuotesCubit()),),
+        BlocProvider(create: ((context) => QuoteCubit()),),
         BlocProvider(create: ((context) => SpeakerCubit()),),
         BlocProvider(create: ((context) => HearCubit()),),
         BlocProvider(create: ((context) => OpenaiMicCubit()),),

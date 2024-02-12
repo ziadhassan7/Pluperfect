@@ -36,7 +36,7 @@ class AzureMic extends StatelessWidget {
             //Response
             if(state is IdleState){
               if(state.response != null){
-                //trigger a score widget
+                //trigger on response
                 onResponse(state.response!);
               }
               return idleButton();

@@ -25,9 +25,16 @@ class BottomNavigation extends StatelessWidget {
       child: Center(child: AzureMic(
         onResponse: (userInput) {
           //trigger a score widget
-          context.read<ChatCubit>().startListening();
+          context.read<ChatCubit>().sendInput(userInput);
         },
         color: ColorTheme.blue,),),
+
+      /*child: Center(child: OpenaiMicButton(
+        onResponse: (userInput) {
+          //trigger a score widget
+          context.read<ChatCubit>().sendInput(userInput);
+        },
+        color: ColorTheme.blue,),),*/
     );
   }
 

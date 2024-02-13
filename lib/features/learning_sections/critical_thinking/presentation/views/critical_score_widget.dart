@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/core/styles/app_screen.dart';
-import 'package:pluperfect/features/learning_sections/common/score/score_widget.dart';
 
 
 class CriticalScoreWidget extends StatelessWidget {

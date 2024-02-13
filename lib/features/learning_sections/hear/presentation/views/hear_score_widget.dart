@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pluperfect/features/learning_sections/common/score_widget.dart';
+import 'package:pluperfect/features/learning_sections/common/score/score_controller.dart';
+import 'package:pluperfect/features/learning_sections/common/score/score_widget.dart';
 import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/hear/hear_cubit.dart';
 import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/hear/hear_states.dart';
 import '../../../../../core/azure_speech/azure_model.dart';
@@ -22,10 +23,9 @@ class HearScoreWidget extends StatelessWidget {
       double fluencyScore = result.nBest!.first.fluencyScore!;
       double accuracyScore = result.nBest!.first.accuracyScore!;
 
-      return ScoreWidget(
-          pronScore: pronScore,
-          fluencyScore: fluencyScore,
-          accuracyScore: accuracyScore);
+      int score = ScoreController.processScore(pronScore, fluencyScore, accuracyScore);
+
+      return ScoreWidget(score: score,);
     }
 
     return const SizedBox.shrink();

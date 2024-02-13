@@ -5,16 +5,13 @@ import 'package:pluperfect/core/styles/padding.dart';
 
 
 class ScoreWidget extends StatelessWidget {
-  const ScoreWidget({super.key, required this.pronScore, required this.fluencyScore, required this.accuracyScore});
+  const ScoreWidget({super.key, required this.score,});
 
-  final double pronScore;
-  final double fluencyScore;
-  final double accuracyScore;
+  final int score;
 
   @override
   Widget build(BuildContext context) {
 
-    int score = processScore(pronScore, fluencyScore, accuracyScore);
 
     return Padding(
       padding: const CustomPadding(vertical: 28, horizontal: 38),
@@ -41,20 +38,7 @@ class ScoreWidget extends StatelessWidget {
   }
 
 
-  int processScore(double pronScore, double fluencyScore, double accurateScore){
-    double score = ((pronScore + fluencyScore)/200)*100;
 
-    double accuracy = 100-accurateScore;
-
-    double result = score - accuracy;
-
-    if(result > 0){
-      return result.ceil();
-
-    } else {
-      return 0;
-    }
-  }
 
 
   Color getIndicatorColor(int score){
@@ -74,27 +58,4 @@ class ScoreWidget extends StatelessWidget {
     return red;
   }
 }
-
-
-///Documentation:
-
-/*
-
-//This is so harsh on the user
-int score = processScore(pronScore, fluencyScore, accurateScore);  //Chosen <--
-
-//This gives high score
-int score2 = (((pronScore + fluencyScore + accurateScore)/300)*100).ceil();
-
-//This is a little kinder
-int score3 = lowestOfThree(pronScore, fluencyScore, accurateScore);
-
-*/
-
-
-/*
-int lowestOfThree(double a, double b, double c) {
-  return min(min(a, b), c).ceil();
-}
-*/
 

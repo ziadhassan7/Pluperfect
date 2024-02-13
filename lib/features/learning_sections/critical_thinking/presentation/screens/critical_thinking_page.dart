@@ -3,7 +3,7 @@ import 'package:pluperfect/features/learning_sections/critical_thinking/presenta
 import '../../../../../core/styles/color_theme.dart';
 import '../../../../../core/styles/padding.dart';
 import '../views/bottom_navigation.dart';
-import '../views/quesion_score_widget.dart';
+
 
 class CriticalThinkingPage extends StatelessWidget {
   const CriticalThinkingPage({super.key});
@@ -36,8 +36,6 @@ class CriticalThinkingPage extends StatelessWidget {
 
 
             const Spacer(),
-
-            const QuestionScoreWidget(), //your score
 
             /// Navigation
             const BottomNavigation(),

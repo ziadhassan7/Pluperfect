@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/bloc_color_theme.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/system_util.dart';
-import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/question_cubit.dart';
+import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_cubit.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/cubit/speaker/speak_cubit.dart';
 import 'package:pluperfect/index/index_page.dart';
 import 'core/bloc_observer.dart';
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: ((context) => AzureMicCubit()),),
         BlocProvider(create: ((context) => InteractionCubit()),),
         BlocProvider(create: ((context) => ChatCubit()),),
-        BlocProvider(create: ((context) => QuestionCubit()),),
+        BlocProvider(create: ((context) => CriticalThinkingCubit()),),
       ],
 
       child: MaterialApp(

@@ -125,4 +125,23 @@ class OpenAIClient {
     return text;
   }
 
+
+  ///                                                                           / System Task
+  static Future<String?> getSystemTask(String system, String prompt) async {
+
+    _controller.addSystemGuide(system); //system
+    _controller.addUserMessage(prompt); //message
+
+    final chatResponse = await OpenAI.instance.chat.create(
+      model: "gpt-3.5-turbo",
+      messages: _controller.messages,
+      n: 1,
+      maxTokens: 256,
+    );
+
+    _controller.resetMessages(); //reset
+
+    return chatResponse.choices.first.message.content?.first.text;
+  }
+
 }

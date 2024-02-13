@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
-import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/question_cubit.dart';
+import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_cubit.dart';
 import '../../../common/mic/azure_mic/cubit/mic_states.dart';
 import '../../../common/mic/azure_mic/view/azure_mic.dart';
 
@@ -29,7 +29,7 @@ class BottomNavigation extends StatelessWidget {
               color: ColorTheme.red,
               onResponse: (userInput){
                 //trigger a score widget
-                context.read<QuestionCubit>().score(userInput);
+                context.read<CriticalThinkingCubit>().getScore(userInput);
               }
           )),
     );

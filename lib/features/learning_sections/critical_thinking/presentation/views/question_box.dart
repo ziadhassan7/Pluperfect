@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/features/learning_sections/common/decoration_container.dart';
-import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/question_states.dart';
+import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_states.dart';
 import '../../../../../core/styles/padding.dart';
-import '../cubit/questions/question_cubit.dart';
+import '../cubit/questions/critical_cubit.dart';
+import 'critical_score_widget.dart';
 
 class QuestionBox extends StatefulWidget {
   const QuestionBox({super.key});
@@ -20,7 +21,7 @@ class _QuestionBoxState extends State<QuestionBox> {
     super.initState();
     //Initial quote
     WidgetsBinding.instance
-        .addPostFrameCallback((_) => context.read<QuestionCubit>().refresh());
+        .addPostFrameCallback((_) => context.read<CriticalThinkingCubit>().getQuestion());
   }
 
   @override
@@ -30,12 +31,21 @@ class _QuestionBoxState extends State<QuestionBox> {
       padding: const CustomPadding(vertical: 20, horizontal: 38),
 
       child: DecorationContainer(
-          child: BlocBuilder<QuestionCubit, QuestionStates>(
+          child: BlocBuilder<CriticalThinkingCubit, CriticalThinkingStates>(
             builder: (context, state){
 
 
               if(state is LoadingState){
                 return const Center(child: CircularProgressIndicator(),);
+              }
+
+              if(state is ScoreState){
+                return CriticalScoreWidget(
+                    userInput: state.userInput,
+                    correct: state.correct,
+                    feedback: state.feedback,
+                    grammarScore: state.grammarScore,
+                    pronScore: state.pronScore);
               }
 
               if(state is ResponseState){

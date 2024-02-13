@@ -33,10 +33,9 @@ class CriticalThinkingCubit extends Cubit<CriticalThinkingStates>{
           && pronunciationScore != null){
 
         String correctStatement = ScoreController.getCorrectStatement(grammarEvaluation);
-        String feedback = ScoreController.getGrammarFeedback(grammarEvaluation);
         int grammarScore = ScoreController.getGrammarScore(grammarEvaluation);
 
-        emit(ScoreState(input, correctStatement, feedback, grammarScore, pronunciationScore));
+        emit(ScoreState(input, correctStatement, grammarScore, pronunciationScore));
       }
 
 

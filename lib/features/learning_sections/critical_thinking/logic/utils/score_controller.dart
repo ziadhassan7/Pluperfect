@@ -27,13 +27,11 @@ class ScoreController {
   static int getGrammarScore(String grammarEvaluation){
 
     try{
-      // Split the phrase by the newline character (\n)
-      List<String> lines = grammarEvaluation.split('\n');
 
       // Find the index of "Grammar score: " and "/10"
       int startIndex =
-          lines.indexOf("Grammar score: ") + "Grammar score: ".length;
-      int endIndex = lines.indexOf("/10", startIndex);
+          grammarEvaluation.indexOf("Grammar score: ") + "Grammar score: ".length;
+      int endIndex = grammarEvaluation.indexOf("/10", startIndex);
 
       // Extract the substring containing the grammar score
       String scoreString = grammarEvaluation.substring(startIndex, endIndex);
@@ -46,20 +44,6 @@ class ScoreController {
     } catch (e){
        return 0;
     }
-  }
-
-  static String getGrammarFeedback(String grammarEvaluation){
-    /// Split the phrase by the newline character (\n)
-    List<String> lines = grammarEvaluation.split('\n');
-
-    try{
-      String feedback = lines[1];
-      return feedback;
-
-    } catch (e){
-      return "";
-    }
-
   }
 
   static getCorrectStatement(String grammarEvaluation){

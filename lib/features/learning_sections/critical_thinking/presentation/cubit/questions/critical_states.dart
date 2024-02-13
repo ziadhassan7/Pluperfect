@@ -27,12 +27,11 @@ class ResponseState extends CriticalThinkingStates {
 class ScoreState extends CriticalThinkingStates {
   final String userInput;
   final String correct;
-  final String feedback;
   final int grammarScore;
   final double pronScore;
 
-  const ScoreState(this.userInput, this.correct, this.feedback, this.grammarScore, this.pronScore);
+  const ScoreState(this.userInput, this.correct, this.grammarScore, this.pronScore);
 
   @override
-  List<Object> get props => [userInput, correct, feedback, grammarScore, pronScore];
+  List<Object> get props => [userInput, correct, grammarScore, pronScore];
 }

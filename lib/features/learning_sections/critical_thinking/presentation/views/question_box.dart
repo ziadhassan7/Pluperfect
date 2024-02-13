@@ -43,7 +43,6 @@ class _QuestionBoxState extends State<QuestionBox> {
                 return CriticalScoreWidget(
                     userInput: state.userInput,
                     correct: state.correct,
-                    feedback: state.feedback,
                     grammarScore: state.grammarScore,
                     pronScore: state.pronScore);
               }

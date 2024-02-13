@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pluperfect/core/styles/app_screen.dart';
+import '../../../../../core/app_widgets/text_view/text_view.dart';
+import '../../../common/score/circular_score_indicator.dart';
 
 
 class CriticalScoreWidget extends StatelessWidget {
@@ -7,13 +9,11 @@ class CriticalScoreWidget extends StatelessWidget {
     super.key,
     required this.userInput,
     required this.correct,
-    required this.feedback,
     required this.grammarScore,
     required this.pronScore,
   });
   final String userInput;
   final String correct;
-  final String feedback;
   final int grammarScore;
   final double pronScore;
 
@@ -21,6 +21,7 @@ class CriticalScoreWidget extends StatelessWidget {
   Widget build(BuildContext context) {
 
     double screenHeight = AppScreen(context).height;
+    Color color = Colors.red;
 
     return SizedBox(
       height: screenHeight *0.4,
@@ -28,13 +29,39 @@ class CriticalScoreWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          /*TextView(userInput,),
-          TextView(correct),
-          TextView(feedback),*/
 
-          Text(userInput, maxLines: 1000,),
-          Text(correct, maxLines: 1000,),
-          Text(feedback, maxLines: 1000,),
+          TextView("Your Statement:", scale: TypeScale.headline1, color: color,),
+          TextView(userInput,),
+
+          const SizedBox(height: 10,),
+
+          TextView("Correct Statement:", scale: TypeScale.headline1, color: color,),
+          TextView(correct,),
+
+          const SizedBox(height: 10,),
+
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircularScoreIndicator(score: (grammarScore*10),),
+                  const TextView("Grammar Score", scale: TypeScale.small,),
+                ],
+              ),
+
+
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircularScoreIndicator(score: pronScore.ceil(),),
+                  const TextView("Grammar Score", scale: TypeScale.small,),
+                ],
+              ),
+            ],
+          ),
 
         ],
       ),

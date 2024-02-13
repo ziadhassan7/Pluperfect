@@ -4,11 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/audio/audio_client.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
-import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/hear/hear_cubit.dart';
 import '../../../../../core/file_util.dart';
 import '../../../common/mic/azure_mic/cubit/mic_cubit.dart';
 import '../../../common/mic/azure_mic/cubit/mic_states.dart';
 import '../../../common/mic/azure_mic/view/azure_mic.dart';
+import '../cubit/hear/hear_cubit.dart';
+import '../sentence_widget.dart';
 
 
 class BottomNavigation extends StatefulWidget {
@@ -33,8 +34,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
 
-    MicStates state = context.watch<AzureMicCubit>().state;
-
     return Container(
       padding: const CustomPadding(vertical: 0, horizontal: 38),
       decoration: BoxDecoration(
@@ -44,33 +43,44 @@ class _BottomNavigationState extends State<BottomNavigation> {
           topLeft: Radius.circular(40.0),
         ),),
 
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
         children: [
 
-          Visibility(
-            visible: visibility(state),
-            child: button(
-              icon: 'assets/hear_button.svg',
-              onPressed: ()=> audioClient.play(),
-            ),
+          const SentenceWidget(),
+
+          BlocBuilder<AzureMicCubit, MicStates>(
+            builder: (context, state) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+
+                  Visibility(
+                    visible: visibility(state),
+                    child: button(
+                      icon: 'assets/hear_button.svg',
+                      onPressed: ()=> audioClient.play(),
+                    ),
+                  ),
+
+                  Center(child: AzureMic(
+                      color: ColorTheme.green,
+                      onResponse: (userInput){
+                        //trigger a score widget
+                        context.read<HearCubit>().score(userInput);
+                      }
+                  )),
+
+                  Visibility(
+                    visible: visibility(state),
+                    child: button(
+                      icon: 'assets/next_button.svg',
+                      onPressed: ()=> context.read<HearCubit>().refresh(),
+                    ),
+                  )
+                ],
+              );
+            }
           ),
-
-          Center(child: AzureMic(
-              color: ColorTheme.green,
-              onResponse: (userInput){
-                //trigger a score widget
-                context.read<HearCubit>().score(userInput);
-              }
-          )),
-
-          Visibility(
-            visible: visibility(state),
-            child: button(
-              icon: 'assets/next_button.svg',
-              onPressed: ()=> context.read<HearCubit>().refresh(),
-            ),
-          )
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/core/styles/app_screen.dart';
+import 'package:pluperfect/features/learning_sections/common/score/score_widget.dart';
 
 
 class CriticalScoreWidget extends StatelessWidget {
@@ -29,7 +30,13 @@ class CriticalScoreWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          TextView(feedback),
+          /*TextView(userInput,),
+          TextView(correct),
+          TextView(feedback),*/
+
+          Text(userInput, maxLines: 1000,),
+          Text(correct, maxLines: 1000,),
+          Text(feedback, maxLines: 1000,),
 
         ],
       ),

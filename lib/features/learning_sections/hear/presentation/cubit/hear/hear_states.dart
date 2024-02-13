@@ -33,9 +33,10 @@ class IdleState extends HearStates {
 // Score
 class ScoreState extends HearStates {
   final AzureModel result;
+  final List<Words> words;
 
-  const ScoreState(this.result);
+  const ScoreState(this.result, this.words);
 
   @override
-  List<Object> get props => [result];
+  List<Object> get props => [result, words];
 }

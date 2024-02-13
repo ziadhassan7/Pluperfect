@@ -1,6 +1,6 @@
-import '../../../../../../core/azure_speech/azure_model.dart';
+import '../../../../core/azure_speech/azure_model.dart';
 
-class ScoreController {
+class SentenceController {
 
   static List<Words> processSentence(List<Words> userWords, String quote){
 

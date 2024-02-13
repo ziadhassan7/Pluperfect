@@ -48,8 +48,8 @@ class _HearBoxState extends State<HearBox> {
               return SpeakingAnimation(color: ColorTheme.green,); //ColorTheme.text
             }
 
-            //Idle
-            if(state is IdleState){
+            //Idle/Score
+            if(state is IdleState || state is ScoreState){
 
               return const TextView("Repeat what you heard!", scale: TypeScale.headline2,);
             }

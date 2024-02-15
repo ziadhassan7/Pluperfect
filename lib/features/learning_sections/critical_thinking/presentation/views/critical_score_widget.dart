@@ -57,7 +57,7 @@ class CriticalScoreWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   CircularScoreIndicator(score: pronScore.ceil(),),
-                  const TextView("Grammar Score", scale: TypeScale.small,),
+                  const TextView("Pronunciation Score", scale: TypeScale.small,),
                 ],
               ),
             ],

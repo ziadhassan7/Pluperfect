@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/azure_speech/azure_model.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import '../../../../core/app_widgets/text_view/text_view.dart';
-import '../../read/presentation/views/context_menu/context_menu.dart';
+import '../../common/context_menu/context_menu.dart';
 import 'cubit/hear/hear_cubit.dart';
 import 'cubit/hear/hear_states.dart';
 

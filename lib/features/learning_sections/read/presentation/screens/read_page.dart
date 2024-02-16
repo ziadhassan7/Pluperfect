@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/views/quote_box.dart';
-import 'package:pluperfect/features/learning_sections/read/presentation/views/screen_touch/screen_touch_detector.dart';
+import '../../../common/context_menu/context_menu.dart';
+import '../../../common/screen_touch/screen_touch_detector.dart';
 import '../../logic/utils/level_controller.dart';
 import '../views/bottom_navigation.dart';
-import '../views/context_menu/context_menu.dart';
 import '../views/quote_prgress_bar.dart';
 import '../views/read_score_widget.dart';
 

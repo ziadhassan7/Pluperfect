@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/cubit/quotes/quote_states.dart';
 import '../../../../../core/azure_speech/azure_model.dart';
+import '../../../common/context_menu/context_menu.dart';
 import '../../logic/utils/level_controller.dart';
 import '../cubit/quotes/quote_cubit.dart';
-import '../views/context_menu/context_menu.dart';
 
 class QuotesWidget extends StatefulWidget {
   const QuotesWidget(this.level, {super.key});

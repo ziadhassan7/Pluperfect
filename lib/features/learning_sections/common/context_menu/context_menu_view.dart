@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/constants/colors.dart';
-import 'package:pluperfect/features/learning_sections/read/presentation/views/context_menu/translation_view.dart';
+import 'package:pluperfect/features/learning_sections/common/context_menu/translation_view.dart';
 import '../../../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../../../core/styles/box_decoration.dart';
 import '../../../../../../core/styles/color_theme.dart';
@@ -72,8 +72,12 @@ class ContextMenuView extends StatelessWidget {
     editFlexibleWidth(BuildContext context){
       int wordLength = selectedText.split('').length;
 
-      if(wordLength > 7) {
-        width = width * 8/(wordLength);
+      if(wordLength > 7 && wordLength < 8) {
+        width = width * (wordLength/100) * 10;
+      }
+
+      if(wordLength > 12) {
+        width = width * (wordLength/100) * 5;
       }
     }
 

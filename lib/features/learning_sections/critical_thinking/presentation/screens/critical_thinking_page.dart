@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/views/question_box.dart';
 import '../../../../../core/styles/color_theme.dart';
 import '../../../../../core/styles/padding.dart';
+import '../../../common/screen_touch/screen_touch_detector.dart';
 import '../views/bottom_navigation.dart';
 
 
@@ -14,32 +15,39 @@ class CriticalThinkingPage extends StatelessWidget {
       backgroundColor: ColorTheme.background,
 
       body: SafeArea(
-        child: Column(
+        child: Stack(
           children: [
 
-            ///Top Widget
-            Padding(
-              padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
-              child: Row(
-                children: [
-                  InkWell(
-                      onTap: () => Navigator.pop(context),
-                      child: Icon(Icons.close_rounded, color: ColorTheme.text, size: 28,)),
+            const ScreenTouchDetector(),
 
-                  //const Center(child: ScreenProgressBar(),),
-                ],
-              ),
+            Column(
+              children: [
+
+                ///Top Widget
+                Padding(
+                  padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
+                  child: Row(
+                    children: [
+                      InkWell(
+                          onTap: () => Navigator.pop(context),
+                          child: Icon(Icons.close_rounded, color: ColorTheme.text, size: 28,)),
+
+                      //const Center(child: ScreenProgressBar(),),
+                    ],
+                  ),
+                ),
+
+                ///Question
+                const QuestionBox(),
+
+
+                const Spacer(),
+
+                /// Navigation
+                const BottomNavigation(),
+              ]
             ),
-
-            ///Question
-            const QuestionBox(),
-
-
-            const Spacer(),
-
-            /// Navigation
-            const BottomNavigation(),
-          ]
+          ],
         ),
       ),
     );

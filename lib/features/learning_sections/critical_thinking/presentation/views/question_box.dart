@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
-import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/features/learning_sections/common/decoration_container.dart';
 import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_states.dart';
 import '../../../../../core/styles/padding.dart';
-import '../../../common/context_menu/context_menu.dart';
+import '../../../common/clickable_word/clickable_word.dart';
 import '../cubit/questions/critical_cubit.dart';
 import 'critical_score_widget.dart';
 
@@ -54,8 +53,8 @@ class _QuestionBoxState extends State<QuestionBox> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const TextView("Answer This:", color: Colors.red, scale: TypeScale.headline1, ),
-                    //TextView(state.question, scale: TypeScale.headline2,),
-                    getResult(state.question,)
+
+                    ClickableWords(statement: state.question,),
                   ],
                 );
               }
@@ -67,54 +66,4 @@ class _QuestionBoxState extends State<QuestionBox> {
     );
   }
 
-
-  Widget getResult(String question){
-
-    List<String> words = question.split(' ');
-
-    return Wrap(
-      children: [
-        for (String word in words)
-          getStylizedWord(
-            "$word ",
-            onTap: (TapUpDetails details) {
-              ContextMenu.show(context, details, word ?? "");
-            },
-          )
-      ],
-    );
-  }
-
-
-  Widget getStylizedWord(String word, {Function(TapUpDetails)? onTap}){
-
-    return GestureDetector(
-      onTapUp: onTap,
-
-      child: Column(
-        children: [
-          TextView(word, scale: TypeScale.headline2,),
-
-          const SizedBox(height: 2,),
-
-          getUnderLine(word),
-
-          const SizedBox(height: 6,),
-        ],
-      ),
-    );
-  }
-
-
-  getWord(String word, Color color){
-    return TextView(word, color: color, scale: TypeScale.headline2,);
-  }
-
-  getUnderLine(String word,){
-    return Container(
-      height: 1,
-      width: (word.split('').length -1) * 10.2, // Adjust the width as needed
-      color: ColorTheme.text,
-    );
-  }
 }

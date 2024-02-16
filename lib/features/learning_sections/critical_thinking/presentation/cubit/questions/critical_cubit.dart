@@ -23,6 +23,8 @@ class CriticalThinkingCubit extends Cubit<CriticalThinkingStates>{
   }
 
   getScore(AzureModel userInput) async {
+    emit(LoadingState());
+
     String? input = userInput.displayText;
     double? pronunciationScore = userInput.nBest?.first.pronScore;
 

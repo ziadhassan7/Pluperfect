@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
+import 'package:pluperfect/features/learning_sections/common/screen_touch/screen_touch_detector.dart';
 import '../../../../../core/styles/padding.dart';
 import '../views/bottom_navigation.dart';
 import '../views/hear_box.dart';
@@ -16,6 +17,8 @@ class HearPage extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
+
+            const ScreenTouchDetector(),
 
             Column(
               children: [

@@ -14,7 +14,7 @@ class OpenaiMicCubit extends Cubit<OpenaiMicStates>{
     emit(ListeningState());
   }
 
-  stop()  async {
+  stop(Function(String) onResponse)  async {
 
     emit(LoadingState());
 
@@ -23,10 +23,10 @@ class OpenaiMicCubit extends Cubit<OpenaiMicStates>{
 
         try {
           String result = await OpenAIClient.speechToText(audioFilePath);
-          /*AzureModel result = await AzureSpeech.getTranscription(
-              audioFile: File(audioFilePath),
-              referenceText: QuotesController.currentQuote);*/
           emit(IdleState(response: result));
+
+          //Trigger an event
+          onResponse(result);
 
         } catch (e){
           emit(const IdleState());

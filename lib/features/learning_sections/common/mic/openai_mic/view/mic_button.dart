@@ -21,7 +21,7 @@ class OpenaiMicButton extends StatelessWidget {
         context.read<OpenaiMicCubit>().listen();
       },
       onPanEnd: (details){
-        context.read<OpenaiMicCubit>().stop();
+        context.read<OpenaiMicCubit>().stop(onResponse);
       },
 
       child: BlocBuilder<OpenaiMicCubit, OpenaiMicStates>(
@@ -36,7 +36,7 @@ class OpenaiMicButton extends StatelessWidget {
           if(state is IdleState){
             if(state.response != null){
               //trigger on response
-              onResponse(state.response!);
+              //onResponse(state.response!);
             }
             return idleButton();
           }

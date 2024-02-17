@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/azure_speech/azure_model.dart';
 import 'package:pluperfect/core/record_audio/recorder_client.dart';
-import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
 import '../../../../../../../core/azure_speech/azure_speech.dart';
 import 'mic_states.dart';
 
@@ -16,7 +15,7 @@ class AzureMicCubit extends Cubit<MicStates>{
     emit(ListeningState());
   }
 
-  stop()  async {
+  stop(Function(AzureModel) onResponse, {String? compareTo})  async {
 
     emit(LoadingState());
 
@@ -24,11 +23,13 @@ class AzureMicCubit extends Cubit<MicStates>{
       if(audioFilePath != null){
 
         try {
-          //String result = await OpenAIClient.speechToText(audioFilePath);
           AzureModel result = await AzureSpeech.getTranscription(
               audioFile: File(audioFilePath),
-              referenceText: QuotesController.currentQuote);
+              referenceText: compareTo);
           emit(IdleState(response: result));
+
+          //Trigger an event
+          onResponse(result);
 
         } catch (e){
           emit(const IdleState());

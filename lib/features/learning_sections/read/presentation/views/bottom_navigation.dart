@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/audio/audio_client.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
+import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
 import '../../../../../core/file_util.dart';
 import '../../../common/mic/azure_mic/cubit/mic_cubit.dart';
 import '../../../common/mic/azure_mic/cubit/mic_states.dart';
@@ -60,10 +61,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
           Center(child: AzureMic(
             color: ColorTheme.violet,
+            referenceText: QuotesController.currentQuote,
             onResponse: (userInput){
               //trigger a score widget
               context.read<QuoteCubit>().checkScore(userInput);
-            }
+            },
           )),
 
           Visibility(

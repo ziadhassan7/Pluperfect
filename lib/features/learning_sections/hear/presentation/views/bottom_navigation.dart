@@ -8,6 +8,7 @@ import '../../../../../core/file_util.dart';
 import '../../../common/mic/azure_mic/cubit/mic_cubit.dart';
 import '../../../common/mic/azure_mic/cubit/mic_states.dart';
 import '../../../common/mic/azure_mic/view/azure_mic.dart';
+import '../../../common/quotes_provider/quotes_controller.dart';
 import '../cubit/hear/hear_cubit.dart';
 import '../sentence_widget.dart';
 
@@ -64,6 +65,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
                   Center(child: AzureMic(
                       color: ColorTheme.green,
+                      referenceText: QuotesController.currentQuote,
                       onResponse: (userInput){
                         //trigger a score widget
                         context.read<HearCubit>().score(userInput);

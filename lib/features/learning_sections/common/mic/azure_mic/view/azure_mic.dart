@@ -9,10 +9,11 @@ import '../cubit/mic_cubit.dart';
 import '../cubit/mic_states.dart';
 
 class AzureMic extends StatelessWidget {
-  const AzureMic({super.key, required this.color, required this.onResponse});
+  const AzureMic({super.key, required this.color, required this.onResponse, this.referenceText});
 
   final Color color;
   final Function(AzureModel) onResponse;
+  final String? referenceText;
 
 
   @override
@@ -22,7 +23,7 @@ class AzureMic extends StatelessWidget {
         context.read<AzureMicCubit>().listen();
       },
       onPanEnd: (details){
-        context.read<AzureMicCubit>().stop();
+        context.read<AzureMicCubit>().stop(onResponse, compareTo: referenceText);
       },
 
       child: BlocBuilder<AzureMicCubit, MicStates>(
@@ -37,7 +38,7 @@ class AzureMic extends StatelessWidget {
             if(state is IdleState){
               if(state.response != null){
                 //trigger on response
-                onResponse(state.response!);
+                //onResponse(state.response!);
               }
               return idleButton();
             }

@@ -19,13 +19,13 @@ const Color onBackgroundDark = Color.fromRGBO(39, 39, 48, 1);
 const Color violetLight = Color.fromRGBO(132, 69, 189, 1);
 const Color violetDark = Color.fromRGBO(103, 53, 148, 1);
 
-const Color greenLight = Color.fromRGBO(136, 189, 69, 1);
+const Color greenLight = Color.fromRGBO(105, 155, 44, 1);
 const Color greenDark = Color.fromRGBO(92, 130, 44, 1);
 
 const Color blueLight = Color.fromRGBO(69, 102, 189, 1);
 const Color blueDark = Color.fromRGBO(48, 74, 142, 1);
 
-const Color redLight = Color.fromRGBO(223, 83, 83, 1);
+const Color redLight = Color.fromRGBO(201, 70, 70, 1);
 const Color redDark = Color.fromRGBO(180, 68, 68, 1);
 
 

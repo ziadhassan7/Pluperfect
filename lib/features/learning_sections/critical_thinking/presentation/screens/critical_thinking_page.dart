@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/views/question_box.dart';
 import '../../../../../core/styles/color_theme.dart';
 import '../../../../../core/styles/padding.dart';
+import '../../../common/exit_button.dart';
 import '../../../common/screen_touch/screen_touch_detector.dart';
 import '../views/bottom_navigation.dart';
 
@@ -14,23 +15,21 @@ class CriticalThinkingPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
 
-      body: SafeArea(
+      body: const SafeArea(
         child: Stack(
           children: [
 
-            const ScreenTouchDetector(),
+            ScreenTouchDetector(),
 
             Column(
               children: [
 
                 ///Top Widget
                 Padding(
-                  padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
+                  padding: CustomPadding(top: 26, bottom: 12, horizontal: 38),
                   child: Row(
                     children: [
-                      InkWell(
-                          onTap: () => Navigator.pop(context),
-                          child: Icon(Icons.close_rounded, color: ColorTheme.text, size: 28,)),
+                      ExitButton(),
 
                       //const Center(child: ScreenProgressBar(),),
                     ],
@@ -38,13 +37,13 @@ class CriticalThinkingPage extends StatelessWidget {
                 ),
 
                 ///Question
-                const QuestionBox(),
+                QuestionBox(),
 
 
-                const Spacer(),
+                Spacer(),
 
                 /// Navigation
-                const BottomNavigation(),
+                BottomNavigation(),
               ]
             ),
           ],

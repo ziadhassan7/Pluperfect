@@ -3,6 +3,7 @@ import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/views/quote_box.dart';
 import '../../../common/context_menu/context_menu.dart';
+import '../../../common/exit_button.dart';
 import '../../../common/screen_touch/screen_touch_detector.dart';
 import '../../logic/utils/level_controller.dart';
 import '../views/bottom_navigation.dart';
@@ -36,19 +37,13 @@ class ReadPage extends StatelessWidget {
                 children: [
 
                   ///Top Widget
-                  Padding(
-                    padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
+                  const Padding(
+                    padding: CustomPadding(top: 26, bottom: 12, horizontal: 38),
                     child: Row(
                       children: [
-                        InkWell(
-                            onTap: () {
-                              //close any context menu opened
-                              ContextMenu.close();
-                              Navigator.pop(context);
-                            },
-                            child: Icon(Icons.close_rounded, color: ColorTheme.text, size: 28,)),
+                        ExitButton(),
 
-                        const Center(child: QuoteProgressBar(),),
+                        Center(child: QuoteProgressBar(),),
                       ],
                     ),
                   ),

@@ -1,5 +1,13 @@
 {
 
+  "home_button": "home",
+  "profile_button": "profile",
+
+  "close_button": "close",
+  "translate_button": "translate",
+  "save_button": "save",
+  "speaker_button": "speaker",
+
   "section1":"Read Out\nLoud",
   "description1":"Read quotes shown on screen to train your tongue.",
 

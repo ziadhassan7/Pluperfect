@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/features/learning_sections/common/screen_touch/screen_touch_detector.dart';
 import '../../../../../core/styles/padding.dart';
+import '../../../common/exit_button.dart';
 import '../views/bottom_navigation.dart';
 import '../views/hear_box.dart';
 import '../views/hear_score_widget.dart';
@@ -14,23 +15,21 @@ class HearPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.background,
 
-      body: SafeArea(
+      body: const SafeArea(
         child: Stack(
           children: [
 
-            const ScreenTouchDetector(),
+            ScreenTouchDetector(),
 
             Column(
               children: [
 
                 ///Top Widget
                 Padding(
-                  padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
+                  padding: CustomPadding(top: 26, bottom: 12, horizontal: 38),
                   child: Row(
                     children: [
-                      InkWell(
-                        onTap: () => Navigator.pop(context),
-                        child: Icon(Icons.close_rounded, color: ColorTheme.text, size: 28,)),
+                      ExitButton(),
 
                       //const Center(child: ScreenProgressBar(),),
                     ],
@@ -39,14 +38,14 @@ class HearPage extends StatelessWidget {
 
 
                 /// Quotes
-                const HearBox(),
+                HearBox(),
 
-                const Spacer(),
+                Spacer(),
 
-                const HearScoreWidget(), //your score
+                HearScoreWidget(), //your score
 
                 /// Navigation
-                const BottomNavigation(),
+                BottomNavigation(),
 
               ],
             ),

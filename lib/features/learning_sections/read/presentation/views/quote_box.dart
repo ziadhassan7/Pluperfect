@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/custom_dialog/custom_dialog.dart';
+import 'package:pluperfect/core/localization/localization.dart';
 import 'package:pluperfect/features/learning_sections/common/decoration_container.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/dialogs/translation_dialog_view.dart';
 import 'package:pluperfect/features/learning_sections/read/logic/utils/level_controller.dart';
@@ -54,7 +55,9 @@ class QuoteBox extends StatelessWidget {
           CustomUhh(context, view: const TranslationDialogView());
 
         },
-        icon: SvgPicture.asset("assets/translate.svg", color: ColorTheme.text)
+        icon: SvgPicture.asset("assets/translate.svg",
+            semanticsLabel: LocalTxt.translateButton,
+            color: ColorTheme.text)
     );
   }
 }

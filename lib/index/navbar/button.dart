@@ -10,6 +10,7 @@ class NavBarButton extends StatefulWidget {
         required this.index,
         this.colorSelected,
         this.colorUnSelected,
+        this.semanticLabel,
       })
       : super(key: key);
   final String? label;
@@ -18,6 +19,7 @@ class NavBarButton extends StatefulWidget {
   final int index;
   Color? colorSelected;
   Color? colorUnSelected;
+  String? semanticLabel;
 
   @override
   State<NavBarButton> createState() => _NavBarButtonState();
@@ -49,6 +51,7 @@ class _NavBarButtonState extends State<NavBarButton> {
           icon: Icon(
               widget.icon,
               size: 25,
+              semanticLabel: widget.semanticLabel,
               color: selected
                   ? widget.colorSelected
                   : widget.colorUnSelected),

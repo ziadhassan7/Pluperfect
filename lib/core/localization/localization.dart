@@ -7,6 +7,16 @@ enum Locals {
 }
 
 class LocalTxt {
+
+  //Buttons
+  static final String homeButton = tr('home_button');
+  static final String profileButton = tr('profile_button');
+
+  static final String closeButton = tr('close_button');
+  static final String translateButton = tr('translate_button');
+  static final String saveButton = tr('save_button');
+  static final String speakerButton = tr('speaker_button');
+
   //Learning Sections
   static final String section1 = tr('section1');
   static final String section2 = tr('section2');
@@ -18,6 +28,7 @@ class LocalTxt {
   static final String description3 = tr('description3');
   static final String description4 = tr('description4');
 
+  //Settings
   static final String darkMode = tr('darkMode');
 
 

@@ -1,5 +1,13 @@
 {
 
+  "home_button": "home",
+  "profile_button": "profile",
+
+  "close_button": "إغلاق",
+  "translate_button": "ترجم",
+  "save_button": "إحفظ",
+  "speaker_button": "ناطق",
+
   "section1":"اقرأ\nبصوت عالي",
   "description1":"اقرأ بعض العبارات بصوتك لتدريب لسانك على نطق الكلمات.",
 

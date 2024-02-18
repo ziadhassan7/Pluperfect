@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pluperfect/core/constants/colors.dart';
+import 'package:pluperfect/core/localization/localization.dart';
 import 'package:pluperfect/features/profile/screens/profile_page.dart';
 import '../core/styles/color_theme.dart';
 import '../features/home/presentation/screens/home_page.dart';
@@ -57,6 +58,7 @@ class _IndexPageState extends State<IndexPage> {
             NavBarButton(
               icon: Icons.home,
               index: 0,
+              semanticLabel: LocalTxt.homeButton,
               onTap: (newIndex) {
                 setState(() {
                   currentIndex = newIndex;
@@ -67,6 +69,7 @@ class _IndexPageState extends State<IndexPage> {
           NavBarButton(
             icon: Icons.person,
             index: 1,
+            semanticLabel: LocalTxt.profileButton,
             onTap: (newIndex) {
               setState(() {
                 currentIndex = newIndex;

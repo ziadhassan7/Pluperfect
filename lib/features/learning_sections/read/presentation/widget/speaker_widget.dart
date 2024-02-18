@@ -4,6 +4,8 @@ import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/cubit/speaker/speak_cubit.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/cubit/speaker/speaker_states.dart';
 
+import '../../../../../core/localization/localization.dart';
+
 
 class SpeakerWidget extends StatelessWidget {
   const SpeakerWidget({super.key});
@@ -21,7 +23,8 @@ class SpeakerWidget extends StatelessWidget {
           return IconButton(
             onPressed: () async => await context.read<SpeakerCubit>().speak(),
 
-            icon: Icon(Icons.volume_up_rounded, color: color, size: 28,),
+            icon: Icon(Icons.volume_up_rounded,
+              semanticLabel: LocalTxt.translateButton, color: color, size: 28,),
           );
         }
 

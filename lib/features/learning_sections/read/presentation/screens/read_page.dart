@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
+import 'package:pluperfect/features/learning_sections/common/steps_widget/steps_widget.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/views/quote_box.dart';
 import '../../../common/context_menu/context_menu.dart';
 import '../../../common/exit_button.dart';
 import '../../../common/screen_touch/screen_touch_detector.dart';
 import '../../logic/utils/level_controller.dart';
 import '../views/bottom_navigation.dart';
-import '../views/quote_prgress_bar.dart';
 import '../views/read_score_widget.dart';
 
 class ReadPage extends StatelessWidget {
@@ -17,6 +17,7 @@ class ReadPage extends StatelessWidget {
   });
 
   final Level level;
+  static final Color color = ColorTheme.violet;
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +37,14 @@ class ReadPage extends StatelessWidget {
               Column(
                 children: [
 
-                  ///Top Widget
-                  const Padding(
-                    padding: CustomPadding(top: 26, bottom: 12, horizontal: 38),
+                  ///Top Bar
+                  Padding(
+                    padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
                     child: Row(
                       children: [
-                        ExitButton(),
+                        const ExitButton(),
 
-                        Center(child: QuoteProgressBar(),),
+                        StepsWidget(numberOfSteps: 3, color: color),
                       ],
                     ),
                   ),
@@ -59,7 +60,7 @@ class ReadPage extends StatelessWidget {
 
 
                   /// Navigation
-                  BottomNavigation(level),
+                  BottomNavigation(level, color),
 
                 ],
               ),

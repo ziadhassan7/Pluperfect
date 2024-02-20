@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pluperfect/features/learning_sections/common/steps_widget/steps_widget.dart';
 import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/views/question_box.dart';
 import '../../../../../core/styles/color_theme.dart';
 import '../../../../../core/styles/padding.dart';
@@ -10,40 +11,42 @@ import '../views/bottom_navigation.dart';
 class CriticalThinkingPage extends StatelessWidget {
   const CriticalThinkingPage({super.key});
 
+  static final Color color = ColorTheme.red;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorTheme.background,
 
-      body: const SafeArea(
+      body: SafeArea(
         child: Stack(
           children: [
 
-            ScreenTouchDetector(),
+            const ScreenTouchDetector(),
 
             Column(
               children: [
 
-                ///Top Widget
+                ///Top Bar
                 Padding(
-                  padding: CustomPadding(top: 26, bottom: 12, horizontal: 38),
+                  padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
                   child: Row(
                     children: [
-                      ExitButton(),
+                      const ExitButton(),
 
-                      //const Center(child: ScreenProgressBar(),),
+                      StepsWidget(numberOfSteps: 1, color: color),
                     ],
                   ),
                 ),
 
                 ///Question
-                QuestionBox(),
+                const QuestionBox(),
 
 
-                Spacer(),
+                const Spacer(),
 
                 /// Navigation
-                BottomNavigation(),
+                BottomNavigation(color),
               ]
             ),
           ],

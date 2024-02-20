@@ -45,5 +45,12 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>CFBundleLocalizations</key>
+    <array>
+    	<string>en</string>
+    	<string>nb</string>
+    </array>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>This app require access to your microphone, please allow!</string>
 </dict>
 </plist>

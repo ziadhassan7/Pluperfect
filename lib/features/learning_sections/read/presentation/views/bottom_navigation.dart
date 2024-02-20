@@ -14,9 +14,10 @@ import '../cubit/quotes/quote_cubit.dart';
 
 
 class BottomNavigation extends StatefulWidget {
-  const BottomNavigation(this.level, {super.key});
+  const BottomNavigation(this.level, this.color, {super.key});
 
   final Level level;
+  final Color color;
 
   @override
   State<BottomNavigation> createState() => _BottomNavigationState();
@@ -60,7 +61,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),
 
           Center(child: AzureMic(
-            color: ColorTheme.violet,
+            color: widget.color,
             referenceText: QuotesController.currentQuote,
             onResponse: (userInput){
               //trigger a score widget

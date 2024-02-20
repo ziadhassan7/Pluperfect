@@ -8,7 +8,9 @@ import '../cubit/chat_cubit.dart';
 
 
 class BottomNavigation extends StatelessWidget {
-  const BottomNavigation({super.key});
+  const BottomNavigation(this.color, {super.key});
+
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class BottomNavigation extends StatelessWidget {
           //trigger a score widget
           context.read<ChatCubit>().sendInput(userInput);
         },
-        color: ColorTheme.blue,),),
+        color: color,),),
 
       /*child: Center(child: OpenaiMicButton(
         onResponse: (userInput) {

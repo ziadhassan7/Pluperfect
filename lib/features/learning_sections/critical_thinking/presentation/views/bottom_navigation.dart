@@ -9,8 +9,9 @@ import '../../../common/mic/azure_mic/view/azure_mic.dart';
 
 
 class BottomNavigation extends StatelessWidget {
-  const BottomNavigation({super.key});
+  const BottomNavigation(this.color, {super.key});
 
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class BottomNavigation extends StatelessWidget {
 
       child: Center(
           child: AzureMic(
-              color: ColorTheme.red,
+              color: color,
               onResponse: (userInput){
                 //trigger a score widget
                 context.read<CriticalThinkingCubit>().getScore(userInput);

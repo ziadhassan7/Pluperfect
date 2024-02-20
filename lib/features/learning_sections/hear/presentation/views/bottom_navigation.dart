@@ -10,12 +10,13 @@ import '../../../common/mic/azure_mic/cubit/mic_states.dart';
 import '../../../common/mic/azure_mic/view/azure_mic.dart';
 import '../../../common/quotes_provider/quotes_controller.dart';
 import '../cubit/hear/hear_cubit.dart';
-import '../sentence_widget.dart';
+import '../widgets/sentence_widget.dart';
 
 
 class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({super.key});
+  const BottomNavigation(this.color, {super.key});
 
+  final Color color;
 
   @override
   State<BottomNavigation> createState() => _BottomNavigationState();
@@ -64,7 +65,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   ),
 
                   Center(child: AzureMic(
-                      color: ColorTheme.green,
+                      color: widget.color,
                       referenceText: QuotesController.currentQuote,
                       onResponse: (userInput){
                         //trigger a score widget

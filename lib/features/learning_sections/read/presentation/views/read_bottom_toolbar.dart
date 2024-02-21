@@ -9,9 +9,9 @@ import 'package:pluperfect/features/learning_sections/common/steps_widget/cubit/
 import 'package:pluperfect/features/learning_sections/read/presentation/cubit/quotes/quote_states.dart';
 import '../../../../../core/custom_dialog/custom_dialog.dart';
 import '../../../../../core/file_util.dart';
+import '../../../common/congratulation_dialog.dart';
 import '../../logic/utils/level_controller.dart';
 import '../cubit/quotes/quote_cubit.dart';
-import '../dialogs/translation_dialog_view.dart';
 
 
 class ReadBottomToolbar extends StatefulWidget {
@@ -81,7 +81,7 @@ class _ReadBottomToolbarState extends State<ReadBottomToolbar> {
                 context,
                 maximumSteps: widget.maximumSteps,
                 onStepCompletedTrigger: (){
-                  CustomDialog(context, view: const TranslationDialogView());
+                  CustomDialog(context, view: const CongratulationDialogView());
                 });
           }
         }

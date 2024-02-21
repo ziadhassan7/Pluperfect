@@ -18,6 +18,7 @@ class ReadPage extends StatelessWidget {
 
   final Level level;
   static final Color color = ColorTheme.violet;
+  final int numberOfSteps = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +40,12 @@ class ReadPage extends StatelessWidget {
 
                   ///Top Bar
                   Padding(
-                    padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
+                    padding: const CustomPadding(top: 26, bottom: 12, horizontal: 28),
                     child: Row(
                       children: [
                         const ExitButton(),
 
-                        StepsWidget(numberOfSteps: 3, color: color),
+                        StepsWidget(numberOfSteps: numberOfSteps, color: color),
                       ],
                     ),
                   ),
@@ -60,7 +61,7 @@ class ReadPage extends StatelessWidget {
 
 
                   /// Navigation
-                  BottomNavigation(level, color),
+                  BottomNavigation(level, color, maximumSteps: numberOfSteps,),
 
                 ],
               ),

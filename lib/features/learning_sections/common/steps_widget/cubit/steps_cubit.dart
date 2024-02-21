@@ -1,22 +1,25 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/features/learning_sections/common/steps_widget/cubit/steps_states.dart';
 
 
 class StepsCubit extends Cubit<StepsState>{
-  StepsCubit() : super(IdleState());
+  StepsCubit() : super(const NextState(0));
 
-  String? quoteBody;
+  int currentStep = 0;
 
-  refresh() {
-    emit(RefreshState());
+  nextStep(BuildContext context, {required int maximumSteps, required Object onStepCompletedTrigger}) {
+    if(currentStep < maximumSteps){
+      currentStep++;
+      emit(NextState(currentStep));
+
+    } else {
+      onStepCompletedTrigger;
+    }
   }
 
-  next() {
-    emit(NextState());
-  }
-
-  nextStep(bool shouldGoNext) {
-
+  reset(){
+    emit(const NextState(0));
   }
 
 }

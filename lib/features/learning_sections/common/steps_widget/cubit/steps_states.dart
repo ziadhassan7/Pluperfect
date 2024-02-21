@@ -4,24 +4,14 @@ abstract class StepsState extends Equatable {
   const StepsState();
 }
 
-// Idle
-class IdleState extends StepsState {
-
-  @override
-  List<Object> get props => [];
-}
-
-// Refresh
-class RefreshState extends StepsState {
-
-  @override
-  List<Object> get props => [];
-}
-
 // Next
 class NextState extends StepsState {
 
+  final int currentStep;
+
+  const NextState(this.currentStep);
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [currentStep];
 }
 

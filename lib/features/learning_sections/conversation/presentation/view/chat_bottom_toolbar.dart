@@ -33,7 +33,8 @@ class ChatBottomToolbar extends StatelessWidget {
           context.read<ChatCubit>().sendInput(userInput);
           context.read<StepsCubit>().nextStep(
               context,
-              maximumSteps: 3,
+              maximumSteps: maximumSteps,
+              onStepCompletedTrigger: 0
           );
         },
         color: color,),),

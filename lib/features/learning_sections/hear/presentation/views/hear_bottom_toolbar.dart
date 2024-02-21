@@ -8,7 +8,8 @@ import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/he
 import '../../../../../core/custom_dialog/custom_dialog.dart';
 import '../../../../../core/file_util.dart';
 import '../../../common/bottom_toolbar.dart';
-import '../../../common/congratulation_dialog.dart';
+import '../../../common/congrats_dialog/congratulation_dialog.dart';
+import '../../../common/congrats_dialog/learning_sections_buttons.dart';
 import '../../../common/quotes_provider/quotes_controller.dart';
 import '../../../common/steps_widget/cubit/steps_cubit.dart';
 import '../cubit/hear/hear_cubit.dart';
@@ -96,7 +97,8 @@ class _HearBottomToolbarState extends State<HearBottomToolbar> {
                       context,
                       maximumSteps: widget.maximumSteps,
                       onStepCompletedTrigger: (){
-                        CustomDialog(context, view: const CongratulationDialogView());
+                        CustomDialog(context,
+                            view: const CongratulationDialogView(currentPage: LearningSections.hearPage,));
                       });
                 }
               },

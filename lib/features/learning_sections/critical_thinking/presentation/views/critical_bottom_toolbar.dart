@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
-import 'package:pluperfect/features/learning_sections/common/congratulation_dialog.dart';
+import 'package:pluperfect/features/learning_sections/common/congrats_dialog/congratulation_dialog.dart';
+import 'package:pluperfect/features/learning_sections/common/congrats_dialog/learning_sections_buttons.dart';
 import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_cubit.dart';
 import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_states.dart';
 import '../../../../../core/custom_dialog/custom_dialog.dart';
@@ -51,7 +52,8 @@ class CriticalBottomToolbar extends StatelessWidget {
                   context,
                   maximumSteps: maximumSteps,
                   onStepCompletedTrigger: (){
-                    CustomDialog(context, view: const CongratulationDialogView());
+                    CustomDialog(context,
+                        view: const CongratulationDialogView(currentPage: LearningSections.criticalPage,));
                   });
             }
           }

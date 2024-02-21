@@ -9,7 +9,8 @@ import 'package:pluperfect/features/learning_sections/common/steps_widget/cubit/
 import 'package:pluperfect/features/learning_sections/read/presentation/cubit/quotes/quote_states.dart';
 import '../../../../../core/custom_dialog/custom_dialog.dart';
 import '../../../../../core/file_util.dart';
-import '../../../common/congratulation_dialog.dart';
+import '../../../common/congrats_dialog/congratulation_dialog.dart';
+import '../../../common/congrats_dialog/learning_sections_buttons.dart';
 import '../../logic/utils/level_controller.dart';
 import '../cubit/quotes/quote_cubit.dart';
 
@@ -81,7 +82,8 @@ class _ReadBottomToolbarState extends State<ReadBottomToolbar> {
                 context,
                 maximumSteps: widget.maximumSteps,
                 onStepCompletedTrigger: (){
-                  CustomDialog(context, view: const CongratulationDialogView());
+                  CustomDialog(context,
+                      view: const CongratulationDialogView(currentPage: LearningSections.criticalPage,));
                 });
           }
         }

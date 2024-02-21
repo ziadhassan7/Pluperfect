@@ -3,53 +3,62 @@ import 'package:pluperfect/features/learning_sections/common/steps_widget/steps_
 import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/views/question_box.dart';
 import '../../../../../core/styles/color_theme.dart';
 import '../../../../../core/styles/padding.dart';
+import '../../../common/close_page_controller.dart';
 import '../../../common/exit_button.dart';
 import '../../../common/screen_touch/screen_touch_detector.dart';
-import '../views/bottom_navigation.dart';
+import '../views/critical_bottom_toolbar.dart';
 
 
 class CriticalThinkingPage extends StatelessWidget {
   const CriticalThinkingPage({super.key});
 
   static final Color color = ColorTheme.red;
+  final int numOfSteps = 1;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorTheme.background,
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (didPop){
+        ClosePageController.exit(context);
+      },
 
-      body: SafeArea(
-        child: Stack(
-          children: [
+      child: Scaffold(
+        backgroundColor: ColorTheme.background,
 
-            const ScreenTouchDetector(),
+        body: SafeArea(
+          child: Stack(
+            children: [
 
-            Column(
-              children: [
+              const ScreenTouchDetector(),
 
-                ///Top Bar
-                Padding(
-                  padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
-                  child: Row(
-                    children: [
-                      const ExitButton(),
+              Column(
+                children: [
 
-                      StepsWidget(numberOfSteps: 1, color: color),
-                    ],
+                  ///Top Bar
+                  Padding(
+                    padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
+                    child: Row(
+                      children: [
+                        const ExitButton(),
+
+                        StepsWidget(numberOfSteps: numOfSteps, color: color),
+                      ],
+                    ),
                   ),
-                ),
 
-                ///Question
-                const QuestionBox(),
+                  ///Question
+                  const QuestionBox(),
 
 
-                const Spacer(),
+                  const Spacer(),
 
-                /// Navigation
-                BottomNavigation(color),
-              ]
-            ),
-          ],
+                  /// Navigation
+                  CriticalBottomToolbar(color, maximumSteps: numOfSteps,),
+                ]
+              ),
+            ],
+          ),
         ),
       ),
     );

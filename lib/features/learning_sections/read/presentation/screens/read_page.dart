@@ -7,7 +7,7 @@ import '../../../common/close_page_controller.dart';
 import '../../../common/exit_button.dart';
 import '../../../common/screen_touch/screen_touch_detector.dart';
 import '../../logic/utils/level_controller.dart';
-import '../views/hear_bottom_toolbar.dart';
+import '../views/read_bottom_toolbar.dart';
 import '../views/read_score_widget.dart';
 
 class ReadPage extends StatelessWidget {
@@ -63,7 +63,7 @@ class ReadPage extends StatelessWidget {
 
 
                   /// Navigation
-                  HearBottomToolbar(level, color, maximumSteps: numberOfSteps,),
+                  ReadBottomToolbar(level, color, maximumSteps: numberOfSteps,),
 
                 ],
               ),

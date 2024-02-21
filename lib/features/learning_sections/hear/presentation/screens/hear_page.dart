@@ -5,7 +5,7 @@ import 'package:pluperfect/features/learning_sections/common/steps_widget/steps_
 import '../../../../../core/styles/padding.dart';
 import '../../../common/close_page_controller.dart';
 import '../../../common/exit_button.dart';
-import '../views/read_bottom_toolbar.dart';
+import '../views/hear_bottom_toolbar.dart';
 import '../views/hear_box.dart';
 import '../views/hear_score_widget.dart';
 
@@ -56,7 +56,7 @@ class HearPage extends StatelessWidget {
                   const HearScoreWidget(), //your score
 
                   /// Navigation
-                  ReadBottomToolbar(color, maximumSteps: numOfSteps,),
+                  HearBottomToolbar(color, maximumSteps: numOfSteps,),
 
                 ],
               ),

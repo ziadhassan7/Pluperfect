@@ -14,18 +14,18 @@ import '../cubit/quotes/quote_cubit.dart';
 import '../dialogs/translation_dialog_view.dart';
 
 
-class HearBottomToolbar extends StatefulWidget {
-  const HearBottomToolbar(this.level, this.color, {super.key, required this.maximumSteps});
+class ReadBottomToolbar extends StatefulWidget {
+  const ReadBottomToolbar(this.level, this.color, {super.key, required this.maximumSteps});
 
   final Level level;
   final Color color;
   final int maximumSteps;
 
   @override
-  State<HearBottomToolbar> createState() => _HearBottomToolbarState();
+  State<ReadBottomToolbar> createState() => _ReadBottomToolbarState();
 }
 
-class _HearBottomToolbarState extends State<HearBottomToolbar> {
+class _ReadBottomToolbarState extends State<ReadBottomToolbar> {
   late AudioClient audioClient;
   bool allowNextStep = false;
 
@@ -80,8 +80,9 @@ class _HearBottomToolbarState extends State<HearBottomToolbar> {
             context.read<StepsCubit>().nextStep(
                 context,
                 maximumSteps: widget.maximumSteps,
-                onStepCompletedTrigger: CustomUhh(
-                    context, view: const TranslationDialogView()));
+                onStepCompletedTrigger: (){
+                  CustomUhh(context, view: const TranslationDialogView());
+                });
           }
         }
       ),

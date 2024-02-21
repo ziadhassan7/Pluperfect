@@ -51,7 +51,7 @@ class CriticalBottomToolbar extends StatelessWidget {
                   context,
                   maximumSteps: maximumSteps,
                   onStepCompletedTrigger: (){
-                    CustomUhh(context, view: const TranslationDialogView());
+                    CustomDialog(context, view: const TranslationDialogView());
                   });
             }
           }

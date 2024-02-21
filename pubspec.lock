@@ -401,10 +401,10 @@ packages:
     dependency: "direct main"
     description:
       name: modern_dialog
-      sha256: "422721631078d0e16c5a29123e9cc4bcadd7b93d320f3684b66dad0ce5940305"
+      sha256: b1a6134f15d80dbaca12ea379750671227111a44069dd18683e22f8d4d5ac47d
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.2.2"
   nested:
     dependency: transitive
     description:

@@ -12,49 +12,46 @@ class TranslationDialogView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: ColorTheme.background,
-      child: Column(
-        children: [
-          Container(
-              decoration: BoxDecoration(
-                  color: ColorTheme.violet,
-                  borderRadius: const BorderRadius.only(topRight: Radius.circular(25), topLeft: Radius.circular(25))
-              ),
-
-              padding: const CustomPadding(vertical: 14, horizontal: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const TextView("English", color: white,),
-
-                  SvgPicture.asset("assets/arrow.svg"),
-
-                  const TextView("Arabic", color: white,),
-                ],
-              )),
-
-
-          ///Word Translation
-          Padding(
-            padding: const CustomPadding.all(40),
-            child: FutureBuilder(
-              future: getTranslation(),
-              builder: (context, AsyncSnapshot<String?> snapshot) {
-
-                if(snapshot.hasData){
-
-                  String? translated = snapshot.data;
-                  return TextView(translated ?? "لا يوجد ترجمة", scale: TypeScale.arabic,);
-
-                } else {
-                  return const Center(child: CircularProgressIndicator(),);
-                }
-              }
+    return Column(
+      children: [
+        Container(
+            decoration: BoxDecoration(
+                color: ColorTheme.violet,
+                borderRadius: const BorderRadius.only(topRight: Radius.circular(25), topLeft: Radius.circular(25))
             ),
-          )
-        ],
-      ),
+
+            padding: const CustomPadding(vertical: 14, horizontal: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const TextView("English", color: white,),
+
+                SvgPicture.asset("assets/arrow.svg"),
+
+                const TextView("Arabic", color: white,),
+              ],
+            )),
+
+
+        ///Word Translation
+        Padding(
+          padding: const CustomPadding.all(40),
+          child: FutureBuilder(
+            future: getTranslation(),
+            builder: (context, AsyncSnapshot<String?> snapshot) {
+
+              if(snapshot.hasData){
+
+                String? translated = snapshot.data;
+                return TextView(translated ?? "لا يوجد ترجمة", scale: TypeScale.arabic,);
+
+              } else {
+                return const Center(child: CircularProgressIndicator(),);
+              }
+            }
+          ),
+        )
+      ],
     );
   }
 

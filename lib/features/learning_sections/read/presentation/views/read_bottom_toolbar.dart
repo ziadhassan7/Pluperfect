@@ -81,7 +81,7 @@ class _ReadBottomToolbarState extends State<ReadBottomToolbar> {
                 context,
                 maximumSteps: widget.maximumSteps,
                 onStepCompletedTrigger: (){
-                  CustomUhh(context, view: const TranslationDialogView());
+                  CustomDialog(context, view: const TranslationDialogView());
                 });
           }
         }

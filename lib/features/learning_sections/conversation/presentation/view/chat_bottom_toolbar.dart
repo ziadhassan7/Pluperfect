@@ -4,16 +4,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import '../../../common/mic/azure_mic/view/azure_mic.dart';
+import '../../../common/steps_widget/cubit/steps_cubit.dart';
 import '../cubit/chat_cubit.dart';
 
 
-class BottomNavigation extends StatelessWidget {
-  const BottomNavigation(this.color, {super.key});
+class ChatBottomToolbar extends StatelessWidget {
+  const ChatBottomToolbar(this.color, {super.key, required this.maximumSteps});
 
   final Color color;
+  final int maximumSteps;
 
   @override
   Widget build(BuildContext context) {
+
 
     return Container(
       padding: const CustomPadding(vertical: 0, horizontal: 38),
@@ -28,6 +31,10 @@ class BottomNavigation extends StatelessWidget {
         onResponse: (userInput) {
           //trigger a score widget
           context.read<ChatCubit>().sendInput(userInput);
+          context.read<StepsCubit>().nextStep(
+              context,
+              maximumSteps: 3,
+          );
         },
         color: color,),),
 

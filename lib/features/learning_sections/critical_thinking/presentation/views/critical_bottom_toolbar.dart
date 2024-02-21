@@ -8,10 +8,11 @@ import '../../../common/mic/azure_mic/cubit/mic_states.dart';
 import '../../../common/mic/azure_mic/view/azure_mic.dart';
 
 
-class BottomNavigation extends StatelessWidget {
-  const BottomNavigation(this.color, {super.key});
+class CriticalBottomToolbar extends StatelessWidget {
+  const CriticalBottomToolbar(this.color, {super.key, required this.maximumSteps});
 
   final Color color;
+  final int maximumSteps;
 
   @override
   Widget build(BuildContext context) {

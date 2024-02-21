@@ -47,7 +47,7 @@ class TextView extends StatelessWidget {
         return CustomText(text, color: color ?? ColorTheme.text, weight: weight, size: 12, fontFamily: FontFamily.sansation, maxLine: 1000, textDirection: direction,);
     //Caption
       case TypeScale.caption:
-        return CustomText(text, color: color ?? ColorTheme.text, weight: weight, size: 14, fontFamily: FontFamily.sansation,  maxLine: 1000, textDirection: direction,);
+        return CustomText(text, color: color ?? grey, weight: weight, size: 14, fontFamily: FontFamily.sansation,  maxLine: 1000, textDirection: direction,);
     //Description
       case TypeScale.description:
         return CustomText(text, color: color ?? ColorTheme.text, size: 16, fontFamily: FontFamily.sansation_light, maxLine: 1000,  textDirection: direction,);

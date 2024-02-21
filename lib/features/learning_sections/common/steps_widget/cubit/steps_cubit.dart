@@ -4,9 +4,9 @@ import 'package:pluperfect/features/learning_sections/common/steps_widget/cubit/
 
 
 class StepsCubit extends Cubit<StepsState>{
-  StepsCubit() : super(const NextState(0));
+  StepsCubit() : super(const NextState(1));
 
-  int currentStep = 0;
+  int currentStep = 1;
 
   nextStep(BuildContext context, {required int maximumSteps, Function()? onStepCompletedTrigger}) {
 
@@ -22,8 +22,8 @@ class StepsCubit extends Cubit<StepsState>{
   }
 
   reset(){
-    currentStep=0;
-    emit(const NextState(0));
+    currentStep=1;
+    emit(const NextState(1));
   }
 
 }

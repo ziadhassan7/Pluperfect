@@ -13,7 +13,6 @@ import 'features/learning_sections/common/mic/azure_mic/cubit/mic_cubit.dart';
 import 'features/learning_sections/common/mic/openai_mic/cubit/openai_mic_cubit.dart';
 import 'features/learning_sections/conversation/presentation/cubit/chat_cubit.dart';
 import 'features/learning_sections/hear/presentation/cubit/hear/hear_cubit.dart';
-import 'features/learning_sections/read/presentation/cubit/mic/mic_cubit.dart';
 import 'features/learning_sections/read/presentation/cubit/quotes/quote_cubit.dart';
 import 'injection.dart' as inject;
 
@@ -53,7 +52,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: ((context) => HearCubit()),),
         BlocProvider(create: ((context) => OpenaiMicCubit()),),
         BlocProvider(create: ((context) => AzureMicCubit()),),
-        BlocProvider(create: ((context) => InteractionCubit()),),
         BlocProvider(create: ((context) => ChatCubit()),),
         BlocProvider(create: ((context) => CriticalThinkingCubit()),),
         BlocProvider(create: ((context) => StepsCubit()),),

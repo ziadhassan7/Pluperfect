@@ -83,7 +83,7 @@ class _ReadBottomToolbarState extends State<ReadBottomToolbar> {
                 maximumSteps: widget.maximumSteps,
                 onStepCompletedTrigger: (){
                   CustomDialog(context,
-                      view: const CongratulationDialogView(currentPage: LearningSections.criticalPage,));
+                      view: const CongratulationDialogView(currentPage: LearningSections.readPage,));
                 });
           }
         }

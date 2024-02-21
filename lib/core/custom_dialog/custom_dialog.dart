@@ -13,6 +13,7 @@ class CustomDialog {
     ModernDialog.showCustom(
         context,
 
+        dismissibleDialog: false,
         borderRadius: 25,
         disablePadding: true,
         disableTintColor: true,

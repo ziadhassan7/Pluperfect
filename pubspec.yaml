@@ -52,7 +52,7 @@ dependencies:
   carousel_slider: ^4.2.1
   just_audio: ^0.9.36
   translator_plus: ^1.0.1
-  modern_dialog: ^1.2.2
+  modern_dialog: ^1.2.4
   lottie: ^3.0.0
   percent_indicator: ^4.2.3
 

@@ -3,11 +3,11 @@ import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/common/steps_widget/steps_widget.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/views/quote_box.dart';
-import '../../../common/context_menu/context_menu.dart';
+import '../../../common/close_page_controller.dart';
 import '../../../common/exit_button.dart';
 import '../../../common/screen_touch/screen_touch_detector.dart';
 import '../../logic/utils/level_controller.dart';
-import '../views/bottom_navigation.dart';
+import '../views/hear_bottom_toolbar.dart';
 import '../views/read_score_widget.dart';
 
 class ReadPage extends StatelessWidget {
@@ -24,7 +24,9 @@ class ReadPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: true,
-      onPopInvoked: (didPop)=> ContextMenu.close(), ////close any context menu opened
+      onPopInvoked: (didPop){
+        ClosePageController.exit(context);
+      },
 
       child: Scaffold(
         backgroundColor: ColorTheme.background,
@@ -61,7 +63,7 @@ class ReadPage extends StatelessWidget {
 
 
                   /// Navigation
-                  BottomNavigation(level, color, maximumSteps: numberOfSteps,),
+                  HearBottomToolbar(level, color, maximumSteps: numberOfSteps,),
 
                 ],
               ),

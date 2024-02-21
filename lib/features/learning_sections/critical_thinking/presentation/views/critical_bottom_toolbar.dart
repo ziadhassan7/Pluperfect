@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
-import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_cubit.dart';
-import '../../../common/mic/azure_mic/cubit/mic_states.dart';
-import '../../../common/mic/azure_mic/view/azure_mic.dart';
+import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_states.dart';
+import '../../../../../core/custom_dialog/custom_dialog.dart';
+import '../../../common/bottom_toolbar.dart';
+import '../../../common/steps_widget/cubit/steps_cubit.dart';
+import '../../../read/presentation/dialogs/translation_dialog_view.dart';
 
 
 class CriticalBottomToolbar extends StatelessWidget {
@@ -14,27 +16,49 @@ class CriticalBottomToolbar extends StatelessWidget {
   final Color color;
   final int maximumSteps;
 
+  static bool allowNextStep = false;
+
+  shouldAllowGoingNextStep(BuildContext context){
+    CriticalThinkingStates state = context.watch<CriticalThinkingCubit>().state;
+    if(state is ScoreState){
+      allowNextStep = true;
+    } else {
+      allowNextStep = false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
 
-    return Container(
-      padding: const CustomPadding(vertical: 0, horizontal: 38),
-      decoration: BoxDecoration(
-        color: ColorTheme.onBackground,
-        borderRadius: const BorderRadius.only(
-          topRight: Radius.circular(40.0),
-          topLeft: Radius.circular(40.0),
-        ),),
+    return BottomToolbar(
+      color: color,
 
-      child: Center(
-          child: AzureMic(
-              color: color,
-              onResponse: (userInput){
-                //trigger a score widget
-                context.read<CriticalThinkingCubit>().getScore(userInput);
-              }
-          )),
+      //Mic
+      micConfiguration: MicConfiguration(
+          onResponse: (userInput){
+            //trigger a score widget
+            context.read<CriticalThinkingCubit>().getScore(userInput);
+          }
+      ),
+
+      //next button
+      nextButton: button(
+          icon: 'assets/next_button.svg',
+          onPressed: () {
+            context.read<CriticalThinkingCubit>().getQuestion();
+            if(allowNextStep){
+              context.read<StepsCubit>().nextStep(
+                  context,
+                  maximumSteps: maximumSteps,
+                  onStepCompletedTrigger: (){
+                    CustomUhh(context, view: const TranslationDialogView());
+                  });
+            }
+          }
+      ),
+
     );
+
   }
 
   Widget button({required String icon, required Function()? onPressed}){
@@ -45,12 +69,4 @@ class CriticalBottomToolbar extends StatelessWidget {
     );
   }
 
-
-  bool visibility(MicStates state){
-    if(state is IdleState){
-      return state.response != null;
-    }
-
-    return false;
-  }
 }

@@ -1,29 +1,24 @@
 import 'package:flutter/material.dart';
-import '../constants/colors.dart';
+import 'package:modern_dialog/modern_dialog.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
 
-class CustomUhh {
+class CustomDialog {
   BuildContext context;
   Widget view;
 
-  CustomUhh(
-      this.context, {
-        required this.view,
-      }) {
+  CustomDialog(
+      this.context, {required this.view,}) {
     // Decide dialog layout based on platform
-    showDialog<String>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            surfaceTintColor: white,
-            backgroundColor: white,
-            contentPadding: EdgeInsets.zero,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(25)),
-            ),
 
-            /// Child Content Widget
-            content: SingleChildScrollView(child: view),
-          );
-        });
+    ModernDialog.showCustom(
+        context,
+
+        borderRadius: 25,
+        disablePadding: true,
+        disableTintColor: true,
+        backgroundColor: ColorTheme.background,
+
+        view: view
+    );
   }
 }

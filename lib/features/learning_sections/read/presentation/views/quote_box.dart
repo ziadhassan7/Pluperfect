@@ -52,7 +52,7 @@ class QuoteBox extends StatelessWidget {
           //Shows a custom dialog
           // to show quote translation
 
-          CustomUhh(context, view: const TranslationDialogView());
+          CustomDialog(context, view: const TranslationDialogView());
 
         },
         icon: SvgPicture.asset("assets/translate.svg",

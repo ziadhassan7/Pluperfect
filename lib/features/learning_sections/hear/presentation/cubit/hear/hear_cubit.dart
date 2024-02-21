@@ -11,7 +11,7 @@ class HearCubit extends Cubit<HearStates>{
 
   String? quoteBody;
 
-  score(AzureModel userInput){
+  checkScore(AzureModel userInput){
     List<Words>? words = userInput.nBest?.first.words;
 
     if(words != null){

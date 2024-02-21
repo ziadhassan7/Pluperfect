@@ -2,7 +2,7 @@
 
 class ScoreController {
 
-  static int processScore(double pronScore, double fluencyScore, double accuracyScore){
+  static int processOverallScore(double pronScore, double fluencyScore, double accuracyScore){
     double score = ((pronScore + fluencyScore)/200)*100;
 
     double accuracy = 100-accuracyScore;
@@ -15,6 +15,13 @@ class ScoreController {
     } else {
       return 0;
     }
+  }
+
+
+  static int processFluencyScore(double pronScore, double fluencyScore){
+    double score = ((pronScore + fluencyScore)/200)*100;
+
+    return score.ceil();
   }
 
 }

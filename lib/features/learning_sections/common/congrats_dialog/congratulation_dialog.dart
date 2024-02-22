@@ -4,6 +4,7 @@ import 'package:pluperfect/core/app_router.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/home/presentation/screens/home_page.dart';
+import 'package:pluperfect/index/index_page.dart';
 import '../../../../core/localization/localization.dart';
 import '../../../../core/styles/color_theme.dart';
 import 'learning_sections_buttons.dart';
@@ -38,7 +39,7 @@ class CongratulationDialogView extends StatelessWidget {
       margin: const CustomPadding(horizontal: 25, top: 15),
       alignment: Alignment.topLeft,
       child: InkWell(
-          onTap: () => AppRouter.navigateTo(context, const HomePage()),
+          onTap: () => AppRouter.navigateTo(context, const IndexPage()),
 
           child: Icon(
             Icons.close_rounded,

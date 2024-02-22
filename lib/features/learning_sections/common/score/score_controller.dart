@@ -1,5 +1,7 @@
 
 
+import 'dart:math';
+
 class ScoreController {
 
   static int processOverallScore(double pronScore, double fluencyScore, double accuracyScore){
@@ -19,9 +21,14 @@ class ScoreController {
 
 
   static int processFluencyScore(double pronScore, double fluencyScore){
-    double score = ((pronScore + fluencyScore)/200)*100;
+    //double score = ((pronScore + fluencyScore)/200)*100;
+    double score = _lowestOfTwo(pronScore,fluencyScore);
 
     return score.ceil();
+  }
+
+  static double _lowestOfTwo(double a, double b) {
+    return min(a, b);
   }
 
 }

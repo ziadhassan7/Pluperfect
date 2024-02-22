@@ -23,7 +23,7 @@ class HearScoreWidget extends StatelessWidget {
       double fluencyScore = result.nBest!.first.fluencyScore!;
       double accuracyScore = result.nBest!.first.accuracyScore!;
 
-      int score = ScoreController.processFluencyScore(pronScore, fluencyScore,);
+      int score = ScoreController.processOverallScore(pronScore, fluencyScore, accuracyScore);
 
       return ScoreWidget(score: score,);
     }

@@ -1,3 +1,4 @@
+import 'package:pluperfect/features/learning_sections/common/hear_user_input_controller.dart';
 import 'package:pluperfect/core/dotenv/dotenv_client.dart';
 import 'package:pluperfect/core/gemini/gemini_client.dart';
 import 'package:pluperfect/core/record_audio/recorder_client.dart';
@@ -31,4 +32,7 @@ Future<void> init() async {
 
   //Check for Permissions:
   await RecorderClient.checkPermission();
+
+  //Initiate audio file
+  await HearUserInputController.initAudioFilePath();
 }

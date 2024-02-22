@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pluperfect/core/audio/audio_client.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/hear/hear_states.dart';
@@ -10,36 +9,22 @@ import '../../../../../core/file_util.dart';
 import '../../../common/bottom_toolbar/bottom_toolbar.dart';
 import '../../../common/congrats_dialog/congratulation_dialog.dart';
 import '../../../common/congrats_dialog/learning_sections_buttons.dart';
+import '../../../common/hear_user_input_controller.dart';
 import '../../../common/quotes_provider/quotes_controller.dart';
 import '../../../common/steps_widget/cubit/steps_cubit.dart';
 import '../cubit/hear/hear_cubit.dart';
 import '../widgets/sentence_widget.dart';
 
 
-class HearBottomToolbar extends StatefulWidget {
+class HearBottomToolbar extends StatelessWidget {
   const HearBottomToolbar(this.color, {super.key, required this.maximumSteps});
 
   final Color color;
   final int maximumSteps;
 
-  @override
-  State<HearBottomToolbar> createState() => _HearBottomToolbarState();
-}
+  static bool allowNextStep = false;
 
-class _HearBottomToolbarState extends State<HearBottomToolbar> {
-  late AudioClient audioClient;
-  bool allowNextStep = false;
-
-  @override
-  void initState() {
-    //set the audio file
-    getAudioPath().then((file) {
-      audioClient = AudioClient(filePath: file);
-    });
-    super.initState();
-  }
-
-  shouldAllowGoingNextStep(){
+  shouldAllowGoingNextStep(BuildContext context){
     HearStates state = context.watch<HearCubit>().state;
     if(state is ScoreState){
       allowNextStep = true;
@@ -51,7 +36,7 @@ class _HearBottomToolbarState extends State<HearBottomToolbar> {
   @override
   Widget build(BuildContext context) {
 
-    shouldAllowGoingNextStep();
+    shouldAllowGoingNextStep(context);
 
     return Container(
       padding: const CustomPadding(vertical: 0, horizontal: 38),
@@ -69,7 +54,7 @@ class _HearBottomToolbarState extends State<HearBottomToolbar> {
 
 
           BottomToolbar(
-            color: widget.color,
+            color: color,
 
             //Mic
             micConfiguration: MicConfiguration(
@@ -84,18 +69,18 @@ class _HearBottomToolbarState extends State<HearBottomToolbar> {
             // (hear your voice)
             leftButton: button(
               icon: 'assets/hear_button.svg',
-              onPressed: ()=> audioClient.play(),
+              onPressed: ()=> HearUserInputController.play(),
             ),
 
             //next button
             nextButton: button(
-                icon: 'assets/next_button.svg',
+              icon: 'assets/next_button.svg',
               onPressed: () {
                 context.read<HearCubit>().refresh();
                 if(allowNextStep){
                   context.read<StepsCubit>().nextStep(
                       context,
-                      maximumSteps: widget.maximumSteps,
+                      maximumSteps: maximumSteps,
                       onStepCompletedTrigger: (){
                         CustomDialog(context,
                             view: const CongratulationDialogView(currentPage: LearningSections.hearPage,));
@@ -124,5 +109,4 @@ class _HearBottomToolbarState extends State<HearBottomToolbar> {
 
     return audioFilePath;
   }
-
 }

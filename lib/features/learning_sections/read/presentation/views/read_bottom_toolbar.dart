@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pluperfect/core/audio/audio_client.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/features/learning_sections/common/bottom_toolbar/bottom_toolbar.dart';
+import 'package:pluperfect/features/learning_sections/common/hear_user_input_controller.dart';
 import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
 import 'package:pluperfect/features/learning_sections/common/steps_widget/cubit/steps_cubit.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/cubit/quotes/quote_states.dart';
@@ -15,31 +15,17 @@ import '../../logic/utils/level_controller.dart';
 import '../cubit/quotes/quote_cubit.dart';
 
 
-class ReadBottomToolbar extends StatefulWidget {
+class ReadBottomToolbar extends StatelessWidget {
   const ReadBottomToolbar(this.level, this.color, {super.key, required this.maximumSteps});
 
   final Level level;
   final Color color;
   final int maximumSteps;
 
-  @override
-  State<ReadBottomToolbar> createState() => _ReadBottomToolbarState();
-}
+  static bool allowNextStep = false;
 
-class _ReadBottomToolbarState extends State<ReadBottomToolbar> {
-  late AudioClient audioClient;
-  bool allowNextStep = false;
 
-  @override
-  void initState() {
-    //set the audio file
-    getAudioPath().then((file) {
-      audioClient = AudioClient(filePath: file);
-    });
-    super.initState();
-  }
-
-  shouldAllowGoingNextStep(){
+  shouldAllowGoingNextStep(BuildContext context){
     QuoteStates state = context.watch<QuoteCubit>().state;
     if(state is ScoreState){
       allowNextStep = true;
@@ -51,42 +37,42 @@ class _ReadBottomToolbarState extends State<ReadBottomToolbar> {
   @override
   Widget build(BuildContext context) {
 
-    shouldAllowGoingNextStep();
+    shouldAllowGoingNextStep(context);
 
     return BottomToolbar(
-      color: widget.color,
+      color: color,
 
       //Mic
       micConfiguration: MicConfiguration(
-        referenceText: QuotesController.currentQuote,
-        onResponse: (userInput){
-          //trigger a score widget
-          context.read<QuoteCubit>().checkScore(userInput);
-        }
+          referenceText: QuotesController.currentQuote,
+          onResponse: (userInput){
+            //trigger a score widget
+            context.read<QuoteCubit>().checkScore(userInput);
+          }
       ),
 
       //left button
       // (hear your voice)
       leftButton: button(
         icon: 'assets/hear_button.svg',
-        onPressed: ()=> audioClient.play(),
+        onPressed: ()=> HearUserInputController.play(),
       ),
 
       //next button
       nextButton: button(
-        icon: 'assets/next_button.svg',
-        onPressed: () {
-          context.read<QuoteCubit>().refresh(widget.level);
-          if(allowNextStep){
-            context.read<StepsCubit>().nextStep(
-                context,
-                maximumSteps: widget.maximumSteps,
-                onStepCompletedTrigger: (){
-                  CustomDialog(context,
-                      view: const CongratulationDialogView(currentPage: LearningSections.readPage,));
-                });
+          icon: 'assets/next_button.svg',
+          onPressed: () {
+            context.read<QuoteCubit>().refresh(level);
+            if(allowNextStep){
+              context.read<StepsCubit>().nextStep(
+                  context,
+                  maximumSteps: maximumSteps,
+                  onStepCompletedTrigger: (){
+                    CustomDialog(context,
+                        view: const CongratulationDialogView(currentPage: LearningSections.readPage,));
+                  });
+            }
           }
-        }
       ),
 
     );
@@ -106,5 +92,4 @@ class _ReadBottomToolbarState extends State<ReadBottomToolbar> {
 
     return audioFilePath;
   }
-
 }

@@ -5,7 +5,7 @@ import 'dart:math';
 class ScoreController {
 
   static int processOverallScore(double pronScore, double fluencyScore, double accuracyScore){
-    double score = ((pronScore + fluencyScore)/200)*100;
+    double score = _lowestOfTwo(pronScore,fluencyScore);
 
     double accuracy = 100-accuracyScore;
 

@@ -76,15 +76,20 @@ class HearBottomToolbar extends StatelessWidget {
             nextButton: button(
               icon: 'assets/next_button.svg',
               onPressed: () {
-                context.read<HearCubit>().refresh();
                 if(allowNextStep){
                   context.read<StepsCubit>().nextStep(
                       context,
                       maximumSteps: maximumSteps,
-                      onStepCompletedTrigger: (){
+                      onStep: (){
+                        context.read<HearCubit>().refresh();
+                      },
+                      onStepsCompleted: (){
                         CustomDialog(context,
                             view: const CongratulationDialogView(currentPage: LearningSections.hearPage,));
                       });
+
+                } else{
+                  context.read<HearCubit>().refresh();
                 }
               },
             ),

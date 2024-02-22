@@ -8,16 +8,15 @@ class StepsCubit extends Cubit<StepsState>{
 
   int currentStep = 1;
 
-  nextStep(BuildContext context, {required int maximumSteps, Function()? onStepCompletedTrigger}) {
+  nextStep(BuildContext context, {required int maximumSteps, required Function() onStep, Function()? onStepsCompleted}) {
 
     if(currentStep < maximumSteps){
-      currentStep++;
-      emit(NextState(currentStep));
+
+      onStep(); //function on each step
+      stepForward(); //increase a step
 
     } else {
-      if(onStepCompletedTrigger != null){
-        onStepCompletedTrigger();
-      }
+      runFunctionIfExists(onStepsCompleted); //when all steps complete
     }
   }
 
@@ -25,5 +24,17 @@ class StepsCubit extends Cubit<StepsState>{
     currentStep=1;
     emit(const NextState(1));
   }
+
+  stepForward(){
+    currentStep++;
+    emit(NextState(currentStep));
+  }
+
+  runFunctionIfExists(Function()? function){
+    if(function != null){
+      function();
+    }
+  }
+
 
 }

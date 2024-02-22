@@ -46,19 +46,24 @@ class CriticalBottomToolbar extends StatelessWidget {
       nextButton: button(
           icon: 'assets/next_button.svg',
           onPressed: () {
-            context.read<CriticalThinkingCubit>().getQuestion();
+
             if(allowNextStep){
               context.read<StepsCubit>().nextStep(
                   context,
                   maximumSteps: maximumSteps,
-                  onStepCompletedTrigger: (){
+                  onStep: (){
+                    context.read<CriticalThinkingCubit>().getQuestion();
+                  },
+                  onStepsCompleted: (){
                     CustomDialog(context,
-                        view: const CongratulationDialogView(currentPage: LearningSections.criticalPage,));
+                        view: const CongratulationDialogView(currentPage: LearningSections.hearPage,));
                   });
-            }
-          }
-      ),
 
+              } else {
+                context.read<CriticalThinkingCubit>().getQuestion();
+              }
+            }
+        )
     );
 
   }

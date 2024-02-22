@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
+import 'package:pluperfect/core/styles/app_screen.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/features/learning_sections/conversation/presentation/view/chat_bottom_toolbar.dart';
 import '../../../../../core/styles/padding.dart';
@@ -35,6 +36,8 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context){
+
+    double screenHeight = AppScreen(context).height;
 
     return PopScope(
       canPop: true,
@@ -81,7 +84,12 @@ class _ChatPageState extends State<ChatPage> {
                         }
 
                         if(state is ResponseState){
-                          return TextView(state.input ?? "", scale: TypeScale.headline3,);
+                          return SizedBox(
+                            height: screenHeight*0.63,
+                            child: SingleChildScrollView(
+                              child: TextView(state.input ?? "", scale: TypeScale.headline3,),
+                            ),
+                          );
                         }
 
                         return const SizedBox.shrink();

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
+import 'package:pluperfect/core/styles/padding.dart';
 
 class LoadingAnimation extends StatelessWidget {
   const LoadingAnimation({super.key, this.size = 300, this.color});
@@ -9,15 +11,12 @@ class LoadingAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return button('assets/animations/loading.json', true);
-  }
-
-  Widget button(String icon, bool shouldAnimate){
-    return Lottie.asset(
-      icon,
-      height: size, width: size, fit: BoxFit.fill,
-      animate: shouldAnimate,
-      frameRate: FrameRate.max,
+    return Padding(
+      padding: const CustomPadding(vertical: 120),
+      child: LoadingAnimationWidget.waveDots(
+        color: ColorTheme.text,
+        size: 140,
+      ),
     );
   }
 }

@@ -72,7 +72,7 @@ class ReadBottomToolbar extends StatelessWidget {
                   },
                   onStepsCompleted: (){
                     CustomDialog(context,
-                        view: const CongratulationDialogView(currentPage: LearningSections.hearPage,));
+                        view: const CongratulationDialogView(currentPage: LearningSections.readPage,));
                   });
 
             } else {

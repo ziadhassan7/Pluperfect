@@ -7,7 +7,7 @@ import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/hear/hear_states.dart';
 import '../../../../../core/custom_dialog/custom_dialog.dart';
 import '../../../../../core/file_util.dart';
-import '../../../common/bottom_toolbar.dart';
+import '../../../common/bottom_toolbar/bottom_toolbar.dart';
 import '../../../common/congrats_dialog/congratulation_dialog.dart';
 import '../../../common/congrats_dialog/learning_sections_buttons.dart';
 import '../../../common/quotes_provider/quotes_controller.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
-import '../../../common/bottom_toolbar.dart';
+import '../../../common/bottom_toolbar/bottom_toolbar.dart';
 import '../../../common/steps_widget/cubit/steps_cubit.dart';
 import '../cubit/chat_cubit.dart';
 

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/audio/audio_client.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
-import 'package:pluperfect/features/learning_sections/common/bottom_toolbar.dart';
+import 'package:pluperfect/features/learning_sections/common/bottom_toolbar/bottom_toolbar.dart';
 import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
 import 'package:pluperfect/features/learning_sections/common/steps_widget/cubit/steps_cubit.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/cubit/quotes/quote_states.dart';

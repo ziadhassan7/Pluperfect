@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/azure_speech/azure_model.dart';
-import '../../../core/styles/color_theme.dart';
-import '../../../core/styles/padding.dart';
-import 'mic/azure_mic/cubit/mic_cubit.dart';
-import 'mic/azure_mic/cubit/mic_states.dart';
-import 'mic/azure_mic/view/azure_mic.dart';
+import '../../../../core/styles/color_theme.dart';
+import '../../../../core/styles/padding.dart';
+import '../mic/azure_mic/cubit/mic_cubit.dart';
+import '../mic/azure_mic/cubit/mic_states.dart';
+import '../mic/azure_mic/view/azure_mic.dart';
 
 ///Mic Configuration
 class MicConfiguration{

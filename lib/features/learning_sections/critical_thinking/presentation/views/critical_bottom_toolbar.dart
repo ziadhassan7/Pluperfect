@@ -7,7 +7,7 @@ import 'package:pluperfect/features/learning_sections/common/congrats_dialog/lea
 import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_cubit.dart';
 import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_states.dart';
 import '../../../../../core/custom_dialog/custom_dialog.dart';
-import '../../../common/bottom_toolbar.dart';
+import '../../../common/bottom_toolbar/bottom_toolbar.dart';
 import '../../../common/steps_widget/cubit/steps_cubit.dart';
 
 

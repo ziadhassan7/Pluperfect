@@ -33,7 +33,7 @@ class ChatBottomToolbar extends StatelessWidget {
               context.read<ChatCubit>().sendInput(userInput);
             },
             onStepsCompleted: (){
-              CustomDialog(context,
+              CustomDialog(context, dismissible: false,
                   view: const CongratulationDialogView(currentPage: LearningSections.chatPage,));
             },
           );

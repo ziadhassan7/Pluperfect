@@ -55,7 +55,7 @@ class CriticalBottomToolbar extends StatelessWidget {
                     context.read<CriticalThinkingCubit>().getQuestion();
                   },
                   onStepsCompleted: (){
-                    CustomDialog(context,
+                    CustomDialog(context, dismissible: false,
                         view: const CongratulationDialogView(currentPage: LearningSections.hearPage,));
                   });
 

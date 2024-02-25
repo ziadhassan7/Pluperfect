@@ -71,7 +71,7 @@ class ReadBottomToolbar extends StatelessWidget {
                     context.read<QuoteCubit>().refresh(level);
                   },
                   onStepsCompleted: (){
-                    CustomDialog(context,
+                    CustomDialog(context, dismissible: false,
                         view: const CongratulationDialogView(currentPage: LearningSections.readPage,));
                   });
 

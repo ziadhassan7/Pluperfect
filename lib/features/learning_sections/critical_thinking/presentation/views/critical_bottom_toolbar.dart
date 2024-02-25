@@ -23,10 +23,8 @@ class CriticalBottomToolbar extends StatelessWidget {
   shouldAllowGoingNextStep(BuildContext context){
     CriticalThinkingStates state = context.watch<CriticalThinkingCubit>().state;
     if(state is ScoreState){
-      print("it works just fine");
       allowNextStep = true;
     } else {
-      print("it works not fine");
       allowNextStep = false;
     }
   }

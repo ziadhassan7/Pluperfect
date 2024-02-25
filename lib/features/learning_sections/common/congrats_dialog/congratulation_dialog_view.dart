@@ -43,7 +43,7 @@ class CongratulationDialogView extends StatelessWidget {
             //reset page steps
             ClosePageController.resetPageSteps(context);
             //go back to home page
-            AppRouter.navigateTo(context, const IndexPage());
+            AppRouter.navigateTo(context, const IndexPage(), replace: true);
           },
 
           child: Icon(

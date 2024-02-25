@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/azure_speech/azure_model.dart';
 import '../../../../../../core/custom_log.dart';
 import '../../../../../../core/text_to_speech/text_to_speech_client.dart';
+import '../../../common/sentence_controller.dart';
 import '../../logic/utils/chat_input_controller.dart';
 import 'chat_state.dart';
 
@@ -38,8 +39,11 @@ class ChatCubit extends Cubit<ChatStates>{
       if(input != null){
         //Get Gemini response
         String? response = await ChatInputController.getChatAnswer(input);
+        String? processedResponse = SentenceController.polishText(response);
         //speak
-        await _speak(response);
+        await _speak(processedResponse);
+        //on Speak Complete , emit response
+        TTSClient.onComplete(() => emit(ResponseState(processedResponse)));
 
       } else {
         Log("Chat Cubit", const ResponseState("Didn't hear what you said?!"));
@@ -55,11 +59,6 @@ class ChatCubit extends Cubit<ChatStates>{
       await TTSClient.speak(response);
       emit(SpeakState());
     }
-
-    //on Speak Complete , emit response
-    TTSClient.onComplete(() => emit(ResponseState(response)));
   }
-
-
 
 }

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/azure_speech/azure_model.dart';
 import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
-import 'package:pluperfect/features/learning_sections/common/score_sentence_controller.dart';
+import 'package:pluperfect/features/learning_sections/common/sentence_controller.dart';
 import '../../../../read/logic/utils/speaker_controller.dart';
 import 'hear_states.dart';
 
@@ -16,7 +16,7 @@ class HearCubit extends Cubit<HearStates>{
 
     if(words != null){
 
-      List<Words> processedWords = SentenceController.processSentence(words, QuotesController.currentQuote);
+      List<Words> processedWords = SentenceController.processCorrectWords(words, QuotesController.currentQuote);
 
       emit(ScoreState(userInput, processedWords));
     }

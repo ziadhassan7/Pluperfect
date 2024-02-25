@@ -2,7 +2,12 @@ import '../../../../core/azure_speech/azure_model.dart';
 
 class SentenceController {
 
-  static List<Words> processSentence(List<Words> userWords, String quote){
+
+  static String? polishText(String? text){
+    return text?.replaceAll(RegExp(r"[^\w\s']+"), '');
+  }
+
+  static List<Words> processCorrectWords(List<Words> userWords, String quote){
 
     List<Words> modifiedSentence = [];
     List quoteWords = quote.split(' ');
@@ -56,7 +61,7 @@ class SentenceController {
 
   static bool _compareIgnoreCase(String quoteWord, String userWord) {
 
-    String processedQuoteWord = quoteWord.replaceAll(RegExp(r"[^\w\s']+"), '');
+    String processedQuoteWord = polishText(quoteWord)!;
 
     return processedQuoteWord.toLowerCase() == userWord.toLowerCase();
   }

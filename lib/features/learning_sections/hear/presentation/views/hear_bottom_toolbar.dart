@@ -4,10 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/hear/presentation/cubit/hear/hear_states.dart';
-import '../../../../../core/custom_dialog/custom_dialog.dart';
 import '../../../../../core/file_util.dart';
 import '../../../common/bottom_toolbar/bottom_toolbar.dart';
-import '../../../common/congrats_dialog/congratulation_dialog.dart';
+import '../../../common/congrats_dialog/congrats_dialog.dart';
 import '../../../common/congrats_dialog/learning_sections_buttons.dart';
 import '../../../common/hear_user_input_controller.dart';
 import '../../../common/quotes_provider/quotes_controller.dart';
@@ -84,8 +83,7 @@ class HearBottomToolbar extends StatelessWidget {
                         context.read<HearCubit>().refresh();
                       },
                       onStepsCompleted: (){
-                        CustomDialog(context, dismissible: false,
-                            view: const CongratulationDialogView(currentPage: LearningSections.hearPage,));
+                        CongratsDialog(context, currentPage: LearningSections.hearPage,);
                       });
 
                 } else{

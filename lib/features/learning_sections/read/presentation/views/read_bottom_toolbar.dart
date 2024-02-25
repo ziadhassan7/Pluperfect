@@ -7,9 +7,8 @@ import 'package:pluperfect/features/learning_sections/common/hear_user_input_con
 import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
 import 'package:pluperfect/features/learning_sections/common/steps_widget/cubit/steps_cubit.dart';
 import 'package:pluperfect/features/learning_sections/read/presentation/cubit/quotes/quote_states.dart';
-import '../../../../../core/custom_dialog/custom_dialog.dart';
 import '../../../../../core/file_util.dart';
-import '../../../common/congrats_dialog/congratulation_dialog.dart';
+import '../../../common/congrats_dialog/congrats_dialog.dart';
 import '../../../common/congrats_dialog/learning_sections_buttons.dart';
 import '../../logic/utils/level_controller.dart';
 import '../cubit/quotes/quote_cubit.dart';
@@ -71,8 +70,7 @@ class ReadBottomToolbar extends StatelessWidget {
                     context.read<QuoteCubit>().refresh(level);
                   },
                   onStepsCompleted: (){
-                    CustomDialog(context, dismissible: false,
-                        view: const CongratulationDialogView(currentPage: LearningSections.readPage,));
+                    CongratsDialog(context, currentPage: LearningSections.readPage,);
                   });
 
             } else {

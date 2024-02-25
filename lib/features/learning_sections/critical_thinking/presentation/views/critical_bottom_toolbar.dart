@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
-import 'package:pluperfect/features/learning_sections/common/congrats_dialog/congratulation_dialog.dart';
 import 'package:pluperfect/features/learning_sections/common/congrats_dialog/learning_sections_buttons.dart';
 import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_cubit.dart';
 import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_states.dart';
-import '../../../../../core/custom_dialog/custom_dialog.dart';
 import '../../../common/bottom_toolbar/bottom_toolbar.dart';
+import '../../../common/congrats_dialog/congrats_dialog.dart';
 import '../../../common/hear_user_input_controller.dart';
 import '../../../common/steps_widget/cubit/steps_cubit.dart';
 
@@ -66,8 +65,7 @@ class CriticalBottomToolbar extends StatelessWidget {
                     context.read<CriticalThinkingCubit>().getQuestion();
                   },
                   onStepsCompleted: (){
-                    CustomDialog(context, dismissible: false,
-                        view: const CongratulationDialogView(currentPage: LearningSections.criticalPage,));
+                    CongratsDialog(context, currentPage: LearningSections.criticalPage,);
                   });
 
               } else {

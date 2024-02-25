@@ -67,7 +67,7 @@ class CriticalBottomToolbar extends StatelessWidget {
                   },
                   onStepsCompleted: (){
                     CustomDialog(context, dismissible: false,
-                        view: const CongratulationDialogView(currentPage: LearningSections.hearPage,));
+                        view: const CongratulationDialogView(currentPage: LearningSections.criticalPage,));
                   });
 
               } else {

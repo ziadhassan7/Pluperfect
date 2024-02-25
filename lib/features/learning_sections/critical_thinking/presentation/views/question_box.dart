@@ -6,7 +6,7 @@ import 'package:pluperfect/features/learning_sections/critical_thinking/presenta
 import '../../../../../core/styles/padding.dart';
 import '../../../common/clickable_word/clickable_word.dart';
 import '../cubit/questions/critical_cubit.dart';
-import 'critical_score_widget.dart';
+import 'grammar_evaluation_widget.dart';
 
 class QuestionBox extends StatefulWidget {
   const QuestionBox({super.key});
@@ -41,7 +41,7 @@ class _QuestionBoxState extends State<QuestionBox> {
               }
 
               if(state is ScoreState){
-                return CriticalScoreWidget(
+                return GrammarEvaluationWidget(
                     userInput: state.userInput,
                     correct: state.correct,
                     grammarScore: state.grammarScore,

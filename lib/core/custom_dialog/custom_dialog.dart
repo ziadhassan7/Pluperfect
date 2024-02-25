@@ -18,7 +18,7 @@ class CustomDialog {
         borderRadius: 25,
         disablePadding: true,
         disableTintColor: true,
-        backgroundColor: ColorTheme.background,
+        backgroundColor: ColorTheme.onBackground,
 
         view: view
     );

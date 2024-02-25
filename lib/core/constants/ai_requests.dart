@@ -46,19 +46,19 @@ class QuoteRequest {
 
 class CriticalThinkingRequest {
 
-  static const String english = "Ask me a question that requires critical thinking,"
+  static const String english = "Ask me an English interview question,"
       " make the question short and direct. Start by asking the question with no introductions.";
 
-  static const String germany = "Stellen Sie mir eine Frage, die kritisches Denken erfordert."
+  static const String germany = "Stellen Sie mir eine Frage im Vorstellungsgespräch auf Englisch."
       " Formulieren Sie die Frage kurz und direkt. Beginnen Sie damit, die Frage ohne Einleitung zu stellen.";
 
-  static const String frensh = "Posez-moi une question qui nécessite une réflexion critique,"
+  static const String frensh = "Posez-moi une question d'entretien en anglais,"
       " soyez courte et directe. Commencez par poser la question sans introduction.";
 
-  static const String italian = "Fammi una domanda che richieda un pensiero critico,"
+  static const String italian = "Fammi una domanda per un'intervista in inglese,"
       " rendi la domanda breve e diretta. Inizia ponendo la domanda senza presentazioni.";
 
-  static const String chinese = "问我一个需要批判性思维的问题，让问题简短而直接。 首先提出问题，无需介绍。";
+  static const String chinese = "问我一个英语面试问题，问题要简短直接。 首先提出问题，无需介绍。";
 
 }
 
@@ -68,44 +68,34 @@ class GrammarEvaluationRequest {
   '''
   You will be provided with statements, and your task is to convert them to standard English.
   
-  Give me feedback of what you changed.
-  
   And also provide a grammar score out of 10 for the user input. 
   ''';
 
   static const String germany =
   '''
   Sie erhalten Erklärungen und Ihre Aufgabe besteht darin, diese in Standardenglisch umzuwandeln.
-  
-  Geben Sie mir Feedback zu dem, was Sie geändert haben.
-  
+    
   Geben Sie außerdem eine Grammatikbewertung von 10 für die Benutzereingabe an.
   ''';
 
   static const String frensh =
   '''
   Des déclarations vous seront fournies et votre tâche consiste à les convertir en anglais standard.
-  
-  Donnez-moi votre avis sur ce que vous avez modifié.
-  
+    
   Et fournissez également une note de grammaire sur 10 pour la saisie de l’utilisateur.
   ''';
 
   static const String italian =
   '''
   Ti verranno fornite delle dichiarazioni e il tuo compito è convertirle nell'inglese standard.
-  
-  Dammi un feedback su cosa hai cambiato.
-  
+    
   Fornisci anche un punteggio grammaticale su 10 per l'input dell'utente.
   ''';
 
   static const String chinese =
   '''
   您将收到陈述，您的任务是将其转换为标准英语。
-  
-  向我反馈您所做的更改。
-  
+    
   并且还为用户输入提供语法分数（满分 10 分）。
   ''';
 

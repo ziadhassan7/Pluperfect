@@ -120,6 +120,6 @@ class LearningSectionsButtons extends StatelessWidget {
     //exit dialog
     Navigator.pop(context);
     //navigate to other page
-    AppRouter.navigateTo(context, page, isReplace: true);
+    AppRouter.navigateTo(context, page, replace: true);
   }
 }

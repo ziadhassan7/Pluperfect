@@ -13,7 +13,7 @@ class CriticalThinkingPage extends StatelessWidget {
   const CriticalThinkingPage({super.key});
 
   static final Color color = ColorTheme.red;
-  final int numOfSteps = 1;
+  final int numOfSteps = 2;
 
   @override
   Widget build(BuildContext context) {

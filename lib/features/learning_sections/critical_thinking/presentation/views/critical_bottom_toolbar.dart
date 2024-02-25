@@ -8,6 +8,7 @@ import 'package:pluperfect/features/learning_sections/critical_thinking/presenta
 import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_states.dart';
 import '../../../../../core/custom_dialog/custom_dialog.dart';
 import '../../../common/bottom_toolbar/bottom_toolbar.dart';
+import '../../../common/hear_user_input_controller.dart';
 import '../../../common/steps_widget/cubit/steps_cubit.dart';
 
 
@@ -22,14 +23,18 @@ class CriticalBottomToolbar extends StatelessWidget {
   shouldAllowGoingNextStep(BuildContext context){
     CriticalThinkingStates state = context.watch<CriticalThinkingCubit>().state;
     if(state is ScoreState){
+      print("it works just fine");
       allowNextStep = true;
     } else {
+      print("it works not fine");
       allowNextStep = false;
     }
   }
 
   @override
   Widget build(BuildContext context) {
+
+    shouldAllowGoingNextStep(context);
 
     return BottomToolbar(
       color: color,
@@ -42,12 +47,20 @@ class CriticalBottomToolbar extends StatelessWidget {
           }
       ),
 
+        //left button
+        // (hear your voice)
+        leftButton: button(
+          icon: 'assets/hear_button.svg',
+          onPressed: ()=> HearUserInputController.play(),
+        ),
+
       //next button
       nextButton: button(
           icon: 'assets/next_button.svg',
           onPressed: () {
 
             if(allowNextStep){
+
               context.read<StepsCubit>().nextStep(
                   context,
                   maximumSteps: maximumSteps,

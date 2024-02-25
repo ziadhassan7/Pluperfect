@@ -6,6 +6,7 @@ import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/index/index_page.dart';
 import '../../../../core/localization/localization.dart';
 import '../../../../core/styles/color_theme.dart';
+import '../close_page_controller.dart';
 import 'learning_sections_buttons.dart';
 
 class CongratulationDialogView extends StatelessWidget {
@@ -38,7 +39,12 @@ class CongratulationDialogView extends StatelessWidget {
       margin: const CustomPadding(horizontal: 25, top: 15),
       alignment: Alignment.topLeft,
       child: InkWell(
-          onTap: () => AppRouter.navigateTo(context, const IndexPage()),
+          onTap: () {
+            //reset page steps
+            ClosePageController.resetPageSteps(context);
+            //go back to home page
+            AppRouter.navigateTo(context, const IndexPage());
+          },
 
           child: Icon(
             Icons.close_rounded,

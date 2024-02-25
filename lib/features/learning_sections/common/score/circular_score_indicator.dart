@@ -31,7 +31,7 @@ class CircularScoreIndicator extends StatelessWidget {
       return green;
     }
 
-    if(score < 80 && score >=50){
+    if(score <= 80 && score >=50){
       return yellow;
     }
 

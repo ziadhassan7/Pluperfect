@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'nav_bar.dart';
 
 class NavBarButton extends StatefulWidget {
@@ -14,7 +15,7 @@ class NavBarButton extends StatefulWidget {
       })
       : super(key: key);
   final String? label;
-  final IconData icon;
+  final String icon;
   final Function(int index) onTap;
   final int index;
   Color? colorSelected;
@@ -48,10 +49,10 @@ class _NavBarButtonState extends State<NavBarButton> {
               currentIndex = widget.index;
             });
           },
-          icon: Icon(
+          icon: SvgPicture.asset(
               widget.icon,
-              size: 25,
-              semanticLabel: widget.semanticLabel,
+              width: 28,
+              semanticsLabel: widget.semanticLabel,
               color: selected
                   ? widget.colorSelected
                   : widget.colorUnSelected),

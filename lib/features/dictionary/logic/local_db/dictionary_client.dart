@@ -26,14 +26,14 @@ class DictionaryClient {
   }
 
 /// Update
-  Future<void> updateItem(DictionaryModel bookModel, {String? oldId}) async {
+  Future<void> updateItem(DictionaryModel dicModel, {String? oldId}) async {
     final db = await SqlClient.instance.database;
 
     db!.update(
       tableDictionary,
-      bookModel.toMap(),
+      dicModel.toMap(),
       where: '$columnDicId = ?',
-      whereArgs: [oldId ?? bookModel.id],
+      whereArgs: [oldId ?? dicModel.id],
     );
   }
 

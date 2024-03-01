@@ -10,7 +10,6 @@ class DictionaryTable {
     await db.execute('''  
     CREATE TABLE $tableDictionary (
     $columnDicId $textType,
-    $columnWord $textType,
     $columnTranslation $textType,
     $columnLanguageLocal $textType,
     )

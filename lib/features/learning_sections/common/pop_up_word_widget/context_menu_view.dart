@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/constants/colors.dart';
+import 'package:pluperfect/core/future_loader_widget.dart';
+import 'package:pluperfect/features/learning_sections/common/pop_up_word_widget/bookmark_button.dart';
 import 'package:pluperfect/features/learning_sections/common/pop_up_word_widget/translation_view.dart';
 import 'package:pluperfect/features/learning_sections/common/speaker_widget/speaker_widget.dart';
 import '../../../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../../../core/styles/box_decoration.dart';
 import '../../../../../../core/styles/color_theme.dart';
 import '../../../../../../core/styles/padding.dart';
+import '../../../../core/translate/translate_util.dart';
 
 //ignore: must_be_immutable
 class PopUpWordView extends StatelessWidget {
@@ -39,36 +41,50 @@ class PopUpWordView extends StatelessWidget {
               backgroundColor: ColorTheme.onBackground
           ),
 
-          child: Column(
-            children: [
-              Container(
-                  width: width,
-                  padding: const CustomPadding(vertical: 14, horizontal: 15),
-                  decoration: BoxDecoration(
-                      color: const Color.fromRGBO(246, 241, 255, 1),
-                      borderRadius: BorderRadius.only(topRight: Radius.circular(radius), topLeft: Radius.circular(radius))
-                  ),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset('assets/bookmark.svg', width: 14,),
+          child: FutureLoaderWidget(
+            future: getTranslation(selectedText),
 
-                      SizedBox(width: width*0.1,),
+            builder: (translation){
+              return Column(
+                children: [
+                  Container(
+                      width: width,
+                      padding: const CustomPadding(vertical: 14, horizontal: 15),
+                      decoration: BoxDecoration(
+                          color: const Color.fromRGBO(246, 241, 255, 1),
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(radius),
+                              topLeft: Radius.circular(radius))
+                      ),
+                      child: Row(
+                        children: [
+                          BookmarkButton(selectedText, translation),
 
-                      Expanded(child: TextView(selectedText, weight: FontWeight.bold, color: black,)),
+                          SizedBox(width: width * 0.1,),
 
-                      SpeakerWidget(selectedText),
-                    ],
-                  )),
+                          Expanded(child: TextView(
+                            selectedText, weight: FontWeight.bold,
+                            color: black,)),
+
+                          SpeakerWidget(selectedText),
+                        ],
+                      )),
 
 
-              ///Word Translation
-              TranslationView(word: selectedText,),
-            ],
+                  ///Word Translation
+                  TranslationView(translation: translation,),
+                ],
+              );
+            }
           ),
         ),
       );
     }
 
+
+    Future<String> getTranslation(String word){
+      return TranslateUtil.translate(word);
+    }
 
     editFlexibleWidth(BuildContext context){
       int wordLength = selectedText.split('').length;

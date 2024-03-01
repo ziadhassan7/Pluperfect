@@ -1,68 +1,64 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pluperfect/core/hive/shared_pref/languages_pref.dart';
+import 'package:pluperfect/features/dictionary/logic/local_db/dictionary_client.dart';
+import '../../logic/model/dictionary_model.dart';
 
 
-class QuoteCubit extends Cubit<bool>{
-  QuoteCubit() : super(false);
+class DictionaryCubit extends Cubit<bool>{
+  DictionaryCubit() : super(false);
+
+  static final DictionaryClient _dicClient = DictionaryClient.instance;
 
 
-  toggle() {
+  refreshBookmarkState(String word) async {
 
+    if(await _isExist(word)) emit(true);
+
+    emit(false);
   }
 
+  toggle(String word, String translation){
+    emit(!state);
 
-  save() {
-
-  }
-
-  delete() {
-
-  }
-
-  /*static Future<ShareIntentStatus> addBook(WidgetRef ref, String? filePath) async {
-
-    // dismiss if filePath is empty
-    if(filePath == null) return ShareIntentStatus.failure;
-
-
-    //--------------
-    String fileName = basename(filePath).replaceAll(".pdf", "");
-
-    // check for duplicates
-    if(await _isDuplicate(fileName) == false) {
-      String newPath = await FileUtil.copyFile(File(filePath));
-
-      model = BookModel(
-          id: fileName,
-          path: newPath,
-          bookmarks: null,
-          lastPage: 0,
-          totalPages: await _getTotalPages(newPath),
-          category: "[]",
-          addDate: DateTime.now().toString(),
-          completeDate: null,
-          isComplete: 0,
-          lastReadDate: null
-      );
-
-      bookClient.createItem(model);
-      ref.read(bookListProvider.notifier).listFiles();
-
-      return ShareIntentStatus.success;
-
+    if(state){
+      _save(word, translation);
     } else {
-      return ShareIntentStatus.alreadyAdded;
+      _delete(word);
     }
   }
 
-  static Future<bool> _isDuplicate(String fileName) async {
-    List<DictionaryModel> all = await bookClient.readAllElements();
+
+  _save(String word, String translation) async {
+    DictionaryModel model = DictionaryModel(
+      id: word,
+      translation: translation,
+      languageLocal: LanguagePref.getLearningLanguage().name,
+    );
+
+    if(await _isExist(word)){
+      _dicClient.updateItem(model);
+    } else {
+      _dicClient.createItem(model);
+    }
+
+    emit(true);
+  }
+
+  _delete(String word) {
+    _dicClient.deleteItem(word);
+    emit(false);
+  }
+
+  static Future<bool> _isExist(String word) async {
+    List<DictionaryModel> all = await _dicClient.readAllElements();
 
     for(int i =0; i<all.length; i++) {
-      if (all[i].id == fileName) return true;
+      if (all[i].id == word) return true;
     }
 
     return false;
-  }*/
+  }
+
 
 
 }

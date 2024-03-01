@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/constants/colors.dart';
-import 'package:pluperfect/features/learning_sections/common/context_menu/translation_view.dart';
+import 'package:pluperfect/features/learning_sections/common/pop_up_word_widget/translation_view.dart';
 import 'package:pluperfect/features/learning_sections/common/speaker_widget/speaker_widget.dart';
 import '../../../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../../../core/styles/box_decoration.dart';
@@ -9,8 +9,8 @@ import '../../../../../../core/styles/color_theme.dart';
 import '../../../../../../core/styles/padding.dart';
 
 //ignore: must_be_immutable
-class ContextMenuView extends StatelessWidget {
-  ContextMenuView({Key? key, required this.selectedText,}) : super(key: key);
+class PopUpWordView extends StatelessWidget {
+  PopUpWordView({Key? key, required this.selectedText,}) : super(key: key);
 
   String selectedText;
   final double radius = 15;

@@ -21,7 +21,7 @@ class ContextMenu{
         top: _verticalPosition,
         left: _horizontalPosition,
 
-        child: ContextMenuView(selectedText: word,),
+        child: PopUpWordView(selectedText: word,),
       ),
     );
     overlayState.insert(current!);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../context_menu/context_menu.dart';
+import '../pop_up_word_widget/context_menu.dart';
 
 class ScreenTouchDetector extends StatelessWidget {
   const ScreenTouchDetector({Key? key,}) : super(key: key);

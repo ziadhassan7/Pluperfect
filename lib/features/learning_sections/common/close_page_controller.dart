@@ -4,7 +4,7 @@ import 'package:pluperfect/features/learning_sections/common/hear_user_input_con
 import 'package:pluperfect/features/learning_sections/common/steps_widget/cubit/steps_cubit.dart';
 import '../../../core/record_audio/recorder_client.dart';
 import 'speaker_widget/util/speaker_controller.dart';
-import 'context_menu/context_menu.dart';
+import 'pop_up_word_widget/context_menu.dart';
 
 class ClosePageController {
 

@@ -56,7 +56,7 @@ class _IndexPageState extends State<IndexPage> {
 
         children: [
             NavBarButton(
-              icon: Icons.home,
+              icon: "assets/home.svg",
               index: 0,
               semanticLabel: LocalTxt.homeButton,
               onTap: (newIndex) {
@@ -67,7 +67,7 @@ class _IndexPageState extends State<IndexPage> {
             ),
 
           NavBarButton(
-            icon: Icons.person,
+            icon: "assets/profile.svg",
             index: 1,
             semanticLabel: LocalTxt.profileButton,
             onTap: (newIndex) {

@@ -30,3 +30,25 @@ const Color redDark = Color.fromRGBO(180, 68, 68, 1);
 
 
 const Color accentColor = Color.fromRGBO(229, 101, 73, 1);
+
+
+//
+
+const Color readLight = Color.fromRGBO(211, 193, 245, 1);
+const Color readDark = Color.fromRGBO(118, 96, 158, 1);
+
+const Color hearLight = Color.fromRGBO(191, 240, 182, 1);
+const Color hearDark = Color.fromRGBO(93, 138, 86, 1);
+
+const Color criticalLight = Color.fromRGBO(238, 204, 164, 1);
+const Color criticalDark = Color.fromRGBO(170, 132, 88, 1);
+
+const Color chatLight = Color.fromRGBO(176, 219, 236, 1);
+const Color chatDark = Color.fromRGBO(94, 143, 161, 1);
+
+
+const Color blue2Light = Color(0xFF314691);
+const Color blue2Dark = Color(0xFF1A2D70);
+
+const Color yellowLight = Color.fromRGBO(255, 174, 54, 1);
+const Color yellowDark = Color.fromRGBO(205, 107, 36, 1);

@@ -2,55 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:pluperfect/core/app_router.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/core/styles/box_decoration.dart';
-import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/common/close_page_controller.dart';
-import 'package:pluperfect/features/learning_sections/conversation/presentation/screens/chat_page.dart';
-import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/screens/critical_thinking_page.dart';
-import 'package:pluperfect/features/learning_sections/hear/presentation/screens/hear_page.dart';
-import 'package:pluperfect/features/learning_sections/read/presentation/screens/read_page.dart';
 import '../../../../core/constants/colors.dart';
-import '../../read/logic/utils/level_controller.dart';
+import '../../../../core/constants/learning_sections.dart';
 
 enum ButtonColors {
   violet, green, blue, red
-}
-
-enum LearningSections {
-  readPage(
-    title: "Read",
-    page: ReadPage(Level.beginner)
-  ),
-  hearPage(
-    title: "Hear & Repeat",
-    page: HearPage()
-  ),
-  criticalPage(
-    title: "Critical Thinking",
-    page: CriticalThinkingPage()
-  ),
-  chatPage(
-    title: "Chat",
-    page: ChatPage()
-  );
-
-  final String title;
-  final Widget page;
-
-  const LearningSections({required this.title, required this.page});
-
-  Color get buttonColor {
-    switch(this){
-      case LearningSections.readPage:
-        return ColorTheme.violet;
-      case LearningSections.hearPage:
-        return ColorTheme.green;
-      case LearningSections.criticalPage:
-        return ColorTheme.red;
-      case LearningSections.chatPage:
-        return ColorTheme.blue;
-    }
-  }
 }
 
 class LearningSectionsButtons extends StatelessWidget {

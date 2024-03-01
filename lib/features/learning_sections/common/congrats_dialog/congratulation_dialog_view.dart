@@ -4,6 +4,7 @@ import 'package:pluperfect/core/app_router.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/index/index_page.dart';
+import '../../../../core/constants/learning_sections.dart';
 import '../../../../core/localization/localization.dart';
 import '../../../../core/styles/color_theme.dart';
 import '../close_page_controller.dart';

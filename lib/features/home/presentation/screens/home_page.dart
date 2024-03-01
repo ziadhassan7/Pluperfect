@@ -1,48 +1,202 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pluperfect/core/app_router.dart';
+import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
+import 'package:pluperfect/core/constants/colors.dart';
+import 'package:pluperfect/core/styles/app_screen.dart';
+import 'package:pluperfect/core/styles/box_decoration.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
-import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/screens/critical_thinking_page.dart';
-import '../../../../core/localization/localization.dart';
-import '../../../learning_sections/conversation/presentation/screens/chat_page.dart';
-import '../../../learning_sections/hear/presentation/screens/hear_page.dart';
-import '../../../learning_sections/read/logic/utils/level_controller.dart';
-import '../../../learning_sections/read/presentation/screens/read_page.dart';
-import '../views/carousel_item.dart';
-import '../views/logo.dart';
+import 'package:pluperfect/core/styles/padding.dart';
+import '../../../../core/constants/learning_sections.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  final double height = 350;
+  static const double sizeBetween = 16;
 
 
   @override
   Widget build(BuildContext context) {
+
+    double screenWidth = AppScreen(context).width;
+
     return SafeArea(
 
       child: Center(
+        child: Padding(
+          padding: const CustomPadding(horizontal: 40, top: 25),
+
+          child: CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
+                child: Column(
+                  children: [
+
+                    /// Top bar
+                    Padding(
+                      padding: const CustomPadding(horizontal: 14),
+                      child: Row(
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                decoration: CustomDecoration(
+                                  borderWidth: 2,
+                                  borderColor: white,
+                                  radius: 12,
+                                ),
+
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12), // Set your desired radius here
+                                    child: SvgPicture.asset("assets/flags/united_kingdom.svg",)),
+                              ),
+
+                              const SizedBox(width: 8,),
+                              TextView("En", color: ColorTheme.isDark ? white : ColorTheme.blue2,),
+                            ],
+                          ),
+
+                          const Spacer(),
+
+                          Row(
+                            children: [
+                              SvgPicture.asset("assets/streak.svg"),
+                              const SizedBox(width: 8,),
+                              TextView("15", color: ColorTheme.isDark ? white : ColorTheme.blue2,),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(height: sizeBetween,),
+
+                    /// Practice Widget
+                    Container(
+                      width: double.infinity,
+                      height: 180,
+                      padding: const CustomPadding.all(32),
+                      decoration: CustomDecoration(
+                          backgroundColor: ColorTheme.blue2,
+                          radius: 25
+                      ),
+
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const TextView("Your Dictionary", scale: TypeScale.headline2, weight: FontWeight.bold, color: white,),
+
+                          const TextView("Practice English for 5 mins every day.", weight: FontWeight.w300, color: white,),
+
+                          const Spacer(),
+
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: screenWidth *0.5,
+                                child: LinearProgressIndicator(
+                                  value: 0.60,
+                                  minHeight: 8,
+                                  borderRadius: BorderRadius.circular(25),
+                                  backgroundColor: ColorTheme.background,
+                                  color: ColorTheme.yellow,
+                                ),
+                              ),
+
+                              const Spacer(),
+
+                              const TextView("60%", color: white,),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(height: sizeBetween,),
+
+                    /// Saved Words
+                    Container(
+                      padding: const CustomPadding.all(32),
+                      decoration: CustomDecoration(
+                        backgroundColor: ColorTheme.onBackground,
+                        radius: 25
+                      ),
+
+                      child: Row(
+                        children: [
+                          const TextView("Your Dictionary", weight: FontWeight.bold,),
+
+                          const Spacer(),
+
+                          SvgPicture.asset("assets/bookmark.svg", color: ColorTheme.text,)
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(height: sizeBetween,),
+
+                    /// Learning Sections
+                    SizedBox(
+                      width: screenWidth*0.78,
+
+                      child: GridView(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 0.9,
+                          crossAxisCount: 2, // Number of columns
+                          mainAxisSpacing: 8, // Spacing between rows
+                          crossAxisSpacing: 8, // Spacing between columns
+                        ),
+                        children: [
+                          ...LearningSections.values.map((e) => button(
+                              context,
+                              buttonTitle: e.title,
+                              icon: e.icon,
+                              page: e.page,
+                              color: e.buttonColor,
+                          ))
+                        ]
+                      ),
+                    ),
+
+                  ],
+                ),
+            )],
+          ),
+        ),
+      ),
+    );
+  }
+
+
+  Widget button(BuildContext context,
+      {required String buttonTitle,
+      required String icon,
+      required Widget page,
+      required Color color}) {
+
+    return GestureDetector(
+      onTap: ()=> AppRouter.navigateTo(context, page),
+
+      child: Container(
+        padding: const CustomPadding.all(15),
+        decoration: CustomDecoration(
+          backgroundColor: color,
+          radius: 28,
+        ),
+
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-            const Logo(),
+            Container(
+                alignment: Alignment.topRight,
+                child: circularSymbol(icon)),
 
-            CarouselSlider.builder(
-              itemCount: 4,
-              options: CarouselOptions(
-                height: height,
-                viewportFraction: 0.7, //6
-                initialPage: 0,
-                enableInfiniteScroll: false,
-                enlargeCenterPage: true,
-                enlargeFactor: 0.2, //0.3
-                scrollDirection: Axis.horizontal,
-              ),
+            const Spacer(),
 
-              itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
-                  getItem(itemIndex),
-            ),
-
+            TextView(buttonTitle),
           ],
         ),
       ),
@@ -50,51 +204,12 @@ class HomePage extends StatelessWidget {
   }
 
 
-  Widget getItem(int index){
-    switch(index){
-      case 0:
-        return CarouselItem(
-          height: height,
-          title: LocalTxt.section1,
-          description: LocalTxt.description1,
-          color: ColorTheme.violet,
-          iconPath: "assets/symbols/speak_symbol.svg",
-          page: ReadPage(LevelController.level),
-        );
-
-      case 1:
-        return CarouselItem(
-          height: height,
-          title: LocalTxt.section2,
-          description: LocalTxt.description2,
-          color: ColorTheme.green,
-          iconPath: "assets/symbols/ear_symbol.svg",
-          page: const HearPage(),
-        );
-
-      case 2:
-        return CarouselItem(
-          height: height,
-          title: LocalTxt.section3,
-          description: LocalTxt.description3,
-          color: ColorTheme.blue,
-          iconPath: "assets/symbols/chat_symbol.svg",
-          page: const ChatPage(),
-        );
-
-      case 3:
-        return CarouselItem(
-          height: height,
-          title: LocalTxt.section4,
-          description: LocalTxt.description4,
-          color: ColorTheme.red,
-          iconPath: "assets/symbols/brain_symbol.svg",
-          page: const CriticalThinkingPage(),
-        );
-
-      default:
-        return const SizedBox.shrink();
-    }
+  Widget circularSymbol(String icon){
+    return Container(
+      decoration: CustomDecoration(isCircular: true, backgroundColor: ColorTheme.isDark ? white.withOpacity(0.4) : white),
+      padding: const CustomPadding.all(12),
+      child: SvgPicture.asset(icon, width: 24, ),
+    );
   }
 
   /*setLevel(BuildContext context, Level level){

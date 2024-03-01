@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import '../../../../core/constants/learning_sections.dart';
 import '../../../../core/custom_dialog/custom_dialog.dart';
 import 'congratulation_dialog_view.dart';
-import 'learning_sections_buttons.dart';
 
 class CongratsDialog {
 

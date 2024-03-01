@@ -24,6 +24,32 @@ class ColorTheme {
 
 
 
+  static get read {
+    return isDark ? readDark : readLight;
+  }
+
+  static get hear {
+    return isDark ? hearDark : hearLight;
+  }
+
+  static get criticalThinking {
+    return isDark ? criticalDark : criticalLight;
+  }
+
+  static get chat {
+    return isDark ? chatDark : chatLight;
+  }
+
+  static get blue2 {
+    return isDark ? blue2Dark : blue2Light;
+  }
+
+  static get yellow {
+    return isDark ? yellowDark : yellowLight;
+  }
+
+
+
   static get violet {
     return isDark ? violetDark : violetLight;
   }

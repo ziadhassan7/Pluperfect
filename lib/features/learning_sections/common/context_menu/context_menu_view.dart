@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/constants/colors.dart';
 import 'package:pluperfect/features/learning_sections/common/context_menu/translation_view.dart';
+import 'package:pluperfect/features/learning_sections/common/speaker_widget/speaker_widget.dart';
 import '../../../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../../../core/styles/box_decoration.dart';
 import '../../../../../../core/styles/color_theme.dart';
@@ -55,7 +56,7 @@ class ContextMenuView extends StatelessWidget {
 
                       Expanded(child: TextView(selectedText, weight: FontWeight.bold, color: black,)),
 
-                      const Icon(Icons.volume_up_rounded),
+                      SpeakerWidget(selectedText),
                     ],
                   )),
 

@@ -18,10 +18,10 @@ class LocalTxt {
   static final String speakerButton = tr('speaker_button');
 
   //Learning Sections
-  static final String section1 = tr('section1');
-  static final String section2 = tr('section2');
-  static final String section3 = tr('section3');
-  static final String section4 = tr('section4');
+  static final String readSection = tr('read_section');
+  static final String hearSection = tr('hear_section');
+  static final String chatSection = tr('chat_section');
+  static final String thinkingSection = tr('thinking_section');
 
   static final String description1 = tr('description1');
   static final String description2 = tr('description2');

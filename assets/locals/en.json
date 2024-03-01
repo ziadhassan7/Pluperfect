@@ -8,16 +8,16 @@
   "save_button": "save",
   "speaker_button": "speaker",
 
-  "section1":"Read Out\nLoud",
+  "read_section":"Read Out\nLoud",
   "description1":"Read quotes shown on screen to train your tongue.",
 
-  "section2":"Hear &\nRepeat",
+  "hear_section":"Hear &\nRepeat",
   "description2":"You’re going to hear some quotes that you are going to repeat.",
 
-  "section3":"Conversation",
+  "chat_section":"Conversation",
   "description3":"Have a real conversation with AI to help train on fast thinking.",
 
-  "section4":"Critical\nThinking",
+  "thinking_section":"Critical\nThinking",
   "description4":"Answer a question!\nThis will train your writing and thinking abilities.",
 
   "darkMode": "Dark Mode"

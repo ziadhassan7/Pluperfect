@@ -16,13 +16,13 @@ enum LearningSections {
       icon: "assets/symbols/hear.svg",
       page: HearPage()
   ),
-  criticalPage(
-      icon: "assets/symbols/critical_thinking.svg",
-      page: CriticalThinkingPage()
-  ),
   chatPage(
       icon: "assets/symbols/chat.svg",
       page: ChatPage()
+  ),
+  criticalPage(
+      icon: "assets/symbols/critical_thinking.svg",
+      page: CriticalThinkingPage()
   );
 
   final String icon;
@@ -36,23 +36,23 @@ enum LearningSections {
         return ColorTheme.read;
       case LearningSections.hearPage:
         return ColorTheme.hear;
-      case LearningSections.criticalPage:
-        return ColorTheme.criticalThinking;
       case LearningSections.chatPage:
         return ColorTheme.chat;
+      case LearningSections.criticalPage:
+        return ColorTheme.criticalThinking;
     }
   }
 
   String get title {
     switch(this){
       case LearningSections.readPage:
-        return LocalTxt.section1;
+        return LocalTxt.readSection;
       case LearningSections.hearPage:
-        return LocalTxt.section2;
-      case LearningSections.criticalPage:
-        return LocalTxt.section3;
+        return LocalTxt.hearSection;
       case LearningSections.chatPage:
-        return LocalTxt.section4;
+        return LocalTxt.chatSection;
+      case LearningSections.criticalPage:
+        return LocalTxt.thinkingSection;
     }
   }
 }

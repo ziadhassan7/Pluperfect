@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
 
                     /// Top bar
                     Padding(
-                      padding: const CustomPadding(horizontal: 14),
+                      padding: const CustomPadding(horizontal: 14, vertical: 10),
                       child: Row(
                         children: [
                           Row(
@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
 
                                 child: ClipRRect(
                                     borderRadius: BorderRadius.circular(12), // Set your desired radius here
-                                    child: SvgPicture.asset("assets/flags/united_kingdom.svg",)),
+                                    child: SvgPicture.asset("assets/flags/united_kingdom.svg", height: 20,)),
                               ),
 
                               const SizedBox(width: 8,),
@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
 
                           Row(
                             children: [
-                              SvgPicture.asset("assets/streak.svg"),
+                              SvgPicture.asset("assets/streak.svg", width: 20,),
                               const SizedBox(width: 8,),
                               TextView("15", color: ColorTheme.isDark ? white : ColorTheme.blue2,),
                             ],

@@ -22,7 +22,7 @@ class CustomDecoration extends BoxDecoration {
 
     border: CustomBorder(borderWidth: borderWidth, borderColor: borderColor),
 
-    borderRadius: BorderRadius.all(Radius.circular(radius)),
+    borderRadius: BorderRadius.all(Radius.circular(isCircular ? 10000 : radius)),
 
     shape: BoxShape.rectangle,
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pluperfect/core/styles/box_decoration.dart';
 import 'nav_bar.dart';
 
 class NavBarButton extends StatefulWidget {
@@ -67,7 +68,20 @@ class _NavBarButtonState extends State<NavBarButton> {
               color: selected
                 ? widget.colorSelected
                 : widget.colorUnSelected),)
-          : const SizedBox.shrink()
+          : const SizedBox.shrink(),
+
+
+        Visibility(
+          visible: selected,
+          child: Container(
+            height: 3,
+            width: 6,
+            decoration: CustomDecoration(
+              radius: 4,
+              backgroundColor: widget.colorSelected
+            ),
+          ),
+        ),
       ],
     );
   }

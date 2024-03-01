@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/features/learning_sections/common/hear_user_input_controller.dart';
 import 'package:pluperfect/features/learning_sections/common/steps_widget/cubit/steps_cubit.dart';
 import '../../../core/record_audio/recorder_client.dart';
-import '../read/logic/utils/speaker_controller.dart';
+import 'speaker_widget/util/speaker_controller.dart';
 import 'context_menu/context_menu.dart';
 
 class ClosePageController {

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
-import 'package:pluperfect/features/learning_sections/read/presentation/cubit/speaker/speak_cubit.dart';
-import 'package:pluperfect/features/learning_sections/read/presentation/cubit/speaker/speaker_states.dart';
-
-import '../../../../../core/localization/localization.dart';
+import 'package:pluperfect/features/learning_sections/common/speaker_widget/cubit/speak_cubit.dart';
+import 'package:pluperfect/features/learning_sections/common/speaker_widget/cubit/speaker_states.dart';
+import '../../../../core/localization/localization.dart';
 
 
 class SpeakerWidget extends StatelessWidget {
-  const SpeakerWidget({super.key});
+  const SpeakerWidget(this.text, {super.key});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class SpeakerWidget extends StatelessWidget {
         // Idle
         if(state is IdleState){
           return IconButton(
-            onPressed: () async => await context.read<SpeakerCubit>().speak(),
+            onPressed: () async => await context.read<SpeakerCubit>().speak(text),
 
             icon: Icon(Icons.volume_up_rounded,
               semanticLabel: LocalTxt.translateButton, color: color, size: 28,),

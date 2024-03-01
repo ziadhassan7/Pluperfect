@@ -4,9 +4,9 @@ import '../../../../../../core/text_to_speech/text_to_speech_client.dart';
 
 class SpeakerController {
 
-  static Future speak() async {
-    if(QuotesController.currentQuote != null){
-      return await TTSClient.speak(QuotesController.currentQuote!);
+  static Future speak(String? text) async {
+    if(text != null){
+      return await TTSClient.speak(text);
 
     } else {
       // todo: Show a toast message

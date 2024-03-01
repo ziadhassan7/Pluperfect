@@ -84,7 +84,7 @@ class HomePage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const TextView("Your Dictionary", scale: TypeScale.headline2, weight: FontWeight.bold, color: white,),
+                          const TextView("Daily Missions", scale: TypeScale.headline2, weight: FontWeight.bold, color: white,),
 
                           const TextView("Practice English for 5 mins every day.", weight: FontWeight.w300, color: white,),
 

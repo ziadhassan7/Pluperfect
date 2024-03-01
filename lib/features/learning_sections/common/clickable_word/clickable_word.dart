@@ -24,7 +24,7 @@ class ClickableWords extends StatelessWidget {
           getStylizedWord(
             "$word ",
             onTap: (TapUpDetails details) {
-              ContextMenu.show(context, details, word ?? "");
+              ContextMenu.show(context, details, word);
             },
           )
       ],

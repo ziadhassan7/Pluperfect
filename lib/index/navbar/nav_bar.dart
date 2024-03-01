@@ -11,6 +11,7 @@ class CustomNavBar extends StatelessWidget {
       this.backgroundColor = Colors.white,
       this.foregroundColorSelected = Colors.black,
       this.foregroundColorUnSelected = Colors.grey,
+      this.enableTint = false,
       required this.children})
       : super(key: key);
 
@@ -21,6 +22,7 @@ class CustomNavBar extends StatelessWidget {
   final Color backgroundColor;
   final Color foregroundColorSelected;
   final Color foregroundColorUnSelected;
+  final bool enableTint;
   final List<NavBarButton> children;
 
 
@@ -47,6 +49,7 @@ class CustomNavBar extends StatelessWidget {
         borderRadius: borderRadius,
 
         child: BottomAppBar(
+          surfaceTintColor: enableTint? null : Colors.transparent,
           height: height,
           color: backgroundColor,
           child: Padding(

@@ -8,7 +8,7 @@ import '../../../../../../core/styles/box_decoration.dart';
 import '../../../../../../core/styles/color_theme.dart';
 import '../../../../../../core/styles/padding.dart';
 
-
+//ignore: must_be_immutable
 class ContextMenuView extends StatelessWidget {
   ContextMenuView({Key? key, required this.selectedText,}) : super(key: key);
 

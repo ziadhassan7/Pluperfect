@@ -11,7 +11,7 @@ class DictionaryTable {
     CREATE TABLE $tableDictionary (
     $columnDicId $textType,
     $columnTranslation $textType,
-    $columnLanguageLocal $textType,
+    $columnLanguageLocal $textType
     )
     ''');
   }

@@ -18,7 +18,7 @@ class QuoteCubit extends Cubit<QuoteStates>{
 
     if(words != null){
 
-      List<Words> processedWords = SentenceController.processCorrectWords(words, QuotesController.currentQuote);
+      List<Words> processedWords = SentenceController.processCorrectWords(words, QuotesController.currentQuote!);
 
       emit(ScoreState(userInput, processedWords));
     }

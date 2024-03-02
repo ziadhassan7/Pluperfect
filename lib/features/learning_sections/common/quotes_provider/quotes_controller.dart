@@ -5,7 +5,7 @@ class QuotesController {
 
   static String? _currentQuote;
 
-  static get currentQuote => _currentQuote;
+  static String? get currentQuote => _currentQuote;
 
 
   //get a short quote from 0 to 50.

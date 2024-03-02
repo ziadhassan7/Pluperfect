@@ -12,9 +12,9 @@ class DictionaryCubit extends Cubit<bool>{
 
   refreshBookmarkState(String word) async {
 
-    if(await _isExist(word)) emit(true);
-
-    emit(false);
+    await _isExist(word)
+      ? emit(true)
+      : emit(false);
   }
 
   toggle(String word, String translation){

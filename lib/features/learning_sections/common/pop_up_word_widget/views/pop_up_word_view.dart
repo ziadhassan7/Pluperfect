@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pluperfect/core/constants/colors.dart';
 import 'package:pluperfect/core/future_loader_widget.dart';
-import 'package:pluperfect/features/learning_sections/common/pop_up_word_widget/bookmark_button.dart';
-import 'package:pluperfect/features/learning_sections/common/pop_up_word_widget/translation_view.dart';
+import 'package:pluperfect/features/learning_sections/common/pop_up_word_widget/widgets/bookmark_button.dart';
+import 'package:pluperfect/features/learning_sections/common/pop_up_word_widget/widgets/translation_view.dart';
 import 'package:pluperfect/features/learning_sections/common/speaker_widget/speaker_widget.dart';
-import '../../../../../../core/app_widgets/text_view/text_view.dart';
-import '../../../../../../core/styles/box_decoration.dart';
-import '../../../../../../core/styles/color_theme.dart';
-import '../../../../../../core/styles/padding.dart';
-import '../../../../core/translate/translate_util.dart';
+import '../../../../../../../core/app_widgets/text_view/text_view.dart';
+import '../../../../../../../core/styles/box_decoration.dart';
+import '../../../../../../../core/styles/color_theme.dart';
+import '../../../../../../../core/styles/padding.dart';
+import '../../../../../core/translate/translate_util.dart';
 
 //ignore: must_be_immutable
 class PopUpWordView extends StatelessWidget {
@@ -49,7 +49,7 @@ class PopUpWordView extends StatelessWidget {
                 children: [
                   Container(
                       width: width,
-                      padding: const CustomPadding(vertical: 14, horizontal: 15),
+                      padding: const CustomPadding(vertical: 8, horizontal: 15),
                       decoration: BoxDecoration(
                           color: const Color.fromRGBO(246, 241, 255, 1),
                           borderRadius: BorderRadius.only(
@@ -66,7 +66,7 @@ class PopUpWordView extends StatelessWidget {
                             selectedText, weight: FontWeight.bold,
                             color: black,)),
 
-                          SpeakerWidget(selectedText),
+                          SpeakerWidget(selectedText, color: black,),
                         ],
                       )),
 

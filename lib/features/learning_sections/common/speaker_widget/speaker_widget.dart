@@ -5,16 +5,17 @@ import 'package:pluperfect/features/learning_sections/common/speaker_widget/cubi
 import 'package:pluperfect/features/learning_sections/common/speaker_widget/cubit/speaker_states.dart';
 import '../../../../core/localization/localization.dart';
 
-
+//ignore: must_be_immutable
 class SpeakerWidget extends StatelessWidget {
-  const SpeakerWidget(this.text, {super.key});
+  SpeakerWidget(this.text, {super.key, this.color});
 
   final String? text;
+  Color? color;
 
   @override
   Widget build(BuildContext context) {
 
-    Color color = ColorTheme.text;
+    color ??= ColorTheme.text;
 
     return BlocBuilder<SpeakerCubit, SpeakerStates>(
       builder: (_, state) {

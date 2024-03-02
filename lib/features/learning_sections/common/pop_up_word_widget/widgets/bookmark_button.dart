@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../dictionary/presentation/cubit/dictionary_cubit.dart';
+import '../../../../dictionary/presentation/cubit/dictionary_cubit.dart';
 
 class BookmarkButton extends StatefulWidget {
   const BookmarkButton(this.word, this.translation, {super.key});

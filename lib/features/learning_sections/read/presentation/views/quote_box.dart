@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/custom_dialog/custom_dialog.dart';
 import 'package:pluperfect/core/localization/localization.dart';
@@ -7,7 +8,7 @@ import 'package:pluperfect/features/learning_sections/read/presentation/dialogs/
 import 'package:pluperfect/features/learning_sections/read/logic/utils/level_controller.dart';
 import '../../../../../core/styles/color_theme.dart';
 import '../../../../../core/styles/padding.dart';
-import '../../../common/quotes_provider/quotes_controller.dart';
+import '../../../common/speaker_widget/cubit/speak_cubit.dart';
 import '../widget/quote_widget.dart';
 import '../../../common/speaker_widget/speaker_widget.dart';
 
@@ -37,7 +38,9 @@ class QuoteBox extends StatelessWidget {
                 translateButton(context),
 
 
-                SpeakerWidget(QuotesController.currentQuote),
+                BlocProvider(
+                  create: (_) => SpeakerCubit(),
+                  child: SpeakerWidget()),
               ],
             ),
           ],

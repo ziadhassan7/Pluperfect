@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
 import 'package:pluperfect/features/learning_sections/common/speaker_widget/cubit/speaker_states.dart';
 import '../util/speaker_controller.dart';
 
@@ -10,7 +11,7 @@ class SpeakerCubit extends Cubit<SpeakerStates>{
 
     emit(LoadingState());
 
-    await SpeakerController.speak(text)
+    await SpeakerController.speak(text ?? QuotesController.currentQuote)
         .then((tts) => emit(SpeakingState()));
 
     SpeakerController.onComplete(_toggleSpeakerStateToNormal);

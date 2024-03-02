@@ -7,7 +7,7 @@ import '../../../../core/localization/localization.dart';
 
 //ignore: must_be_immutable
 class SpeakerWidget extends StatelessWidget {
-  SpeakerWidget(this.text, {super.key, this.color});
+  SpeakerWidget({super.key, this.text, this.color});
 
   final String? text;
   Color? color;

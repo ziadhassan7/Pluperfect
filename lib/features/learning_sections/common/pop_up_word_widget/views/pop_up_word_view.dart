@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/constants/colors.dart';
 import 'package:pluperfect/core/future_loader_widget.dart';
 import 'package:pluperfect/features/learning_sections/common/pop_up_word_widget/widgets/bookmark_button.dart';
@@ -9,6 +10,7 @@ import '../../../../../../../core/styles/box_decoration.dart';
 import '../../../../../../../core/styles/color_theme.dart';
 import '../../../../../../../core/styles/padding.dart';
 import '../../../../../core/translate/translate_util.dart';
+import '../../speaker_widget/cubit/speak_cubit.dart';
 
 //ignore: must_be_immutable
 class PopUpWordView extends StatelessWidget {
@@ -66,7 +68,9 @@ class PopUpWordView extends StatelessWidget {
                             selectedText, weight: FontWeight.bold,
                             color: black,)),
 
-                          SpeakerWidget(selectedText, color: black,),
+                          BlocProvider(
+                            create: (_) => SpeakerCubit(),
+                            child: SpeakerWidget(text: selectedText, color: black,)),
                         ],
                       )),
 

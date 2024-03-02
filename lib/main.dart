@@ -11,7 +11,6 @@ import 'package:pluperfect/index/index_page.dart';
 import 'core/bloc_observer.dart';
 import 'features/learning_sections/common/mic/azure_mic/cubit/mic_cubit.dart';
 import 'features/learning_sections/common/mic/openai_mic/cubit/openai_mic_cubit.dart';
-import 'features/learning_sections/common/speaker_widget/cubit/speak_cubit.dart';
 import 'features/learning_sections/conversation/presentation/cubit/chat_cubit.dart';
 import 'features/learning_sections/hear/presentation/cubit/hear/hear_cubit.dart';
 import 'features/learning_sections/read/presentation/cubit/quotes/quote_cubit.dart';
@@ -49,7 +48,6 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: ((context) => ThemeCubit()),),
         BlocProvider(create: ((context) => QuoteCubit()),),
-        BlocProvider(create: ((context) => SpeakerCubit()),),
         BlocProvider(create: ((context) => HearCubit()),),
         BlocProvider(create: ((context) => OpenaiMicCubit()),),
         BlocProvider(create: ((context) => AzureMicCubit()),),

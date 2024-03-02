@@ -10,6 +10,7 @@ import '../../../../../../../core/styles/box_decoration.dart';
 import '../../../../../../../core/styles/color_theme.dart';
 import '../../../../../../../core/styles/padding.dart';
 import '../../../../../core/translate/translate_util.dart';
+import '../../../../dictionary/presentation/cubit/dictionary_cubit.dart';
 import '../../speaker_widget/cubit/speak_cubit.dart';
 
 //ignore: must_be_immutable
@@ -60,7 +61,9 @@ class PopUpWordView extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          BookmarkButton(selectedText, translation),
+                          BlocProvider(
+                            create: ((_) => DictionaryCubit()),
+                            child: BookmarkButton(selectedText, translation)),
 
                           SizedBox(width: width * 0.1,),
 

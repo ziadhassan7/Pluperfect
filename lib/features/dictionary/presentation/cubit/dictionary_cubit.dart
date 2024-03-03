@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/translate/translate_util.dart';
 import '../../logic/data/repository/dictionary_repo.dart';
+import '../../logic/model/dictionary_model.dart';
 import 'dictionary_states.dart';
 
 
@@ -34,10 +35,22 @@ class DictionaryCubit extends Cubit<DictionaryStates>{
 
 
   _addWord(String word) async {
-    DictionaryRepo.saveItem(
-        word: word,
-        translation: await TranslateUtil.translate(word)
-    );
+    if(await _isExist(word)){
+      DictionaryRepo.saveItem(
+          word: word,
+          translation: await TranslateUtil.translate(word)
+      );
+    }
+  }
+
+  static Future<bool> _isExist(String word) async {
+    List<DictionaryModel> all = await DictionaryRepo.getData();
+
+    for(int i =0; i<all.length; i++) {
+      if (all[i].id == word) return true;
+    }
+
+    return false;
   }
 
 }

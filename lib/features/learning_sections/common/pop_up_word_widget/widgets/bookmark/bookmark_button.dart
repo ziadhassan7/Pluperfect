@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../dictionary/presentation/cubit/dictionary_cubit.dart';
+import 'bookmark_button_cubit.dart';
 
 class BookmarkButton extends StatefulWidget {
   const BookmarkButton(this.word, this.translation, {super.key});
@@ -20,17 +20,17 @@ class _BookmarkButtonState extends State<BookmarkButton> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) =>
-        context.read<DictionaryCubit>().refreshBookmarkState(widget.word));
+        context.read<BookmarkButtonCubit>().refreshBookmarkState(widget.word));
   }
 
   @override
   Widget build(BuildContext context) {
 
-    bool isSelected = context.watch<DictionaryCubit>().state;
+    bool isSelected = context.watch<BookmarkButtonCubit>().state;
 
     return GestureDetector(
         onTap: (){
-          context.read<DictionaryCubit>().toggle(widget.word, widget.translation);
+          context.read<BookmarkButtonCubit>().toggle(widget.word, widget.translation);
         },
 
         child: isSelected

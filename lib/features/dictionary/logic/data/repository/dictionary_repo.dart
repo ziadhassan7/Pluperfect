@@ -22,4 +22,10 @@ class DictionaryRepo {
 
     return await _dicClient.deleteItem(id);
   }
+
+  static void saveItem({required String word, required String translation,}) async {
+
+    return await _dicClient.createItem(
+        DictionaryModel(id: word, translation: translation, languageLocal: 'en'));
+  }
 }

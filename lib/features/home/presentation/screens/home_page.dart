@@ -7,6 +7,7 @@ import 'package:pluperfect/core/styles/app_screen.dart';
 import 'package:pluperfect/core/styles/box_decoration.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
+import 'package:pluperfect/features/dictionary/presentation/screens/dictionary_page.dart';
 import '../../../../core/constants/learning_sections.dart';
 
 class HomePage extends StatelessWidget {
@@ -115,21 +116,27 @@ class HomePage extends StatelessWidget {
                     const SizedBox(height: sizeBetween,),
 
                     /// Saved Words
-                    Container(
-                      padding: const CustomPadding.all(32),
-                      decoration: CustomDecoration(
-                        backgroundColor: ColorTheme.onBackground,
-                        radius: 25
-                      ),
+                    GestureDetector(
+                      onTap: (){
+                        AppRouter.navigateTo(context, const DictionaryPage());
+                      },
 
-                      child: Row(
-                        children: [
-                          const TextView("Your Dictionary", weight: FontWeight.bold,),
+                      child: Container(
+                        padding: const CustomPadding.all(32),
+                        decoration: CustomDecoration(
+                          backgroundColor: ColorTheme.onBackground,
+                          radius: 25
+                        ),
 
-                          const Spacer(),
+                        child: Row(
+                          children: [
+                            const TextView("Your Dictionary", weight: FontWeight.bold,),
 
-                          SvgPicture.asset("assets/bookmark.svg", color: ColorTheme.text,)
-                        ],
+                            const Spacer(),
+
+                            SvgPicture.asset("assets/bookmark.svg", color: ColorTheme.text,)
+                          ],
+                        ),
                       ),
                     ),
 

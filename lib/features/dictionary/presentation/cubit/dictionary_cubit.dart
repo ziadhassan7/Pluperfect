@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/hive/shared_pref/languages_pref.dart';
-import 'package:pluperfect/features/dictionary/logic/local_db/dictionary_client.dart';
+import '../../logic/data/local_db/dictionary_client.dart';
 import '../../logic/model/dictionary_model.dart';
 
 

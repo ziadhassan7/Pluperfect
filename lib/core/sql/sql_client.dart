@@ -1,7 +1,6 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-
-import '../../features/dictionary/logic/local_db/dictionary_table_mangment.dart';
+import '../../features/dictionary/logic/data/local_db/dictionary_table_mangment.dart';
 
 
 class SqlClient {

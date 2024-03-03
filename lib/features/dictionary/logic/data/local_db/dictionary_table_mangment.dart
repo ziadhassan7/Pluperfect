@@ -1,7 +1,6 @@
 import 'package:pluperfect/core/constants/db_constants/dictionary_db_constanst.dart';
 import 'package:sqflite/sqflite.dart';
-
-import '../../../../core/constants/db_constants/general_config.dart';
+import '../../../../../core/constants/db_constants/general_config.dart';
 
 
 class DictionaryTable {

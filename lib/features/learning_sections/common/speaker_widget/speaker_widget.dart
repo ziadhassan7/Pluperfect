@@ -7,10 +7,11 @@ import '../../../../core/localization/localization.dart';
 
 //ignore: must_be_immutable
 class SpeakerWidget extends StatelessWidget {
-  SpeakerWidget({super.key, this.text, this.color});
+  SpeakerWidget({super.key, this.text, this.color, this.size});
 
   final String? text;
   Color? color;
+  double? size;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class SpeakerWidget extends StatelessWidget {
             onPressed: () async => await context.read<SpeakerCubit>().speak(text),
 
             icon: Icon(Icons.volume_up_rounded,
-              semanticLabel: LocalTxt.translateButton, color: color, size: 28,),
+              semanticLabel: LocalTxt.translateButton, color: color, size: size ?? 28,),
           );
         }
 
@@ -35,7 +36,7 @@ class SpeakerWidget extends StatelessWidget {
           return IconButton(
             onPressed: () async => await context.read<SpeakerCubit>().stop(),
 
-            icon: Icon(Icons.stop, color: color, size: 28,),
+            icon: Icon(Icons.stop, color: color, size: size ?? 28,),
           );
         }
 

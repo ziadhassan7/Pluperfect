@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
-import '../../../../core/constants/db_constants/dictionary_db_constanst.dart';
-import '../../../../core/sql/sql_client.dart';
-import '../model/dictionary_model.dart';
+import '../../../../../core/constants/db_constants/dictionary_db_constanst.dart';
+import '../../../../../core/sql/sql_client.dart';
+import '../../model/dictionary_model.dart';
 
 class DictionaryClient {
 

@@ -1,13 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:pluperfect/core/app_widgets/text_view/custom_text.dart';
-import 'package:pluperfect/core/future_loader_widget.dart';
-import 'package:pluperfect/core/styles/padding.dart';
-import 'package:pluperfect/features/dictionary/logic/data/repository/dictionary_repo.dart';
-import 'package:pluperfect/features/dictionary/presentation/views/word_item.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pluperfect/features/dictionary/presentation/cubit/dictionary_states.dart';
+import 'package:pluperfect/features/dictionary/presentation/views/dictionary_topbar_view.dart';
+import 'package:pluperfect/features/dictionary/presentation/views/empty_dictionary_view.dart';
+import 'package:pluperfect/features/dictionary/presentation/widgets/word_item.dart';
 import '../../../../core/styles/color_theme.dart';
+import '../cubit/dictionary_cubit.dart';
+import '../dialogs/create_new_word/new_word_dialog.dart';
 
-class DictionaryPage extends StatelessWidget {
+class DictionaryPage extends StatefulWidget {
   const DictionaryPage({super.key});
+
+  @override
+  State<DictionaryPage> createState() => _DictionaryPageState();
+}
+
+class _DictionaryPageState extends State<DictionaryPage> {
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) =>
+        context.read<DictionaryCubit>().refresh());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,52 +35,51 @@ class DictionaryPage extends StatelessWidget {
         child: Column(
           children: [
 
-            Padding(
-              padding: const CustomPadding(vertical: 18,),
-              child: Row(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(Icons.arrow_back_ios_new_rounded, color: ColorTheme.text,),),
+            ///                                                                 / Top bar
+            const DictionaryTopBarView(),
 
-                CustomText(
-                  "Saved Words",
-                  color: ColorTheme.text,
-                  weight: FontWeight.bold,
-                  size: 35,
-                  fontFamily: FontFamily.sansation,
-                )
-              ]
-              ),
-            ),
+            ///                                                                 / Body
+            BlocBuilder<DictionaryCubit, DictionaryStates>(
+              builder: (context, state){
 
-            FutureLoaderWidget(
-              future: DictionaryRepo.getData(),
+                if(state is LoadingState){
+                  return const Center(child: CircularProgressIndicator());
+                }
 
-              builder: (data) {
-                return Column(
-                  children: [
-                    ...data.map((e) => WordItem(
+                if(state is IdleState){
+                  if(state.dataList != null){
+                    ///List of words
+                    return Column(
+                      children: [
+                        ...state.dataList!.map((e) => WordItem(
                           word: e.id,
                           translation: e.translation,
                         ))
-                  ],
-                );
-              },
+                      ],
+                    );
+
+                  } else {
+
+                    ///Empty List
+                    return const EmptyDictionaryView();
+                  }
+                }
+
+                return const EmptyDictionaryView();
+              }
             ),
           ],
         ),
       ),
 
+      ///                                                                       / Add Button
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorTheme.onBackground,
         foregroundColor: ColorTheme.text,
         child: const Icon(Icons.add_rounded),
 
         onPressed: () {
-
+          NewWordDialog.show(context);
         },
       ),
     );

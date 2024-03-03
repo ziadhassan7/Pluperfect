@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
-import 'package:pluperfect/core/translate/translate_util.dart';
-import 'package:pluperfect/features/dictionary/logic/data/repository/dictionary_repo.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
+import 'package:pluperfect/features/dictionary/presentation/cubit/dictionary_cubit.dart';
 
 class NewWordDialogView extends StatelessWidget {
   const NewWordDialogView({super.key});
@@ -15,25 +16,31 @@ class NewWordDialogView extends StatelessWidget {
         TextFormField(
           controller: inputController,
 
-          decoration: const InputDecoration(
-            contentPadding: EdgeInsets.all(10.0),
+          style: TextStyle(color: ColorTheme.text),
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.all(10.0),
+
             hintText: 'Enter a new word',
+            hintStyle: TextStyle(color: ColorTheme.text.withOpacity(0.4), fontFamily: 'Sansation'),
             border: InputBorder.none,
           ),
         ),
 
-        ClipRRect(
-          borderRadius: BorderRadius.circular(30.0),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30.0),
 
-          child: ElevatedButton(
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(ColorTheme.blue2),
+              ),
 
-            onPressed: () async {
-              DictionaryRepo.saveItem(
-                  word: inputController.text,
-                  translation: await TranslateUtil.translate(inputController.text)
-              );
-            },
-            child: const TextView("Save"),
+              onPressed: () async {
+                context.read<DictionaryCubit>().saveWord(inputController.text);
+              },
+              child: const TextView("Save"),
+            ),
           ),
         ),
       ],

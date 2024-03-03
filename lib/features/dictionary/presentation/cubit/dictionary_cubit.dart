@@ -1,64 +1,43 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pluperfect/core/hive/shared_pref/languages_pref.dart';
-import '../../logic/data/local_db/dictionary_client.dart';
-import '../../logic/model/dictionary_model.dart';
+import '../../../../core/translate/translate_util.dart';
+import '../../logic/data/repository/dictionary_repo.dart';
+import 'dictionary_states.dart';
 
 
-class DictionaryCubit extends Cubit<bool>{
-  DictionaryCubit() : super(false);
+class DictionaryCubit extends Cubit<DictionaryStates>{
+  DictionaryCubit() : super(const IdleState());
 
-  static final DictionaryClient _dicClient = DictionaryClient.instance;
+  refresh() async {
+    emit(LoadingState());
 
-
-  refreshBookmarkState(String word) async {
-
-    await _isExist(word)
-      ? emit(true)
-      : emit(false);
+    emit(IdleState(dataList: await DictionaryRepo.getData()));
   }
 
-  toggle(String word, String translation){
-    emit(!state);
+  ///Delete
+  delete(String word) async {
+    emit(LoadingState());
 
-    if(state){
-      _save(word, translation);
-    } else {
-      _delete(word);
-    }
+    DictionaryRepo.deleteItem(word);
+
+    emit(IdleState(dataList: await DictionaryRepo.getData()));
+  }
+
+  ///Add
+  saveWord(String word) async {
+
+    emit(LoadingState());
+
+    _addWord(word);
+
+    emit(IdleState(dataList: await DictionaryRepo.getData()));
   }
 
 
-  _save(String word, String translation) async {
-    DictionaryModel model = DictionaryModel(
-      id: word,
-      translation: translation,
-      languageLocal: LanguagePref.getLearningLanguage().name,
+  _addWord(String word) async {
+    DictionaryRepo.saveItem(
+        word: word,
+        translation: await TranslateUtil.translate(word)
     );
-
-    if(await _isExist(word)){
-      _dicClient.updateItem(model);
-    } else {
-      _dicClient.createItem(model);
-    }
-
-    emit(true);
   }
-
-  _delete(String word) {
-    _dicClient.deleteItem(word);
-    emit(false);
-  }
-
-  static Future<bool> _isExist(String word) async {
-    List<DictionaryModel> all = await _dicClient.readAllElements();
-
-    for(int i =0; i<all.length; i++) {
-      if (all[i].id == word) return true;
-    }
-
-    return false;
-  }
-
-
 
 }

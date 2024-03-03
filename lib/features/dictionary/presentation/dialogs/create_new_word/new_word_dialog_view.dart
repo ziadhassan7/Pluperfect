@@ -4,6 +4,7 @@ import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/features/dictionary/presentation/cubit/dictionary_cubit.dart';
 import '../../../../../core/constants/colors.dart';
+import '../../../../../core/localization/localization.dart';
 
 class NewWordDialogView extends StatelessWidget {
   const NewWordDialogView({super.key});
@@ -21,7 +22,7 @@ class NewWordDialogView extends StatelessWidget {
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(10.0),
 
-            hintText: 'Enter a new word',
+            hintText: LocalTxt.addNewWordDialogTitle,
             hintStyle: TextStyle(color: ColorTheme.text.withOpacity(0.4), fontFamily: 'Sansation'),
             border: InputBorder.none,
           ),
@@ -42,7 +43,7 @@ class NewWordDialogView extends StatelessWidget {
                 inputController.clear(); //clear current text input
                 Navigator.pop(context); //close dialog
               },
-              child: TextView("Save", color: ColorTheme.isDark ? black : white,),
+              child: TextView(LocalTxt.addNewWordDialogButton, color: ColorTheme.isDark ? black : white,),
             ),
           ),
         ),

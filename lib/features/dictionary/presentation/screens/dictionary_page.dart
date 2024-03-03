@@ -32,43 +32,45 @@ class _DictionaryPageState extends State<DictionaryPage> {
       backgroundColor: ColorTheme.background,
 
       body: SafeArea(
-        child: Column(
-          children: [
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
 
-            ///                                                                 / Top bar
-            const DictionaryTopBarView(),
+              ///                                                                 / Top bar
+              const DictionaryTopBarView(),
 
-            ///                                                                 / Body
-            BlocBuilder<DictionaryCubit, DictionaryStates>(
-              builder: (context, state){
+              ///                                                                 / Body
+              BlocBuilder<DictionaryCubit, DictionaryStates>(
+                builder: (context, state){
 
-                if(state is LoadingState){
-                  return const Center(child: CircularProgressIndicator());
-                }
-
-                if(state is IdleState){
-                  if(state.dataList != null){
-                    ///List of words
-                    return Column(
-                      children: [
-                        ...state.dataList!.map((e) => WordItem(
-                          word: e.id,
-                          translation: e.translation,
-                        ))
-                      ],
-                    );
-
-                  } else {
-
-                    ///Empty List
-                    return const EmptyDictionaryView();
+                  if(state is LoadingState){
+                    return const Center(child: CircularProgressIndicator());
                   }
-                }
 
-                return const EmptyDictionaryView();
-              }
-            ),
-          ],
+                  if(state is IdleState){
+                    if(state.dataList != null){
+                      ///List of words
+                      return Column(
+                        children: [
+                          ...state.dataList!.map((e) => WordItem(
+                            word: e.id,
+                            translation: e.translation,
+                          ))
+                        ],
+                      );
+
+                    } else {
+
+                      ///Empty List
+                      return const EmptyDictionaryView();
+                    }
+                  }
+
+                  return const EmptyDictionaryView();
+                }
+              ),
+            ],
+          ),
         ),
       ),
 

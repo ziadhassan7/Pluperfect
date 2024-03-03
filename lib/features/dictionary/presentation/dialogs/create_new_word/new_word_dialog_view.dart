@@ -37,7 +37,9 @@ class NewWordDialogView extends StatelessWidget {
               ),
 
               onPressed: () async {
-                context.read<DictionaryCubit>().saveWord(inputController.text);
+                context.read<DictionaryCubit>().saveWord(inputController.text); //save word
+                inputController.clear(); //clear current text input
+                Navigator.pop(context); //close dialog
               },
               child: const TextView("Save"),
             ),

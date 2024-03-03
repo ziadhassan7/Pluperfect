@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:pluperfect/core/constants/colors.dart';
 
 class ColorTheme {
@@ -10,64 +11,64 @@ class ColorTheme {
 
 
   //--
-  static get background {
+  static Color get background {
     return isDark ? backgroundDark : backgroundLight;
   }
 
-  static get onBackground {
+  static Color get onBackground {
     return isDark ? onBackgroundDark : onBackgroundLight;
   }
 
-  static get text {
+  static Color get text {
     return isDark ? white : black;
   }
 
 
 
-  static get read {
+  static Color get read {
     return isDark ? readDark : readLight;
   }
 
-  static get hear {
+  static Color get hear {
     return isDark ? hearDark : hearLight;
   }
 
-  static get criticalThinking {
+  static Color get criticalThinking {
     return isDark ? criticalDark : criticalLight;
   }
 
-  static get chat {
+  static Color get chat {
     return isDark ? chatDark : chatLight;
   }
 
-  static get blue2 {
+  static Color get blue2 {
     return isDark ? blue2Dark : blue2Light;
   }
 
-  static get yellow {
+  static Color get yellow {
     return isDark ? yellowDark : yellowLight;
   }
 
 
 
-  static get violet {
+  static Color get violet {
     return isDark ? violetDark : violetLight;
   }
 
-  static get green {
+  static Color get green {
     return isDark ? greenDark : greenLight;
   }
 
-  static get blue {
+  static Color get blue {
     return isDark ? blueDark : blueLight;
   }
 
-  static get red {
+  static Color get red {
     return isDark ? redDark : redLight;
   }
 
 
-  static get accent {
+  static Color get accent {
     return  isDark ? white : accentColor;
   }
 }

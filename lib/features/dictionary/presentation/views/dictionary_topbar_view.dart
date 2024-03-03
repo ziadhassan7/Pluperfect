@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pluperfect/core/localization/localization.dart';
 import '../../../../core/app_widgets/text_view/custom_text.dart';
 import '../../../../core/styles/color_theme.dart';
 import '../../../../core/styles/padding.dart';
@@ -19,7 +20,7 @@ class DictionaryTopBarView extends StatelessWidget {
               icon: Icon(Icons.arrow_back_ios_new_rounded, color: ColorTheme.text,),),
 
             CustomText(
-              "Saved Words",
+              LocalTxt.dictionaryPageTitle,
               color: ColorTheme.text,
               weight: FontWeight.bold,
               size: 35,

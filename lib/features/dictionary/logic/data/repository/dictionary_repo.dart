@@ -6,10 +6,6 @@ class DictionaryRepo {
 
   static Future<List<DictionaryModel>> getData() async {
 
-    List<DictionaryModel> data = await _dicClient.readAllElements();
-
-    print(data[2].id);
-
     return await _dicClient.readAllElements();
   }
 

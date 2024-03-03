@@ -23,7 +23,7 @@ class LocalTxt {
 
   //Home Screen widgets
   static final String dailyMissionsTitle = tr('daily_missions_title');
-  static final String dailyMissionsDescription = tr('dictionary_page_title');
+  static final String dailyMissionsDescription = tr('daily_missions_description');
 
   //Learning Sections
   static final String readSection = tr('read_section');

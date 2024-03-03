@@ -3,8 +3,8 @@ import 'package:pluperfect/core/styles/app_screen.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/home/presentation/views/home_top_bar.dart';
 import 'package:pluperfect/features/home/presentation/views/learning_sections_list.dart';
-import 'package:pluperfect/features/home/presentation/widgets/daily_missions_widget.dart';
-import 'package:pluperfect/features/home/presentation/widgets/dictionary_button_widget.dart';
+import 'package:pluperfect/features/home/presentation/views/daily_missions_widget.dart';
+import 'package:pluperfect/features/home/presentation/views/dictionary_button_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

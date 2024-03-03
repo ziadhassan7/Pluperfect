@@ -8,6 +8,7 @@ import 'dictionary_states.dart';
 class DictionaryCubit extends Cubit<DictionaryStates>{
   DictionaryCubit() : super(const IdleState());
 
+  ///Refresh current List
   refresh() async {
     emit(LoadingState());
 
@@ -28,14 +29,14 @@ class DictionaryCubit extends Cubit<DictionaryStates>{
 
     emit(LoadingState());
 
-    _addWord(word);
+    await _addWord(word);
 
     emit(IdleState(dataList: await DictionaryRepo.getData()));
   }
 
 
   _addWord(String word) async {
-    if(await _isExist(word)){
+    if(!await _isExist(word)){
       DictionaryRepo.saveItem(
           word: word,
           translation: await TranslateUtil.translate(word)

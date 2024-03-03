@@ -4,7 +4,6 @@ import 'package:pluperfect/core/future_loader_widget.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/dictionary/logic/data/repository/dictionary_repo.dart';
 import 'package:pluperfect/features/dictionary/presentation/views/word_item.dart';
-
 import '../../../../core/styles/color_theme.dart';
 
 class DictionaryPage extends StatelessWidget {

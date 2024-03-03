@@ -6,6 +6,7 @@ import 'package:pluperfect/core/styles/box_decoration.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/dictionary/presentation/cubit/dictionary_cubit.dart';
+import 'package:pluperfect/features/dictionary/presentation/dialogs/delete_word/delete_word_dialog.dart';
 import 'package:pluperfect/features/learning_sections/common/speaker_widget/cubit/speak_cubit.dart';
 import 'package:pluperfect/features/learning_sections/common/speaker_widget/speaker_widget.dart';
 
@@ -17,49 +18,56 @@ class WordItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-
-      key: Key(word),
-      background: Container(
-        alignment: AlignmentDirectional.centerEnd,
-        color: Colors.red,
-        child: const Padding(
-          padding: CustomPadding(horizontal: 20),
-          child: Icon(Icons.delete_rounded,
-            color: Colors.white,
-          ),
-        ),
-      ),
-      direction: DismissDirection.endToStart,
-      onDismissed: (direction) {
-        //delete item
-        context.read<DictionaryCubit>().delete(word);
-        //show scaffold
-        SnackBarUtil.show(context, message: "$word deleted");
+    return InkWell(
+      splashColor: ColorTheme.background,
+      onLongPress: (){
+        DeleteWordDialog.show(context, word);
       },
 
-      child: Container(
-          margin: const CustomPadding.all(8),
-          padding: const CustomPadding(horizontal: 16, bottom: 8),
-          decoration: CustomDecoration(backgroundColor: ColorTheme.onBackground, radius: 18),
+      child: Dismissible(
 
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  TextView(word),
-                  BlocProvider(
-                      create: (_)=> SpeakerCubit(),
-                      child: SpeakerWidget(text: word, size: 18,)
-                  )
-                ],
-              ),
+        key: Key(word),
+        background: Container(
+          alignment: AlignmentDirectional.centerEnd,
+          color: Colors.red,
+          child: const Padding(
+            padding: CustomPadding(horizontal: 20),
+            child: Icon(Icons.delete_rounded,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        direction: DismissDirection.endToStart,
+        onDismissed: (direction) {
+          //delete item
+          context.read<DictionaryCubit>().delete(word);
+          //show scaffold
+          SnackBarUtil.show(context, message: "$word deleted");
+        },
 
-              Align(
-                  alignment: Alignment.bottomRight,
-                  child: TextView(translation)),
-            ],
-          )),
+        child: Container(
+            margin: const CustomPadding.all(8),
+            padding: const CustomPadding(horizontal: 16, bottom: 8),
+            decoration: CustomDecoration(backgroundColor: ColorTheme.onBackground, radius: 18),
+
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    TextView(word),
+                    BlocProvider(
+                        create: (_)=> SpeakerCubit(),
+                        child: SpeakerWidget(text: word, size: 18,)
+                    )
+                  ],
+                ),
+
+                Align(
+                    alignment: Alignment.bottomRight,
+                    child: TextView(translation)),
+              ],
+            )),
+      ),
     );
   }
 }

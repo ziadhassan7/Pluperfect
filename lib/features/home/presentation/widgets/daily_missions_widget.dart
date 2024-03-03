@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pluperfect/core/localization/localization.dart';
 import '../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/styles/box_decoration.dart';
@@ -25,9 +26,9 @@ class DailyMissionsWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const TextView("Daily Missions", scale: TypeScale.headline2, weight: FontWeight.bold, color: white,),
+          TextView(LocalTxt.dailyMissionsTitle, scale: TypeScale.headline2, weight: FontWeight.bold, color: white,),
 
-          const TextView("Practice English for 5 mins every day.", weight: FontWeight.w300, color: white,),
+          TextView(LocalTxt.dailyMissionsDescription, weight: FontWeight.w300, color: white,),
 
           const Spacer(),
 

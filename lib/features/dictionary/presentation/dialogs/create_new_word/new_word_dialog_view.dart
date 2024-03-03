@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/features/dictionary/presentation/cubit/dictionary_cubit.dart';
+import '../../../../../core/constants/colors.dart';
 
 class NewWordDialogView extends StatelessWidget {
   const NewWordDialogView({super.key});
@@ -41,7 +42,7 @@ class NewWordDialogView extends StatelessWidget {
                 inputController.clear(); //clear current text input
                 Navigator.pop(context); //close dialog
               },
-              child: const TextView("Save"),
+              child: TextView("Save", color: ColorTheme.isDark ? black : white,),
             ),
           ),
         ),

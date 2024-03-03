@@ -8,6 +8,17 @@
   "save_button": "إحفظ",
   "speaker_button": "ناطق",
 
+  "dictionary_widget": "قاموس كلماتي",
+  "dictionary_page_title": "الكلمات المحفوطة",
+  "daily_missions_title": "المهمة اليومية",
+  "daily_missions_description": "تدرب شامل لمدة 5 دقائق يومياً.",
+
+  "add_new_word_dialog_title": "أدخل كلمة جديدة",
+  "add_new_word_dialog_button": "أحفظ",
+
+  "delete_word_dialog_title": "هل أنت متأكد إنك تريد حذف",
+  "delete_word_dialog_button": "إحذف",
+
   "read_section":"اقرأ\nبصوت عالي",
   "description1":"اقرأ بعض العبارات بصوتك لتدريب لسانك على نطق الكلمات.",
 
@@ -17,7 +28,7 @@
   "chat_section":"التحدث",
   "description3":"قم بإنشاء محادثة حقيقية مع الذكاء الإصطناعي للتدرب على التحدث بطلاقة.",
 
-  "thinking_section":"التفكير\nالنقدي",
+  "thinking_section":"أسئلة",
   "description4":"جاوب على الأسئلة!\nدرب عقلك على التفكير في جمل معقدة والتحدث بأريحية.",
 
   "dark_mode": "الوضع الليلي"

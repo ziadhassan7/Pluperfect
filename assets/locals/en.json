@@ -1,5 +1,4 @@
 {
-
   "home_button": "home",
   "profile_button": "profile",
 
@@ -8,16 +7,27 @@
   "save_button": "save",
   "speaker_button": "speaker",
 
+  "dictionary_widget": "Your Dictionary",
+  "dictionary_page_title": "Saved Words",
+  "daily_missions_title": "Daily Missions",
+  "daily_missions_description": "Practice English for 5 mins every day.",
+
+  "add_new_word_dialog_title": "Enter a new word",
+  "add_new_word_dialog_button": "Save",
+
+  "delete_word_dialog_title": "Are you sure you want to delete",
+  "delete_word_dialog_button": "Delete",
+
   "read_section":"Read Out\nLoud",
   "description1":"Read quotes shown on screen to train your tongue.",
 
   "hear_section":"Hear &\nRepeat",
   "description2":"You’re going to hear some quotes that you are going to repeat.",
 
-  "chat_section":"Conversation",
+  "chat_section":"Chat",
   "description3":"Have a real conversation with AI to help train on fast thinking.",
 
-  "thinking_section":"Critical\nThinking",
+  "thinking_section":"Questions",
   "description4":"Answer a question!\nThis will train your writing and thinking abilities.",
 
   "darkMode": "Dark Mode"

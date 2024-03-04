@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
 import '../../../../core/app_router.dart';
 import '../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../core/constants/colors.dart';
@@ -75,9 +76,9 @@ class LearningSectionsList extends StatelessWidget {
 
   Widget circularSymbol(String icon){
     return Container(
-      decoration: CustomDecoration(isCircular: true, backgroundColor: white.withOpacity(0.4)),
+      decoration: CustomDecoration(isCircular: true, backgroundColor: ColorTheme.isDark ? black.withOpacity(0.4) : white.withOpacity(0.4)),
       padding: const CustomPadding.all(12),
-      child: SvgPicture.asset(icon, width: 24, ),
+      child: SvgPicture.asset(icon, width: 24, color: ColorTheme.isDark ? white : black,),
     );
   }
 }

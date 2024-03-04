@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
 import '../../../../core/app_widgets/text_view/text_view.dart';
 
 class CircularScoreIndicator extends StatelessWidget {
@@ -24,7 +25,7 @@ class CircularScoreIndicator extends StatelessWidget {
   Color getIndicatorColor(int score){
 
     Color green = Colors.green;
-    Color yellow = Colors.yellow;
+    Color yellow = ColorTheme.middleScore;
     Color red = Colors.red;
 
     if(score > 80){

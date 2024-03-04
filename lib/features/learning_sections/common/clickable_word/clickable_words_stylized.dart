@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pluperfect/core/styles/color_theme.dart';
 import '../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../core/azure_speech/azure_model.dart';
 import '../pop_up_word_widget/context_menu.dart';
@@ -36,7 +37,7 @@ class ClickableWordsStylized extends StatelessWidget {
 
     //if the word has a score less than 50, it is wrong
     if(word.accuracyScore! >= 98) color =  Colors.green;
-    if(word.accuracyScore! >= 70 && word.accuracyScore! <98) color =  Colors.yellow;
+    if(word.accuracyScore! >= 70 && word.accuracyScore! <98) color =  ColorTheme.middleScore;
     if(word.accuracyScore! < 70) color =  Colors.red;
 
 

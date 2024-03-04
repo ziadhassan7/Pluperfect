@@ -57,19 +57,19 @@ class ColorTheme {
 
 
   static Color get violet {
-    return isDark ? violetDark : violetLight;
+    return isDark ? readDark : readPop;
   }
 
   static Color get green {
-    return isDark ? greenDark : greenLight;
+    return isDark ? hearDark : hearPop;
   }
 
   static Color get blue {
-    return isDark ? blueDark : blueLight;
+    return isDark ? chatDark : chatPop;
   }
 
   static Color get red {
-    return isDark ? redDark : redLight;
+    return isDark ? criticalDark : criticalPop;
   }
 
 

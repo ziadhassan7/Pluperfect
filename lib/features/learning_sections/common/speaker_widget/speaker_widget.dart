@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
+import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/common/speaker_widget/cubit/speak_cubit.dart';
 import 'package:pluperfect/features/learning_sections/common/speaker_widget/cubit/speaker_states.dart';
 import '../../../../core/localization/localization.dart';
@@ -41,7 +42,10 @@ class SpeakerWidget extends StatelessWidget {
         }
 
       // else: Loading
-        return const Center(child: CircularProgressIndicator(),);
+        return Center(child: Container(
+          margin: const CustomPadding.all(15),
+            width: size, height: size,
+            child: const CircularProgressIndicator()),);
       }
     );
   }

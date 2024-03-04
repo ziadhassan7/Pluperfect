@@ -6,6 +6,7 @@ import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/common/close_page_controller.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/constants/learning_sections.dart';
+import '../../../../core/styles/color_theme.dart';
 
 enum ButtonColors {
   violet, green, blue, red
@@ -34,7 +35,7 @@ class LearningSectionsButtons extends StatelessWidget {
               context,
               page: e.page,
               buttonTitle: e.title,
-              color: e.buttonColor,
+              color: e.buttonPopColor,
               isSelected: e == currentPage
           ))
         ],
@@ -49,15 +50,15 @@ class LearningSectionsButtons extends StatelessWidget {
         onTap: ()=> navigateToPage(context, page),
         child: Container(
             margin: const CustomPadding.all(2),
-            decoration: CustomDecoration(radius: 18, borderColor: color, borderWidth: 6, backgroundColor: color.withOpacity(0.1)),
+            decoration: CustomDecoration(radius: 18, borderColor: color, borderWidth: 6, backgroundColor: ColorTheme.isDark ? color.withOpacity(0.5) : color.withOpacity(0.1)),
 
             child: Center(child: Row(
               children: [
                 Padding(
                   padding: const CustomPadding(horizontal: 14),
-                  child: Icon(Icons.refresh_rounded, color: color,),
+                  child: Icon(Icons.refresh_rounded, color: ColorTheme.isDark ? white : color,),
                 ),
-                TextView("Retry", color: color, weight: FontWeight.bold, scale: TypeScale.caption,),
+                TextView("Retry", color: ColorTheme.isDark ? white : color, weight: FontWeight.bold, scale: TypeScale.caption,),
               ],
             ))),
       )

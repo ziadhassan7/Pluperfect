@@ -60,9 +60,12 @@ class LocalizationHandler {
   }
 
 
+  static Locale getCurrentLocal(BuildContext context){
+    return context.locale;
+  }
 
 
-  Locale getLocal(Locals local){
+  static Locale getLocalFromEnum(Locals local){
 
     switch (local){
 
@@ -71,6 +74,5 @@ class LocalizationHandler {
       case Locals.ar:
         return const Locale('en');
     }
-
   }
 }

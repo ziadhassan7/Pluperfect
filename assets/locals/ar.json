@@ -19,10 +19,10 @@
   "delete_word_dialog_title": "هل أنت متأكد إنك تريد حذف كلمة",
   "delete_word_dialog_button": "إحذف",
 
-  "read_section":"اقرأ\nبصوت عالي",
+  "read_section":"اقرأ بصوت\nعالي",
   "description1":"اقرأ بعض العبارات بصوتك لتدريب لسانك على نطق الكلمات.",
 
-  "hear_section":"اسمع &\nوكرر",
+  "hear_section":"اسمع و\nكرر",
   "description2":"أسمع العبارة وكررها كما قيلت.",
 
   "chat_section":"التحدث",

@@ -45,7 +45,7 @@ class LocalTxt {
 
 
   //Settings
-  static final String darkMode = tr('darkMode');
+  static final String darkMode = tr('dark_mode');
 
 
 //or you can use:

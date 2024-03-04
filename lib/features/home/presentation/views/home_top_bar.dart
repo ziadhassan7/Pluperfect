@@ -30,7 +30,7 @@ class HomeTopBar extends StatelessWidget {
               ),
 
               const SizedBox(width: 8,),
-              TextView("En", color: ColorTheme.isDark ? white : ColorTheme.blue2,),
+              TextView("En", color: ColorTheme.isDark ? white : ColorTheme.blue2, weight: FontWeight.bold,),
             ],
           ),
 
@@ -40,7 +40,7 @@ class HomeTopBar extends StatelessWidget {
             children: [
               SvgPicture.asset("assets/streak.svg", width: 20,),
               const SizedBox(width: 8,),
-              TextView("15", color: ColorTheme.isDark ? white : ColorTheme.blue2,),
+              TextView("15", color: ColorTheme.isDark ? white : ColorTheme.blue2, weight: FontWeight.bold,),
             ],
           ),
         ],

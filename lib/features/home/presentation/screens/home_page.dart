@@ -9,7 +9,7 @@ import 'package:pluperfect/features/home/presentation/views/dictionary_button_wi
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  static const double sizeBetween = 16;
+  static const double sizeBetween = 18;
 
 
   @override
@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
 
       child: Center(
         child: Padding(
-          padding: const CustomPadding(horizontal: 40, top: 25),
+          padding: const CustomPadding(horizontal: 28, top: 20),
 
           child: CustomScrollView(
             slivers: [
@@ -46,7 +46,6 @@ class HomePage extends StatelessWidget {
 
                     /// Learning Sections
                     LearningSectionsList(screenWidth: screenWidth,),
-
                   ],
                 ),
             )],

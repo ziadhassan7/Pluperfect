@@ -7,7 +7,7 @@ import '../custom_log.dart';
 
 
 /// Stream Chat Response
-/// [temperature] adding Randomness to the Responses
+/// [temperature] adding Randomness to the Responses. ranging from 0-2
 /// [seed] repeated requests with the same seed should return the same result.
 /// Do not use it if you want variety in answers!
 /// [n] represents how much chat completion choices to generate for each input message
@@ -49,6 +49,7 @@ class OpenAIClient {
       responseFormat: {"type": "json_object"},*/
       messages: [promptMessage],
       n: 1,
+      temperature: 1.5,
       maxTokens: 256,
     );
 

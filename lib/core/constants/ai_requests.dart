@@ -46,7 +46,7 @@ class QuoteRequest {
 
 class CriticalThinkingRequest {
 
-  static const String english = "Ask me an English interview question,"
+  static const String english = "Ask me any random question,"
       " make the question short and direct. Start by asking the question with no introductions.";
 
   static const String germany = "Stellen Sie mir eine Frage im Vorstellungsgespräch auf Englisch."

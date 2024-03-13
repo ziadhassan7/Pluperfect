@@ -1,5 +1,5 @@
 import 'package:pluperfect/core/constants/ai_requests.dart';
-import 'package:pluperfect/core/openai/openai_client.dart';
+import 'package:pluperfect/core/gemini/gemini_client.dart';
 
 
 class QuotesRepository {
@@ -9,7 +9,7 @@ class QuotesRepository {
   static Future<String?> getEnglishQuote(
       {required int minLength, required int maxLength,}) async {
 
-    return await OpenAIClient.getNormalResponse(
+    return await GeminiClient.textOnly(
         QuoteRequest.getEnglish(minLength, maxLength));
   }
 
@@ -18,7 +18,7 @@ class QuotesRepository {
   static Future<String?> getGermanQuote(
       {required int minLength, required int maxLength,}) async {
 
-    return await OpenAIClient.getNormalResponse(
+    return await GeminiClient.textOnly(
         QuoteRequest.getGermany(minLength, maxLength));
   }
 
@@ -26,7 +26,7 @@ class QuotesRepository {
   static Future<String?> getFrenchQuote(
       {required int minLength, required int maxLength,}) async {
 
-    return await OpenAIClient.getNormalResponse(
+    return await GeminiClient.textOnly(
         QuoteRequest.getFrench(minLength, maxLength));
   }
 
@@ -34,7 +34,7 @@ class QuotesRepository {
   static Future<String?> getItalianQuote(
       {required int minLength, required int maxLength,}) async {
 
-    return await OpenAIClient.getNormalResponse(
+    return await GeminiClient.textOnly(
         QuoteRequest.getItalian(minLength, maxLength));
   }
 
@@ -42,7 +42,7 @@ class QuotesRepository {
   static Future<String?> getChineseQuote(
       {required int minLength, required int maxLength,}) async {
 
-    return await OpenAIClient.getNormalResponse(
+    return await GeminiClient.textOnly(
         QuoteRequest.getChinese(minLength, maxLength));
   }
 

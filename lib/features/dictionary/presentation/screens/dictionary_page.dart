@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/features/dictionary/presentation/cubit/dictionary_states.dart';
-import 'package:pluperfect/features/dictionary/presentation/views/dictionary_topbar_view.dart';
 import 'package:pluperfect/features/dictionary/presentation/views/empty_dictionary_view.dart';
 import 'package:pluperfect/features/dictionary/presentation/widgets/word_item.dart';
+import '../../../../core/app_widgets/text_view/custom_text.dart';
+import '../../../../core/localization/localization.dart';
 import '../../../../core/styles/color_theme.dart';
 import '../cubit/dictionary_cubit.dart';
 import '../dialogs/create_new_word/new_word_dialog.dart';
@@ -37,7 +38,13 @@ class _DictionaryPageState extends State<DictionaryPage> {
             children: [
 
               ///                                                                 / Top bar
-              const DictionaryTopBarView(),
+              CustomText(
+                LocalTxt.dictionaryPageTitle,
+                color: ColorTheme.text,
+                weight: FontWeight.bold,
+                size: 35,
+                fontFamily: FontFamily.sansation,
+              ),
 
               ///                                                                 / Body
               BlocBuilder<DictionaryCubit, DictionaryStates>(

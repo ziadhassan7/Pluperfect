@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pluperfect/core/constants/colors.dart';
 import 'package:pluperfect/core/localization/localization.dart';
+import 'package:pluperfect/features/dictionary/presentation/screens/dictionary_page.dart';
 import 'package:pluperfect/features/profile/screens/profile_page.dart';
 import '../core/styles/color_theme.dart';
 import '../features/home/presentation/screens/home_page.dart';
@@ -31,6 +32,8 @@ class _IndexPageState extends State<IndexPage> {
 
         children: const [
           HomePage(),
+
+          DictionaryPage(),
 
           ProfilePage(),
         ],
@@ -66,16 +69,27 @@ class _IndexPageState extends State<IndexPage> {
               },
             ),
 
-          NavBarButton(
-            icon: "assets/profile.svg",
-            index: 1,
-            semanticLabel: LocalTxt.profileButton,
-            onTap: (newIndex) {
-              setState(() {
-                currentIndex = newIndex;
-              });
-            },
-          ),
+            NavBarButton(
+              icon: "assets/bookmark.svg",
+              index: 1,
+              semanticLabel: LocalTxt.bookmarksButton,
+              onTap: (newIndex) {
+                setState(() {
+                  currentIndex = newIndex;
+                });
+              },
+            ),
+
+            NavBarButton(
+              icon: "assets/profile.svg",
+              index: 1,
+              semanticLabel: LocalTxt.profileButton,
+              onTap: (newIndex) {
+                setState(() {
+                  currentIndex = newIndex;
+                });
+              },
+            ),
         ],
       )
     );

@@ -28,3 +28,14 @@ class LoadingState extends MicStates {
   @override
   List<Object> get props => [];
 }
+
+// Warning
+class WarningState extends MicStates {
+  static const String userMicPressWarning = "Hold to record";
+  final String? warning;
+
+  const WarningState({this.warning = userMicPressWarning});
+
+  @override
+  List<Object> get props => [];
+}

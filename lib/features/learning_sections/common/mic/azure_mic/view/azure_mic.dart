@@ -15,15 +15,15 @@ class AzureMic extends StatelessWidget {
   final Function(AzureModel) onResponse;
   final String? referenceText;
 
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onPanStart: (details){
-        context.read<AzureMicCubit>().listen();
+        context.read<AzureMicCubit>().startListening();
+
       },
       onPanEnd: (details){
-        context.read<AzureMicCubit>().stop(onResponse, compareTo: referenceText);
+        context.read<AzureMicCubit>().finishedListening(context, onResponse, compareTo: referenceText);
       },
 
       child: BlocBuilder<AzureMicCubit, MicStates>(
@@ -46,6 +46,11 @@ class AzureMic extends StatelessWidget {
             //Loading
             if(state is LoadingState){
               return LoadingWidget(color: color,);
+            }
+
+            //Warning
+            if(state is WarningState){
+              return idleButton();
             }
 
             //Idle

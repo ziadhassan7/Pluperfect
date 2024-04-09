@@ -18,20 +18,15 @@ class LearningSectionsList extends StatelessWidget {
 
     return Expanded(
 
-      child: GridView(
+      child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            childAspectRatio: 1.08,
-            crossAxisCount: 2, // Number of columns
-            mainAxisSpacing: 12, // Spacing between rows
-            crossAxisSpacing: 12, // Spacing between columns
-          ),
+
           children: [
             ...LearningSections.values.map((e) => button(
               context,
               buttonTitle: e.title,
-              icon: e.icon,
+              buttonDescription: e.description,
               page: e.page,
               color: e.buttonColor,
             ))
@@ -42,7 +37,7 @@ class LearningSectionsList extends StatelessWidget {
 
   Widget button(BuildContext context,
       {required String buttonTitle,
-        required String icon,
+      required String buttonDescription,
         required Widget page,
         required Color color}) {
 
@@ -50,23 +45,36 @@ class LearningSectionsList extends StatelessWidget {
       onTap: ()=> AppRouter.navigateTo(context, page),
 
       child: Container(
-        padding: const CustomPadding.all(18),
+        padding: const CustomPadding(horizontal: 18, vertical: 32),
+        margin: const CustomPadding(vertical: 4),
+
         decoration: CustomDecoration(
           backgroundColor: color,
           radius: 28,
         ),
 
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: [
+
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextView(buttonTitle, scale: TypeScale.headline1,),
+
+                  const SizedBox(height: 10,),
+
+                  TextView(buttonDescription, scale: TypeScale.description,),
+                ],
+              ),
+            ),
+
+            const SizedBox(width: 28,),
+
 
             Container(
                 alignment: Alignment.topRight,
-                child: circularSymbol(icon)),
-
-            const Spacer(),
-
-            TextView(buttonTitle, scale: TypeScale.headline1, ),
+                child: circularSymbol(icon: "assets/start.svg")),
           ],
         ),
       ),
@@ -74,7 +82,7 @@ class LearningSectionsList extends StatelessWidget {
   }
 
 
-  Widget circularSymbol(String icon){
+  Widget circularSymbol({required String icon}){
     return Container(
       decoration: CustomDecoration(isCircular: true, backgroundColor: ColorTheme.isDark ? black.withOpacity(0.4) : white.withOpacity(0.4)),
       padding: const CustomPadding.all(12),

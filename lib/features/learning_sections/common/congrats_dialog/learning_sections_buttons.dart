@@ -35,6 +35,7 @@ class LearningSectionsButtons extends StatelessWidget {
               context,
               page: e.page,
               buttonTitle: e.title,
+              buttonDescription: e.description,
               color: e.buttonPopColor,
               isSelected: e == currentPage
           ))
@@ -43,7 +44,7 @@ class LearningSectionsButtons extends StatelessWidget {
     );
   }
 
-  Widget button(BuildContext context, {required Widget page, required String buttonTitle, required Color color, required bool isSelected}){
+  Widget button(BuildContext context, {required Widget page, required String buttonTitle, required String buttonDescription, required Color color, required bool isSelected}){
     return
       isSelected
       ? InkWell(

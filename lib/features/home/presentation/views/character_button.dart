@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/core/constants/characters/cool_char.dart';
+import 'package:pluperfect/core/constants/colors.dart';
 import 'package:pluperfect/core/localization/localization.dart';
 import 'package:pluperfect/core/styles/box_decoration.dart';
 import 'package:pluperfect/core/styles/padding.dart';
@@ -21,7 +22,7 @@ class CharacterButton extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextView(LocalTxt.characterCustomizationTitle, scale: TypeScale.headline3,),
+          TextView(LocalTxt.characterCustomizationTitle, scale: TypeScale.headline3, color: black,),
           
           const SizedBox(height: 24,),
 

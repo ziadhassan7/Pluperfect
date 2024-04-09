@@ -5,6 +5,8 @@ import 'package:pluperfect/features/home/presentation/views/home_top_bar.dart';
 import 'package:pluperfect/features/home/presentation/views/learning_sections_list.dart';
 import 'package:pluperfect/features/home/presentation/views/dictionary_button_widget.dart';
 
+import '../views/character_button.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -33,10 +35,8 @@ class HomePage extends StatelessWidget {
 
                     const SizedBox(height: sizeBetween,),
 
-                    const SizedBox(height: sizeBetween,),
-
-                    /// Saved Words
-                    const DictionaryButtonWidget(),
+                    ///Character
+                    const CharacterButton(),
 
                     const SizedBox(height: sizeBetween,),
 
@@ -50,12 +50,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-
-
-  /*setLevel(BuildContext context, Level level){
-    context.read<QuotesCubit>().refresh(level);
-
-    AppRouter.navigateTo(context, TrainingPage(level));
-  }*/
 }

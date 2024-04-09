@@ -87,7 +87,7 @@ class _ChatPageState extends State<ChatPage> {
                           return SizedBox(
                             height: screenHeight*0.63,
                             child: SingleChildScrollView(
-                              child: TextView(state.input ?? "", scale: TypeScale.headline3,),
+                              child: TextView(state.input ?? "", scale: TypeScale.comforta,),
                             ),
                           );
                         }

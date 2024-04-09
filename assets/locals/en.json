@@ -18,17 +18,11 @@
   "delete_word_dialog_title": "Are you sure you want to delete",
   "delete_word_dialog_button": "Delete",
 
-  "read_section":"Read Out\nLoud",
-  "description1":"Read quotes shown on screen to train your tongue.",
-
-  "hear_section":"Hear &\nRepeat",
-  "description2":"You’re going to hear some quotes that you are going to repeat.",
+  "practice_section":"Practice",
+  "practice_section_description":"Train your pronunciation and learn new words.",
 
   "chat_section":"Chat",
-  "description3":"Have a real conversation with AI to help train on fast thinking.",
-
-  "thinking_section":"Questions",
-  "description4":"Answer a question!\nThis will train your writing and thinking abilities.",
+  "chat_section_description":"Have a natural conversation to practice speaking.",
 
   "dark_mode": "Dark Mode"
 }

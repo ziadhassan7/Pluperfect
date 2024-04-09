@@ -26,15 +26,11 @@ class LocalTxt {
   static final String dailyMissionsDescription = tr('daily_missions_description');
 
   //Learning Sections
-  static final String readSection = tr('read_section');
-  static final String hearSection = tr('hear_section');
+  static final String practiceSection = tr('practice_section');
   static final String chatSection = tr('chat_section');
-  static final String thinkingSection = tr('thinking_section');
 
-  static final String description1 = tr('description1');
-  static final String description2 = tr('description2');
-  static final String description3 = tr('description3');
-  static final String description4 = tr('description4');
+  static final String practiceSectionDescription = tr('practice_section_description');
+  static final String chatSectionDescription = tr('chat_section_description');
 
   //Dialogs
   static final String addNewWordDialogTitle = tr('add_new_word_dialog_title');

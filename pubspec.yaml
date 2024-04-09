@@ -83,7 +83,6 @@ flutter:
   assets:
     - .env
     - assets/
-    - assets/flags/
     - assets/locals/
     - assets/symbols/
     - assets/animations/

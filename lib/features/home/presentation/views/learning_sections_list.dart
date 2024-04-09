@@ -60,11 +60,11 @@ class LearningSectionsList extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextView(buttonTitle, scale: TypeScale.headline1,),
+                  TextView(buttonTitle, scale: TypeScale.headline2,),
 
                   const SizedBox(height: 10,),
 
-                  TextView(buttonDescription, scale: TypeScale.description,),
+                  TextView(buttonDescription, scale: TypeScale.caption, color: ColorTheme.text.withOpacity(0.5),),
                 ],
               ),
             ),

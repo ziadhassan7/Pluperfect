@@ -13,6 +13,7 @@ enum TypeScale {
   headline1,
   headline2,
   headline3,
+  comforta,
   arabic,
 }
 
@@ -101,8 +102,17 @@ class TextView extends StatelessWidget {
             fontFamily: FontFamily.sansation,
             maxLine: 1000,
             textDirection: direction ?? getTextDirectionBasedOnLocal(context));
-      //Headline3
+    //Headline3
       case TypeScale.headline3:
+        return CustomText(text,
+            color: color ?? ColorTheme.text,
+            weight: FontWeight.bold,
+            size: 30,
+            fontFamily: FontFamily.sansation,
+            maxLine: 1000,
+            textDirection: direction ?? getTextDirectionBasedOnLocal(context));
+      //Headline4
+      case TypeScale.comforta:
         return CustomText(text,
             color: color ?? ColorTheme.text,
             weight: FontWeight.bold,

@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
+import 'package:pluperfect/features/learning_sections/practice/presentation/cubit/practice_cubit.dart';
+import 'package:pluperfect/features/learning_sections/practice/presentation/cubit/practice_states.dart';
+import 'package:pluperfect/features/learning_sections/practice/presentation/screens/practice_page.dart';
 import 'package:pluperfect/features/learning_sections/common/bottom_toolbar/bottom_toolbar.dart';
 import 'package:pluperfect/features/learning_sections/common/hear_user_input_controller.dart';
-import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
 import 'package:pluperfect/features/learning_sections/common/steps_widget/cubit/steps_cubit.dart';
-import 'package:pluperfect/features/learning_sections/read/presentation/cubit/quotes/quote_states.dart';
 import '../../../../../core/constants/learning_sections.dart';
 import '../../../../../core/file_util.dart';
 import '../../../common/congrats_dialog/congrats_dialog.dart';
-import '../../logic/utils/level_controller.dart';
-import '../cubit/quotes/quote_cubit.dart';
+import '../../../common/level_controller.dart';
 
 
-class ReadBottomToolbar extends StatelessWidget {
-  const ReadBottomToolbar(this.level, this.color, {super.key, required this.maximumSteps});
+class PracticeBottomToolbar extends StatelessWidget {
+  const PracticeBottomToolbar(this.level, this.color, {super.key, required this.maximumSteps});
 
   final Level level;
   final Color color;
@@ -24,9 +24,8 @@ class ReadBottomToolbar extends StatelessWidget {
   static bool allowNextStep = false;
 
 
-  shouldAllowGoingNextStep(BuildContext context){
-    QuoteStates state = context.watch<QuoteCubit>().state;
-    if(state is ScoreState){
+  shouldAllowGoingNextStep(PracticeStates state){
+    if(state is QuoteScoreState){
       allowNextStep = true;
     } else {
       allowNextStep = false;
@@ -36,17 +35,19 @@ class ReadBottomToolbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    shouldAllowGoingNextStep(context);
+    PracticeStates state = context.watch<PracticeCubit>().state;
+
+    shouldAllowGoingNextStep(state);
 
     return BottomToolbar(
       color: color,
 
       //Mic
       micConfiguration: MicConfiguration(
-          referenceText: QuotesController.currentQuote,
+          referenceText: null,
           onResponse: (userInput){
             //trigger a score widget
-            context.read<QuoteCubit>().checkScore(userInput);
+            context.read<PracticeCubit>().checkScore(userInput, section: PracticePage.section);
           }
       ),
 
@@ -67,14 +68,14 @@ class ReadBottomToolbar extends StatelessWidget {
                   context,
                   maximumSteps: maximumSteps,
                   onStep: (){
-                    context.read<QuoteCubit>().refresh(level);
+                    context.read<PracticeCubit>().refresh(level, section: PracticePage.section);
                   },
                   onStepsCompleted: (){
-                    CongratsDialog(context, currentPage: LearningSections.readPage,);
+                    CongratsDialog(context, currentPage: LearningSections.chatPage,);
                   });
 
             } else {
-              context.read<QuoteCubit>().refresh(level);
+              context.read<PracticeCubit>().refresh(level, section: PracticePage.section);
             }
           }
       ),

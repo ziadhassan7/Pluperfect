@@ -7,7 +7,6 @@ import 'package:pluperfect/core/translate/translate_util.dart';
 import 'core/app_widgets/text_view/default_font.dart';
 import 'core/app_widgets/text_view/custom_text.dart';
 import 'core/hive/hive_client.dart';
-import 'core/openai/openai_client.dart';
 
 Future<void> init() async {
 
@@ -25,7 +24,6 @@ Future<void> init() async {
 
   //Init chat clients
   GeminiClient.init();
-  OpenAIClient.init();
 
   //Init TTS (TextToSpeech)
   TTSClient.init();

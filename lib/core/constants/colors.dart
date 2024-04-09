@@ -39,7 +39,7 @@ const Color blue2Dark = Color(0xFF1A2D70);
 const Color yellowLight = Color.fromRGBO(255, 174, 54, 1);
 const Color yellowDark = Color.fromRGBO(205, 107, 36, 1);
 
-const Color middleScoreLight = Color.fromRGBO(255, 128, 0, 1);
+const Color middleScoreLight = Color.fromRGBO(255, 166, 0, 1.0);
 const Color middleScoreDark = Colors.yellow;
 
 const Color accentColor = Color.fromRGBO(229, 101, 73, 1);

@@ -1,5 +1,8 @@
 import 'package:pluperfect/core/constants/ai_requests.dart';
 import 'package:pluperfect/core/gemini/gemini_client.dart';
+import 'package:pluperfect/core/quotes/quotes_model.dart';
+
+import '../../../../core/quotes/quotes_client.dart';
 
 
 class QuotesRepository {
@@ -9,8 +12,9 @@ class QuotesRepository {
   static Future<String?> getEnglishQuote(
       {required int minLength, required int maxLength,}) async {
 
-    return await GeminiClient.textOnly(
-        QuoteRequest.getEnglish(minLength, maxLength));
+    QuoteModel data = await QuotesClient.getQuote(minLength, maxLength);
+
+    return data.quotes?.first.content;
   }
 
 

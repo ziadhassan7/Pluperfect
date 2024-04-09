@@ -5,15 +5,12 @@ import 'package:pluperfect/bloc_color_theme.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/system_util.dart';
 import 'package:pluperfect/features/dictionary/presentation/cubit/dictionary_cubit.dart';
+import 'package:pluperfect/features/learning_sections/practice/presentation/cubit/speaking_cubit.dart';
 import 'package:pluperfect/features/learning_sections/common/steps_widget/cubit/steps_cubit.dart';
-import 'package:pluperfect/features/learning_sections/critical_thinking/presentation/cubit/questions/critical_cubit.dart';
 import 'package:pluperfect/index/index_page.dart';
 import 'core/bloc_observer.dart';
 import 'features/learning_sections/common/mic/azure_mic/cubit/mic_cubit.dart';
-import 'features/learning_sections/common/mic/openai_mic/cubit/openai_mic_cubit.dart';
 import 'features/learning_sections/conversation/presentation/cubit/chat_cubit.dart';
-import 'features/learning_sections/hear/presentation/cubit/hear/hear_cubit.dart';
-import 'features/learning_sections/read/presentation/cubit/quotes/quote_cubit.dart';
 import 'injection.dart' as inject;
 
 Future<void> main() async {
@@ -47,14 +44,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: ((context) => ThemeCubit()),),
-        BlocProvider(create: ((context) => QuoteCubit()),),
-        BlocProvider(create: ((context) => HearCubit()),),
-        BlocProvider(create: ((context) => OpenaiMicCubit()),),
         BlocProvider(create: ((context) => AzureMicCubit()),),
         BlocProvider(create: ((context) => ChatCubit()),),
-        BlocProvider(create: ((context) => CriticalThinkingCubit()),),
         BlocProvider(create: ((context) => StepsCubit()),),
         BlocProvider(create: ((context) => DictionaryCubit()),),
+        BlocProvider(create: ((context) => SpeakingCubit()),),
       ],
 
       child: MaterialApp(

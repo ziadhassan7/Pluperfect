@@ -46,7 +46,7 @@ class LearningSectionsList extends StatelessWidget {
 
       child: Container(
         padding: const CustomPadding(horizontal: 18, vertical: 32),
-        margin: const CustomPadding(vertical: 4),
+        margin: const CustomPadding(vertical: 6),
 
         decoration: CustomDecoration(
           backgroundColor: color,

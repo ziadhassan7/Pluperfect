@@ -10,6 +10,7 @@ class LocalTxt {
 
   //Buttons
   static final String homeButton = tr('home_button');
+  static final String bookmarksButton = tr('bookmarks_button');
   static final String profileButton = tr('profile_button');
 
   static final String closeButton = tr('close_button');
@@ -22,8 +23,7 @@ class LocalTxt {
   static final String dictionaryPageTitle = tr('dictionary_page_title');
 
   //Home Screen widgets
-  static final String dailyMissionsTitle = tr('daily_missions_title');
-  static final String dailyMissionsDescription = tr('daily_missions_description');
+  static final String characterCustomizationTitle = tr('character_customization_title');
 
   //Learning Sections
   static final String practiceSection = tr('practice_section');

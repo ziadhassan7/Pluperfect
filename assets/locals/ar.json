@@ -1,6 +1,7 @@
 {
 
   "home_button": "home",
+  "bookmarks_button": "قاموس كلماتي",
   "profile_button": "profile",
 
   "close_button": "إغلاق",
@@ -8,10 +9,8 @@
   "save_button": "إحفظ",
   "speaker_button": "السماعات الناطقة",
 
-  "dictionary_widget": "قاموس كلماتي",
   "dictionary_page_title": "الكلمات المحفوظة",
-  "daily_missions_title": "المهمة اليومية",
-  "daily_missions_description": "تدريب شامل لمدة 5 دقائق يومياً.",
+  "character_customization_title": "إصنع شخصيتك",
 
   "add_new_word_dialog_title": "أدخل كلمة جديدة",
   "add_new_word_dialog_button": "أحفظ",

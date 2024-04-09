@@ -1,5 +1,6 @@
 {
   "home_button": "home",
+  "bookmarks_button": "Dictionary",
   "profile_button": "profile",
 
   "close_button": "close",
@@ -7,10 +8,8 @@
   "save_button": "save",
   "speaker_button": "speaker",
 
-  "dictionary_widget": "Your Dictionary",
   "dictionary_page_title": "Saved Words",
-  "daily_missions_title": "Daily Missions",
-  "daily_missions_description": "Practice English for 5 mins every day.",
+  "character_customization_title": "Customize\nYour Character",
 
   "add_new_word_dialog_title": "Enter a new word",
   "add_new_word_dialog_button": "Save",

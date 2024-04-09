@@ -46,7 +46,7 @@ class WordItem extends StatelessWidget {
         },
 
         child: Container(
-            margin: const CustomPadding.all(8),
+            margin: const CustomPadding(vertical: 8, horizontal: 20),
             padding: const CustomPadding(horizontal: 16, bottom: 8),
             decoration: CustomDecoration(backgroundColor: ColorTheme.onBackground, radius: 18),
 

@@ -39,8 +39,8 @@ class _DictionaryPageState extends State<DictionaryPage> {
 
             ///                                                               / Title
             Container(
-              alignment: AlignmentDirectional.center,
-              padding: const CustomPadding(vertical: 18, horizontal: 18),
+              alignment: AlignmentDirectional.topStart,
+              padding: const CustomPadding(vertical: 18, horizontal: 30),
 
               child: CustomText(
                 LocalTxt.dictionaryPageTitle,
@@ -63,15 +63,19 @@ class _DictionaryPageState extends State<DictionaryPage> {
                   if(state.dataList != null){
                     ///List of words
                     return Expanded(
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: state.dataList!.length,
-                        itemBuilder: (context, index){
-                          return WordItem(
-                            word: state.dataList![index].id,
-                            translation: state.dataList![index].translation,
-                          );
-                        },
+                      child: SingleChildScrollView(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          reverse: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: state.dataList!.length,
+                          itemBuilder: (context, index){
+                            return WordItem(
+                              word: state.dataList![index].id,
+                              translation: state.dataList![index].translation,
+                            );
+                          },
+                        ),
                       ),
                     );
 

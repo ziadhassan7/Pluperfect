@@ -25,7 +25,7 @@ class CircularScoreIndicator extends StatelessWidget {
   Color getIndicatorColor(int score){
 
     Color green = Colors.green;
-    Color yellow = ColorTheme.middleScore;
+    Color yellow = ColorTheme.yellow;
     Color red = Colors.red;
 
     if(score > 80){

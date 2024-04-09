@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/dictionary/presentation/cubit/dictionary_states.dart';
 import 'package:pluperfect/features/dictionary/presentation/views/empty_dictionary_view.dart';
 import 'package:pluperfect/features/dictionary/presentation/widgets/word_item.dart';
@@ -33,51 +34,58 @@ class _DictionaryPageState extends State<DictionaryPage> {
       backgroundColor: ColorTheme.background,
 
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
+        child: Column(
+          children: [
 
-              ///                                                                 / Top bar
-              CustomText(
+            ///                                                               / Title
+            Container(
+              alignment: AlignmentDirectional.center,
+              padding: const CustomPadding(vertical: 18, horizontal: 18),
+
+              child: CustomText(
                 LocalTxt.dictionaryPageTitle,
                 color: ColorTheme.text,
                 weight: FontWeight.bold,
                 size: 35,
                 fontFamily: FontFamily.sansation,
               ),
+            ),
 
-              ///                                                                 / Body
-              BlocBuilder<DictionaryCubit, DictionaryStates>(
-                builder: (context, state){
+            ///                                                               / Body
+            BlocBuilder<DictionaryCubit, DictionaryStates>(
+              builder: (context, state){
 
-                  if(state is LoadingState){
-                    return const Center(child: CircularProgressIndicator());
-                  }
-
-                  if(state is IdleState){
-                    if(state.dataList != null){
-                      ///List of words
-                      return Column(
-                        children: [
-                          ...state.dataList!.map((e) => WordItem(
-                            word: e.id,
-                            translation: e.translation,
-                          ))
-                        ],
-                      );
-
-                    } else {
-
-                      ///Empty List
-                      return const EmptyDictionaryView();
-                    }
-                  }
-
-                  return const EmptyDictionaryView();
+                if(state is LoadingState){
+                  return const Center(child: CircularProgressIndicator());
                 }
-              ),
-            ],
-          ),
+
+                if(state is IdleState){
+                  if(state.dataList != null){
+                    ///List of words
+                    return Expanded(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: state.dataList!.length,
+                        itemBuilder: (context, index){
+                          return WordItem(
+                            word: state.dataList![index].id,
+                            translation: state.dataList![index].translation,
+                          );
+                        },
+                      ),
+                    );
+
+                  } else {
+
+                    ///Empty List
+                    return const EmptyDictionaryView();
+                  }
+                }
+
+                return const EmptyDictionaryView();
+              }
+            ),
+          ],
         ),
       ),
 

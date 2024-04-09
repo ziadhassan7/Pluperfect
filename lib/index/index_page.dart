@@ -46,7 +46,7 @@ class _IndexPageState extends State<IndexPage> {
 
         backgroundColor: ColorTheme.onBackground,
 
-        padding: const EdgeInsets.symmetric(horizontal: 70),
+        padding: const EdgeInsets.symmetric(horizontal: 50),
 
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(30.0),
@@ -70,7 +70,7 @@ class _IndexPageState extends State<IndexPage> {
             ),
 
             NavBarButton(
-              icon: "assets/bookmark.svg",
+              icon: "assets/dictionary.svg",
               index: 1,
               semanticLabel: LocalTxt.bookmarksButton,
               onTap: (newIndex) {
@@ -82,7 +82,7 @@ class _IndexPageState extends State<IndexPage> {
 
             NavBarButton(
               icon: "assets/profile.svg",
-              index: 1,
+              index: 2,
               semanticLabel: LocalTxt.profileButton,
               onTap: (newIndex) {
                 setState(() {

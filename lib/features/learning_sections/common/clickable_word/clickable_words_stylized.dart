@@ -37,7 +37,7 @@ class ClickableWordsStylized extends StatelessWidget {
 
     //if the word has a score less than 50, it is wrong
     if(word.accuracyScore! >= 80) color =  Colors.green;
-    if(word.accuracyScore! >= 68 && word.accuracyScore! <80) color =  ColorTheme.middleScore;
+    if(word.accuracyScore! >= 68 && word.accuracyScore! <80) color =  ColorTheme.yellow;
     if(word.accuracyScore! < 68) color =  Colors.red;
 
 

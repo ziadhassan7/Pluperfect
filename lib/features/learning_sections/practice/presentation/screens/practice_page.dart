@@ -80,7 +80,7 @@ class PracticePage extends StatelessWidget {
 
 
                         /// Quotes
-                        PracticeBox(level,),
+                        const PracticeBox(),
 
 
                         const Spacer(),
@@ -90,7 +90,7 @@ class PracticePage extends StatelessWidget {
 
                         /// Navigation
                         PracticeBottomToolbar(
-                          level, color, maximumSteps: numberOfSteps,),
+                          color, maximumSteps: numberOfSteps,),
 
                       ],
                     ),

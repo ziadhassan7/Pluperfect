@@ -8,10 +8,10 @@ class QuotesClient {
   static const String _baseUrl = 'https://api.quotable.io';
   static const String _randomEndpoint = '/quotes/random';
 
-  /// Use Weather Api
+  /// Quotes Api
   static final DioClient _dio = DioClient(_baseUrl);
 
-  // Get Today's weather from location
+  // Get a random quote
   static Future<QuoteModel> getQuote(int minLength, int maxLength) async {
 
     try {

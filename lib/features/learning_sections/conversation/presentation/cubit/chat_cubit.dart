@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/azure_speech/azure_model.dart';
 import '../../../../../../core/custom_log.dart';
 import '../../../../../../core/text_to_speech/text_to_speech_client.dart';
-import '../../../common/sentence_controller.dart';
+import '../../../common/words_handler/words_polisher.dart';
 import '../../logic/utils/chat_input_controller.dart';
 import 'chat_state.dart';
 
@@ -39,7 +39,7 @@ class ChatCubit extends Cubit<ChatStates>{
       if(input != null){
         //Get Gemini response
         String? response = await ChatInputController.getChatAnswer(input);
-        String? processedResponse = SentenceController.polishText(response);
+        String? processedResponse = WordsPolisher.removeSymbolsFromText(response);
         //speak
         await _speak(processedResponse);
         //on Speak Complete , emit response

@@ -17,38 +17,7 @@ class PracticeCubit extends Cubit<PracticeStates>{
   PracticeCubit() : super(LoadingState());
 
 
-  refresh(Level level, {required PracticeSection section}) async {
-
-    LevelController.setLevel(level);
-
-    emit(LoadingState());
-
-    switch(section){
-
-      case PracticeSection.quote:
-        String? quoteBody = await _getQuote();
-        if(quoteBody != null) emit(QuoteState(quoteBody));
-
-        break;
-
-      case PracticeSection.hear:
-        String? quoteBody = await _getQuote();
-        if(quoteBody != null) emit(HearState(quoteBody)); //HearState
-
-        break;
-    }
-
-  }
-
-
   checkScore(AzureModel userInput, {required PracticeSection section}) {
-
-    _checkQuoteScore(userInput);
-
-  }
-
-
-  _checkQuoteScore(AzureModel userInput) {
 
     List<Words>? words = userInput.nBest?.first.words;
 
@@ -57,7 +26,36 @@ class PracticeCubit extends Cubit<PracticeStates>{
       List<Words> processedWords = SentenceController.processCorrectWords(words, QuotesController.currentQuote!);
       emit(QuoteScoreState(userInput, processedWords));
     }
+
   }
+
+  refresh({required PracticeSection section}) async {
+
+    emit(LoadingState());
+
+    switch(section){
+
+      case PracticeSection.quote:
+        _emitQuoteState();
+        break;
+
+      case PracticeSection.hear:
+        _emitHearState();
+        break;
+    }
+
+  }
+
+  _emitQuoteState() async {
+    String? quoteBody = await _getQuote();
+    if(quoteBody != null) emit(QuoteState(quoteBody)); //QuoteState
+  }
+
+  _emitHearState() async {
+    String? quoteBody = await _getQuote();
+    if(quoteBody != null) emit(HearState(quoteBody)); //HearState
+  }
+
 
 
   static Future<String?> _getQuote(){

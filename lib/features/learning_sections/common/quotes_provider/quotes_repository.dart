@@ -1,7 +1,4 @@
-import 'package:pluperfect/core/constants/ai_requests.dart';
-import 'package:pluperfect/core/gemini/gemini_client.dart';
 import 'package:pluperfect/core/quotes/quotes_model.dart';
-
 import '../../../../core/custom_log.dart';
 import '../../../../core/quotes/quotes_client.dart';
 

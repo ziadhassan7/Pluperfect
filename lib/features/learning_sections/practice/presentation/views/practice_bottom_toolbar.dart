@@ -7,10 +7,7 @@ import 'package:pluperfect/features/learning_sections/practice/presentation/cubi
 import 'package:pluperfect/features/learning_sections/practice/presentation/screens/practice_page.dart';
 import 'package:pluperfect/features/learning_sections/common/bottom_toolbar/bottom_toolbar.dart';
 import 'package:pluperfect/features/learning_sections/common/hear_user_input_controller.dart';
-import 'package:pluperfect/features/learning_sections/common/steps_widget/cubit/steps_cubit.dart';
-import '../../../../../core/constants/learning_sections.dart';
 import '../../../../../core/file_util.dart';
-import '../../../common/congrats_dialog/congrats_dialog.dart';
 import '../../../common/level_controller.dart';
 
 

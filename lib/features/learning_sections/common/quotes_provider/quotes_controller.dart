@@ -1,5 +1,4 @@
 import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_repository.dart';
-import '../../../../core/hive/shared_pref/languages_pref.dart';
 
 class QuotesController {
 

@@ -6,7 +6,7 @@ import 'package:pluperfect/features/learning_sections/practice/presentation/cubi
 import 'package:pluperfect/features/learning_sections/practice/presentation/cubit/practice_states.dart';
 import 'package:pluperfect/features/learning_sections/practice/presentation/screens/practice_page.dart';
 import 'package:pluperfect/features/learning_sections/common/bottom_toolbar/bottom_toolbar.dart';
-import 'package:pluperfect/features/learning_sections/common/hear_user_input_controller.dart';
+import 'package:pluperfect/features/learning_sections/practice/logic/utils/hear_user_input_controller.dart';
 import '../../../../../core/file_util.dart';
 
 

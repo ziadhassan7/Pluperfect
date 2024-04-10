@@ -6,7 +6,7 @@ import 'package:pluperfect/features/learning_sections/practice/presentation/cubi
 import 'package:pluperfect/features/learning_sections/practice/presentation/screens/practice_page.dart';
 import 'package:pluperfect/features/learning_sections/practice/presentation/widget/quotes_widget.dart';
 import 'package:pluperfect/features/learning_sections/common/clickable_word/clickable_words_stylized.dart';
-import 'package:pluperfect/features/learning_sections/common/decoration_container.dart';
+import 'package:pluperfect/features/learning_sections/practice/presentation/widget/decoration_container.dart';
 import '../../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../../core/styles/padding.dart';
 import '../../../common/clickable_word/clickable_word.dart';

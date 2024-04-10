@@ -1,5 +1,5 @@
-import '../../../core/file_util.dart';
-import '../../../core/audio/audio_client.dart';
+import '../../../../../core/file_util.dart';
+import '../../../../../core/audio/audio_client.dart';
 
 class HearUserInputController {
 

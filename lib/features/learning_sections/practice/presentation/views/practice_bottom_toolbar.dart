@@ -8,13 +8,11 @@ import 'package:pluperfect/features/learning_sections/practice/presentation/scre
 import 'package:pluperfect/features/learning_sections/common/bottom_toolbar/bottom_toolbar.dart';
 import 'package:pluperfect/features/learning_sections/common/hear_user_input_controller.dart';
 import '../../../../../core/file_util.dart';
-import '../../../common/level_controller.dart';
 
 
 class PracticeBottomToolbar extends StatelessWidget {
-  const PracticeBottomToolbar(this.level, this.color, {super.key, required this.maximumSteps});
+  const PracticeBottomToolbar(this.color, {super.key, required this.maximumSteps});
 
-  final Level level;
   final Color color;
   final int maximumSteps;
 
@@ -60,7 +58,7 @@ class PracticeBottomToolbar extends StatelessWidget {
           icon: 'assets/next_button.svg',
           onPressed: () {
 
-            context.read<PracticeCubit>().refresh(level, section: PracticePage.section);
+            context.read<PracticeCubit>().refresh(section: PracticePage.section);
           }
       ),
 

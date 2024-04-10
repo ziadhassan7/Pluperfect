@@ -10,27 +10,24 @@ import 'package:pluperfect/features/learning_sections/common/decoration_containe
 import '../../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../../core/styles/padding.dart';
 import '../../../common/clickable_word/clickable_word.dart';
-import '../../../common/level_controller.dart';
 import '../widget/hear_widget.dart';
 
 class PracticeBox extends StatefulWidget {
-  const PracticeBox(this.level, {super.key});
-
-  final Level level;
+  const PracticeBox({super.key});
 
   @override
   State<PracticeBox> createState() => _PracticeBoxState();
 }
 
-class _PracticeBoxState extends State<PracticeBox> {
 
+class _PracticeBoxState extends State<PracticeBox> {
 
   @override
   void initState() {
     super.initState();
     //Initial quote
     WidgetsBinding.instance
-        .addPostFrameCallback((_) => context.read<PracticeCubit>().refresh(widget.level, section: PracticePage.section));
+        .addPostFrameCallback((_) => context.read<PracticeCubit>().refresh(section: PracticePage.section));
   }
 
   @override

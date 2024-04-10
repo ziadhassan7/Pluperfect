@@ -63,20 +63,7 @@ class PracticeBottomToolbar extends StatelessWidget {
           icon: 'assets/next_button.svg',
           onPressed: () {
 
-            if(allowNextStep){
-              context.read<StepsCubit>().nextStep(
-                  context,
-                  maximumSteps: maximumSteps,
-                  onStep: (){
-                    context.read<PracticeCubit>().refresh(level, section: PracticePage.section);
-                  },
-                  onStepsCompleted: (){
-                    CongratsDialog(context, currentPage: LearningSections.chatPage,);
-                  });
-
-            } else {
-              context.read<PracticeCubit>().refresh(level, section: PracticePage.section);
-            }
+            context.read<PracticeCubit>().refresh(level, section: PracticePage.section);
           }
       ),
 

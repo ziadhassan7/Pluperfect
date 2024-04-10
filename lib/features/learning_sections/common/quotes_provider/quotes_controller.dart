@@ -14,20 +14,7 @@ class QuotesController {
     const int min = 0;
     const int max = 50;
 
-    LanguageCode languageCode = LanguagePref.getLearningLanguage();
-
-    switch(languageCode){
-      case LanguageCode.en:
-        _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
-      case LanguageCode.gr:
-        _currentQuote = await QuotesRepository.getGermanQuote(minLength: min, maxLength: max);
-      case LanguageCode.fr:
-        _currentQuote = await QuotesRepository.getFrenchQuote(minLength: min, maxLength: max);
-      case LanguageCode.it:
-        _currentQuote = await QuotesRepository.getItalianQuote(minLength: min, maxLength: max);
-      case LanguageCode.ch:
-        _currentQuote = await QuotesRepository.getChineseQuote(minLength: min, maxLength: max);
-    }
+    _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
 
     return _currentQuote;
   }
@@ -39,20 +26,7 @@ class QuotesController {
     const int min = 50;
     const int max = 120;
 
-    LanguageCode languageCode = LanguagePref.getLearningLanguage();
-
-    switch(languageCode){
-      case LanguageCode.en:
-        _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
-      case LanguageCode.gr:
-        _currentQuote = await QuotesRepository.getGermanQuote(minLength: min, maxLength: max);
-      case LanguageCode.fr:
-        _currentQuote = await QuotesRepository.getFrenchQuote(minLength: min, maxLength: max);
-      case LanguageCode.it:
-        _currentQuote = await QuotesRepository.getItalianQuote(minLength: min, maxLength: max);
-      case LanguageCode.ch:
-        _currentQuote = await QuotesRepository.getChineseQuote(minLength: min, maxLength: max);
-    }
+    _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
 
     return _currentQuote;
   }
@@ -64,20 +38,7 @@ class QuotesController {
     const int min = 120;
     const int max = 180;
 
-    LanguageCode languageCode = LanguagePref.getLearningLanguage();
-
-    switch(languageCode){
-      case LanguageCode.en:
-        _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
-      case LanguageCode.gr:
-        _currentQuote = await QuotesRepository.getGermanQuote(minLength: min, maxLength: max);
-      case LanguageCode.fr:
-        _currentQuote = await QuotesRepository.getFrenchQuote(minLength: min, maxLength: max);
-      case LanguageCode.it:
-        _currentQuote = await QuotesRepository.getItalianQuote(minLength: min, maxLength: max);
-      case LanguageCode.ch:
-        _currentQuote = await QuotesRepository.getChineseQuote(minLength: min, maxLength: max);
-    }
+    _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
 
     return _currentQuote;
   }

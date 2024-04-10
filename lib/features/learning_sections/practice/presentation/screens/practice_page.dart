@@ -38,23 +38,25 @@ class PracticePage extends StatelessWidget {
           child: BlocProvider(
             create: (context) => PracticeCubit(),
 
-            child: BlocListener<StepsCubit, StepsState>(
+            child: BlocBuilder<StepsCubit, StepsState>(
+              /*
               listener: (context, states){
                 if(states is NextState){
                   print("debug: ${states.currentStep}");
                   print("debug: ${section}");
 
-                  switch(states.currentStep){
-                    case 1:
-                    case 2:
-                    case 3:
-                      section = PracticeSection.hear;
-                      break;
+                  if(states.currentStep >= 3){
+                    section = PracticeSection.hear;
+                  } else {
+                    section = PracticeSection.quote;
                   }
                 }
               },
+              */
 
-              child: Stack(
+
+              builder: (BuildContext context, StepsState state) {
+                return Stack(
                   children: [
 
                     const ScreenTouchDetector(),
@@ -64,12 +66,14 @@ class PracticePage extends StatelessWidget {
 
                         ///Top Bar
                         Padding(
-                          padding: const CustomPadding(top: 26, bottom: 12, horizontal: 28),
+                          padding: const CustomPadding(
+                              top: 26, bottom: 12, horizontal: 28),
                           child: Row(
                             children: [
                               const ExitButton(),
 
-                              StepsWidget(numberOfSteps: numberOfSteps, color: color),
+                              StepsWidget(
+                                  numberOfSteps: numberOfSteps, color: color),
                             ],
                           ),
                         ),
@@ -85,12 +89,14 @@ class PracticePage extends StatelessWidget {
 
 
                         /// Navigation
-                        PracticeBottomToolbar(level, color, maximumSteps: numberOfSteps,),
+                        PracticeBottomToolbar(
+                          level, color, maximumSteps: numberOfSteps,),
 
                       ],
                     ),
                   ],
-                ),
+                );
+              }
             )
           ),
         ),

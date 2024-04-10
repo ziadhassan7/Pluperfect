@@ -12,9 +12,7 @@ class TranslateUtil {
     String to = _getToLangCode();
 
     // Translate
-    var translation2 = await _translator.translate(text, from: 'auto', to: 'ar');
-
-    print("Loook $translation2");
+    var translation2 = await _translator.translate(text, from: source, to: to);
 
     return translation2.text;
   }
@@ -25,8 +23,8 @@ class TranslateUtil {
   }
 
   static _getSourceLangCode(){
-    LanguageCode langCode = LanguagePref.getLearningLanguage();
-    return langCode.name;
+    String langCode = 'en';
+    return langCode;
   }
 
   static _getToLangCode(){

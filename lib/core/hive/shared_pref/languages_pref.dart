@@ -18,16 +18,6 @@ class LanguagePref{
 
   static final Box _hiveBox = HiveClient.instance.globalBox;
 
-  ///                                                                           / Learning Language
-  static Future<void> updateLearningLanguage() async {
-    LanguageCode en = LanguageCode.en;
-    await _hiveBox.put(LEARNING_LANGUAGE, en);
-  }
-
-  static LanguageCode getLearningLanguage() {
-    return _hiveBox.get(LEARNING_LANGUAGE, defaultValue: LanguageCode.en);
-  }
-
 
   ///                                                                           / App Language
   static Future<void> updateAppLanguage() async {

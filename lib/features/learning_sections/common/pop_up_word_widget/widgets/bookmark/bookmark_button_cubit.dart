@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pluperfect/core/hive/shared_pref/languages_pref.dart';
 import '../../../../../dictionary/logic/data/local_db/dictionary_client.dart';
 import '../../../../../dictionary/logic/model/dictionary_model.dart';
 
@@ -32,7 +31,7 @@ class BookmarkButtonCubit extends Cubit<bool>{
     DictionaryModel model = DictionaryModel(
       id: word,
       translation: translation,
-      languageLocal: LanguagePref.getLearningLanguage().name,
+      languageLocal: 'en',
     );
 
     if(await _isExist(word)){

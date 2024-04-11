@@ -46,7 +46,7 @@ class ColorTheme {
   }
 
   static Color get yellow {
-    return isDark ? middleScoreDark : middleScoreLight;
+    return isDark ? yellowDark : yellowLight;
   }
 
 

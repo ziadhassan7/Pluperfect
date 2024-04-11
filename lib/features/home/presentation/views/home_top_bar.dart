@@ -41,7 +41,7 @@ class HomeTopBar extends StatelessWidget {
           SvgPicture.asset("assets/level.svg", width: 24,),
 
           const SizedBox(width: 8,),
-          TextView("English", color: ColorTheme.isDark ? black : ColorTheme.yellow, weight: FontWeight.bold,),
+          const TextView("Beginner", color: yellowLight, weight: FontWeight.bold,),
         ],
       ),
     );

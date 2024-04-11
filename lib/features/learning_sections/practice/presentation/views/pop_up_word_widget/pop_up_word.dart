@@ -20,13 +20,13 @@ class ContextMenu{
 
 
   static double _getVerticalPosition(TapUpDetails details){
-    double verticalPosition = details.globalPosition.dy - 80 + (120);
+    double verticalPosition = details.globalPosition.dy + 20;
 
     return verticalPosition;
   }
 
   static double _getHorizontalPosition(TapUpDetails details){
-    double horizontalPosition = details.localPosition.dx;
+    double horizontalPosition = details.globalPosition.dx - 40;
 
     // Break point is position 150
     if(horizontalPosition > 150) {

@@ -33,7 +33,16 @@ class PracticeCubit extends Cubit<PracticeStates>{
 
     emit(LoadingState());
 
-    _emitQuoteState();
+    switch(section){
+
+      case PracticeSection.quote:
+        _emitQuoteState();
+        break;
+
+      case PracticeSection.hear:
+        _emitHearState();
+        break;
+    }
 
   }
 

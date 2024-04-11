@@ -46,16 +46,18 @@ class BottomToolbar extends StatelessWidget {
         ),),
 
 
-      // leftButton , Mic, NextButton
+      // Buttons
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
 
+          //left Button
           showWidget(
             isVisible: visibility(state),
             child: leftButton,
           ),
 
+          //Mic
           Expanded(
             child: Center(child: AzureMic(
               color: color,
@@ -64,6 +66,7 @@ class BottomToolbar extends StatelessWidget {
             )),
           ),
 
+          //right Button
           nextButton ?? const SizedBox.shrink(),
         ],
       ),

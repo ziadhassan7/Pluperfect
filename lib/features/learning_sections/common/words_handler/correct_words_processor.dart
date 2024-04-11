@@ -3,7 +3,7 @@ import '../../../../../core/azure_speech/azure_model.dart';
 
 class CorrectWordsProcessor {
 
-
+  //Get a list words with its score
   static List<Words> getModifiedWords(List<Words> userWords, String quote){
 
     List<Words> modifiedSentence = [];
@@ -13,7 +13,7 @@ class CorrectWordsProcessor {
     for(int i = 0; i < quoteWords.length; i++){
 
       try{
-        modifiedSentence.add(_getMatchingWords(userWords, quoteWords[i], i));
+        modifiedSentence.add(_getScoredWord(userWords, quoteWords[i], i));
 
       } catch (e) {
         continue;
@@ -23,8 +23,11 @@ class CorrectWordsProcessor {
     return modifiedSentence;
   }
 
-
-  static Words _getMatchingWords(List<Words> userInputWords, String targetWord, int targetIndex){
+  //Compares each word (from the quote),
+  //to the equivalent word of the user's spoken text
+  // (compares each word to the three words in front of it)
+  // (compare SpokenWord With Quote)
+  static Words _getScoredWord(List<Words> userInputWords, String targetWord, int targetIndex){
 
     try{
 
@@ -46,6 +49,7 @@ class CorrectWordsProcessor {
         return Words(word: targetWord, accuracyScore: wordThatMatched.accuracyScore, errorType: wordThatMatched.errorType);
       }
 
+    //Not Matched: get the word with a score of 0
     } catch (e){
       return Words(word: targetWord, accuracyScore: 0.0, errorType: "");
     }

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
-import 'package:pluperfect/features/learning_sections/common/speaker_widget/cubit/speaker_states.dart';
+import 'package:pluperfect/core/speaker_widget/cubit/speaker_states.dart';
+import '../../../features/learning_sections/practice/logic/quotes_provider/quotes_controller.dart';
 import '../util/speaker_controller.dart';
 
 

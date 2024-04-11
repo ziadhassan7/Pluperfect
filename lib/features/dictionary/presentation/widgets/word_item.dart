@@ -7,8 +7,8 @@ import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/dictionary/presentation/cubit/dictionary_cubit.dart';
 import 'package:pluperfect/features/dictionary/presentation/dialogs/delete_word/delete_word_dialog.dart';
-import 'package:pluperfect/features/learning_sections/common/speaker_widget/cubit/speak_cubit.dart';
-import 'package:pluperfect/features/learning_sections/common/speaker_widget/speaker_widget.dart';
+import '../../../../core/speaker_widget/cubit/speak_cubit.dart';
+import '../../../../core/speaker_widget/speaker_widget.dart';
 
 class WordItem extends StatelessWidget {
   const WordItem({super.key, required this.word, required this.translation});

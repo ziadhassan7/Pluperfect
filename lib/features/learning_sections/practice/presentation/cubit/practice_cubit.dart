@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/azure_speech/azure_model.dart';
-import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
 import 'package:pluperfect/features/learning_sections/common/words_handler/correct_words_processor.dart';
 import '../../../common/level_controller.dart';
+import '../../logic/quotes_provider/quotes_controller.dart';
 import 'practice_states.dart';
 
 
@@ -33,16 +33,7 @@ class PracticeCubit extends Cubit<PracticeStates>{
 
     emit(LoadingState());
 
-    switch(section){
-
-      case PracticeSection.quote:
-        _emitQuoteState();
-        break;
-
-      case PracticeSection.hear:
-        _emitHearState();
-        break;
-    }
+    _emitQuoteState();
 
   }
 

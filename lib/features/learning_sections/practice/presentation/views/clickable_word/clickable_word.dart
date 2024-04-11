@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../core/app_widgets/text_view/text_view.dart';
-import '../../../../core/styles/color_theme.dart';
+import '../../../../../../core/app_widgets/text_view/text_view.dart';
+import '../../../../../../core/styles/color_theme.dart';
 import '../pop_up_word_widget/context_menu.dart';
 
 class ClickableWords extends StatelessWidget {

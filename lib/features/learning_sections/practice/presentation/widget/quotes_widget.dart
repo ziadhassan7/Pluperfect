@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../../core/custom_dialog/custom_dialog.dart';
 import '../../../../../core/localization/localization.dart';
+import '../../../../../core/speaker_widget/cubit/speak_cubit.dart';
+import '../../../../../core/speaker_widget/speaker_widget.dart';
 import '../../../../../core/styles/color_theme.dart';
-import '../../../common/speaker_widget/cubit/speak_cubit.dart';
-import '../../../common/speaker_widget/speaker_widget.dart';
 import '../dialogs/translation_dialog_view.dart';
 
 class QuotesWidget extends StatelessWidget {

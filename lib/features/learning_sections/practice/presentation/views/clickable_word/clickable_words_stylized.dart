@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
-import '../../../../core/app_widgets/text_view/text_view.dart';
-import '../../../../core/azure_speech/azure_model.dart';
+import '../../../../../../core/app_widgets/text_view/text_view.dart';
+import '../../../../../../core/azure_speech/azure_model.dart';
 import '../pop_up_word_widget/context_menu.dart';
 
 class ClickableWordsStylized extends StatelessWidget {

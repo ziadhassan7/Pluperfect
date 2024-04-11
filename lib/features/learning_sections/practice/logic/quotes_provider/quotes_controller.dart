@@ -1,4 +1,4 @@
-import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_repository.dart';
+import 'package:pluperfect/features/learning_sections/practice/logic/quotes_provider/quotes_repository.dart';
 
 class QuotesController {
 

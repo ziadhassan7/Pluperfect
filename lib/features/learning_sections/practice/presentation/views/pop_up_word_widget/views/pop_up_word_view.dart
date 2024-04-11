@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/constants/colors.dart';
 import 'package:pluperfect/core/future_loader_widget.dart';
-import 'package:pluperfect/features/learning_sections/common/pop_up_word_widget/widgets/bookmark/bookmark_button.dart';
-import 'package:pluperfect/features/learning_sections/common/pop_up_word_widget/widgets/translation_view.dart';
-import 'package:pluperfect/features/learning_sections/common/speaker_widget/speaker_widget.dart';
 import '../../../../../../../core/app_widgets/text_view/text_view.dart';
+import '../../../../../../../core/speaker_widget/cubit/speak_cubit.dart';
+import '../../../../../../../core/speaker_widget/speaker_widget.dart';
 import '../../../../../../../core/styles/box_decoration.dart';
 import '../../../../../../../core/styles/color_theme.dart';
 import '../../../../../../../core/styles/padding.dart';
-import '../../../../../core/translate/translate_util.dart';
+import '../../../../../../../core/translate/translate_util.dart';
+import '../widgets/bookmark/bookmark_button.dart';
 import '../widgets/bookmark/bookmark_button_cubit.dart';
-import '../../speaker_widget/cubit/speak_cubit.dart';
+import '../widgets/translation_view.dart';
 
 //ignore: must_be_immutable
 class PopUpWordView extends StatelessWidget {

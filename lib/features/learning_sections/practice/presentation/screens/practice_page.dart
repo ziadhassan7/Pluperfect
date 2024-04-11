@@ -7,12 +7,12 @@ import '../../../../../core/styles/padding.dart';
 import '../../../common/close_page_controller.dart';
 import '../../../common/exit_button.dart';
 import '../../../common/level_controller.dart';
-import '../../../common/screen_touch/screen_touch_detector.dart';
 import '../../../common/steps_widget/steps_widget.dart';
 import '../cubit/practice_cubit.dart';
 import '../views/practice_box.dart';
 import '../views/practice_bottom_toolbar.dart';
 import '../views/practice_score_widget.dart';
+import '../views/screen_touch_detector.dart';
 
 class PracticePage extends StatelessWidget {
   const PracticePage(this.level, {super.key});

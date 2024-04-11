@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/styles/padding.dart';
-import 'package:pluperfect/features/learning_sections/common/speaker_widget/cubit/speak_cubit.dart';
-import 'package:pluperfect/features/learning_sections/common/speaker_widget/cubit/speaker_states.dart';
 import '../../../../core/localization/localization.dart';
+import 'cubit/speak_cubit.dart';
+import 'cubit/speaker_states.dart';
 
 //ignore: must_be_immutable
 class SpeakerWidget extends StatelessWidget {

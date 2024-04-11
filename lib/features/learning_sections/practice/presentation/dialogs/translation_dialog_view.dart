@@ -5,7 +5,7 @@ import 'package:pluperfect/core/constants/colors.dart';
 import 'package:pluperfect/core/gemini/gemini_client.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import '../../../../../core/styles/padding.dart';
-import '../../../common/quotes_provider/quotes_controller.dart';
+import '../../logic/quotes_provider/quotes_controller.dart';
 
 class TranslationDialogView extends StatelessWidget {
   const TranslationDialogView({super.key,});

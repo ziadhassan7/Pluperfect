@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
-import '../../../common/speaker_widget/util/speaker_controller.dart';
+import '../../../../../core/speaker_widget/util/speaker_controller.dart';
+import '../../logic/quotes_provider/quotes_controller.dart';
 
 
 class SpeakingCubit extends Cubit<bool>{

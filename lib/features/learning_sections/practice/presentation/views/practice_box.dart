@@ -5,12 +5,12 @@ import 'package:pluperfect/features/learning_sections/practice/presentation/cubi
 import 'package:pluperfect/features/learning_sections/practice/presentation/cubit/practice_states.dart';
 import 'package:pluperfect/features/learning_sections/practice/presentation/screens/practice_page.dart';
 import 'package:pluperfect/features/learning_sections/practice/presentation/widget/quotes_widget.dart';
-import 'package:pluperfect/features/learning_sections/common/clickable_word/clickable_words_stylized.dart';
 import 'package:pluperfect/features/learning_sections/practice/presentation/widget/decoration_container.dart';
 import '../../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../../core/styles/padding.dart';
-import '../../../common/clickable_word/clickable_word.dart';
 import '../widget/hear_widget.dart';
+import 'clickable_word/clickable_word.dart';
+import 'clickable_word/clickable_words_stylized.dart';
 
 class PracticeBox extends StatefulWidget {
   const PracticeBox({super.key});

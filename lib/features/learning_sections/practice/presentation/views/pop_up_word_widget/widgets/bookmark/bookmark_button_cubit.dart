@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../dictionary/logic/data/local_db/dictionary_client.dart';
-import '../../../../../dictionary/logic/model/dictionary_model.dart';
+import '../../../../../../../dictionary/logic/data/local_db/dictionary_client.dart';
+import '../../../../../../../dictionary/logic/model/dictionary_model.dart';
 
 
 class BookmarkButtonCubit extends Cubit<bool>{

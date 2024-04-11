@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
+import 'package:pluperfect/features/learning_sections/practice/logic/quotes_provider/quotes_controller.dart';
 import 'package:pluperfect/features/learning_sections/practice/presentation/cubit/practice_cubit.dart';
 import 'package:pluperfect/features/learning_sections/practice/presentation/cubit/practice_states.dart';
 import 'package:pluperfect/features/learning_sections/practice/presentation/screens/practice_page.dart';
@@ -39,7 +40,7 @@ class PracticeBottomToolbar extends StatelessWidget {
 
       //Mic
       micConfiguration: MicConfiguration(
-          referenceText: null,
+          referenceText: QuotesController.currentQuote,
           onResponse: (userInput){
             //trigger a score widget
             context.read<PracticeCubit>().checkScore(userInput, section: PracticePage.section);

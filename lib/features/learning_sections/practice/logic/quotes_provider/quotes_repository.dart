@@ -1,6 +1,6 @@
 import 'package:pluperfect/core/quotes/quotes_model.dart';
-import '../../../../core/custom_log.dart';
-import '../../../../core/quotes/quotes_client.dart';
+import '../../../../../core/custom_log.dart';
+import '../../../../../core/quotes/quotes_client.dart';
 
 
 class QuotesRepository {

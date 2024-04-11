@@ -1,6 +1,5 @@
-import 'package:pluperfect/features/learning_sections/common/quotes_provider/quotes_controller.dart';
-import '../../../../../../core/custom_log.dart';
-import '../../../../../../core/text_to_speech/text_to_speech_client.dart';
+import '../../../../../../../core/custom_log.dart';
+import '../../../../../../../core/text_to_speech/text_to_speech_client.dart';
 
 class SpeakerController {
 

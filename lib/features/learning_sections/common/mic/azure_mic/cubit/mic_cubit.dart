@@ -13,7 +13,7 @@ class AzureMicCubit extends Cubit<MicStates>{
 
   AzureMicCubit() : super(const IdleState());
 
-  bool shouldSend = false;
+  bool notMissPressed = false;
 
   static late Timer timer;
 
@@ -22,37 +22,46 @@ class AzureMicCubit extends Cubit<MicStates>{
 
     emit(ListeningState());
 
-    //start mic after some delay
-    timer = Timer(const Duration(milliseconds: 500), (){
-
-      shouldSend = true;
-      RecorderClient.start();
-
-    });
+    _startMicIfNotMissPressed();
   }
 
   finishedListening(BuildContext context, Function(AzureModel) onResponse, {String? compareTo})  async {
 
     timer.cancel();
 
-    if(shouldSend) {
-      stopMicAndSend(onResponse, compareTo: compareTo);
+    if(notMissPressed) {
+      _stopMicAndSend(onResponse, compareTo: compareTo);
     } else {
-      discard(context);
+      _discard(context);
     }
 
-    shouldSend = false;
+    notMissPressed = false;
   }
 
-  discard(BuildContext context){
+
+  void _startMicIfNotMissPressed(){
+    //start mic after some delay
+    timer = Timer(const Duration(milliseconds: 500), (){
+
+      notMissPressed = true;
+      RecorderClient.start();
+
+    });
+  }
+
+  void _discard(BuildContext context){
     RecorderClient.stop();
     emit(const WarningState());
 
-    ContextMenu.show(context,);
+    _showMissPressWarning(context);
+  }
+
+  void _showMissPressWarning(BuildContext context){
+    ContextMenu.show(context);
     Future.delayed(const Duration(milliseconds: 500,), ()=> ContextMenu.close());
   }
 
-  stopMicAndSend(Function(AzureModel) onResponse, {String? compareTo}){
+  void _stopMicAndSend(Function(AzureModel) onResponse, {String? compareTo}){
     emit(LoadingState());
 
     RecorderClient.stop().then((String? audioFilePath) async {

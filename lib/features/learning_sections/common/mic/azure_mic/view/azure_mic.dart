@@ -34,15 +34,6 @@ class AzureMic extends StatelessWidget {
               return stopButton();
             }
 
-            //Response
-            if(state is IdleState){
-              if(state.response != null){
-                //trigger on response
-                //onResponse(state.response!);
-              }
-              return idleButton();
-            }
-
             //Loading
             if(state is LoadingState){
               return LoadingWidget(color: color,);

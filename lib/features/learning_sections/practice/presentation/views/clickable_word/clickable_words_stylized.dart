@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import '../../../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../../../core/azure_speech/azure_model.dart';
-import '../pop_up_word_widget/context_menu.dart';
+import '../pop_up_word_widget/pop_up_word.dart';
 
 class ClickableWordsStylized extends StatelessWidget {
   const ClickableWordsStylized({super.key, required this.statement});

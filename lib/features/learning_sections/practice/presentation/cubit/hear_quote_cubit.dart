@@ -3,11 +3,11 @@ import '../../../../../core/speaker_widget/util/speaker_controller.dart';
 import '../../logic/quotes_provider/quotes_controller.dart';
 
 
-class SpeakingCubit extends Cubit<bool>{
-  SpeakingCubit() : super(false);
+class HearQuoteCubit extends Cubit<bool>{
+  HearQuoteCubit() : super(false);
 
 
-  speak(String quote) async {
+  start(String quote) async {
 
     await SpeakerController.speak(QuotesController.currentQuote)
         .then((tts) => emit(true));

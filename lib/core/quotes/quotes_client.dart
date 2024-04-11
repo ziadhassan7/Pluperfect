@@ -26,7 +26,7 @@ class QuotesClient {
       return QuoteModel.fromJson(response.data);
 
     } catch (e) {
-      Log("Quotes Client", e);
+      Log.p("Quotes Client $e");
       rethrow;
     }
   }

@@ -8,6 +8,7 @@ import 'package:pluperfect/features/learning_sections/practice/presentation/widg
 import 'package:pluperfect/features/learning_sections/practice/presentation/widget/decoration_container.dart';
 import '../../../../../core/app_widgets/text_view/text_view.dart';
 import '../../../../../core/styles/padding.dart';
+import '../widget/error_widget.dart';
 import '../widget/hear_widget.dart';
 import 'clickable_word/clickable_word.dart';
 import 'clickable_word/clickable_words_stylized.dart';
@@ -53,18 +54,19 @@ class _PracticeBoxState extends State<PracticeBox> {
               return HearWidget(state.quote,);
             }
 
-            ///Question
-            if(state is QuestionState){
-
-              return questionWidget(state.question);
-            }
-
 
             ///Score
             //Quote, Hear
-            if(state is QuoteScoreState){
+            if(state is ScoreState){
 
               return QuotesWidget(clickableWords: ClickableWordsStylized(statement:state.words));
+            }
+
+
+            ///Error
+            if(state is ErrorState){
+
+              return const ErrorMessageWidget();
             }
 
 

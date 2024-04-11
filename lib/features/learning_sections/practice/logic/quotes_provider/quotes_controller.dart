@@ -13,9 +13,15 @@ class QuotesController {
     const int min = 0;
     const int max = 50;
 
-    _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
+    try{
+      _currentQuote = await QuotesRepository.getEnglishQuote(
+          minLength: min, maxLength: max);
 
-    return _currentQuote;
+      return _currentQuote;
+
+    } catch (e){
+      rethrow;
+    }
   }
 
 
@@ -25,9 +31,15 @@ class QuotesController {
     const int min = 50;
     const int max = 120;
 
-    _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
+    try {
+      _currentQuote = await QuotesRepository.getEnglishQuote(
+          minLength: min, maxLength: max);
 
-    return _currentQuote;
+      return _currentQuote;
+
+    } catch (e){
+      rethrow;
+    }
   }
 
 
@@ -37,9 +49,15 @@ class QuotesController {
     const int min = 120;
     const int max = 180;
 
-    _currentQuote = await QuotesRepository.getEnglishQuote(minLength: min, maxLength: max);
+    try {
+      _currentQuote = await QuotesRepository.getEnglishQuote(
+          minLength: min, maxLength: max);
 
-    return _currentQuote;
+      return _currentQuote;
+
+    } catch (e){
+      rethrow;
+    }
   }
 
 

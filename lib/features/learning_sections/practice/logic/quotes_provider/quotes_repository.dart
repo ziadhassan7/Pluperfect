@@ -1,5 +1,4 @@
 import 'package:pluperfect/core/quotes/quotes_model.dart';
-import '../../../../../core/custom_log.dart';
 import '../../../../../core/quotes/quotes_client.dart';
 
 
@@ -14,8 +13,8 @@ class QuotesRepository {
       QuoteModel data = await QuotesClient.getQuote(minLength, maxLength);
       return data.quotes?.first.content;
 
+
     } catch (e){
-      Log.p("What happened $e");
       rethrow;
     }
 

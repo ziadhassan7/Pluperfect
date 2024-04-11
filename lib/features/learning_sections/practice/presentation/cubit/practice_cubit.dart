@@ -24,7 +24,7 @@ class PracticeCubit extends Cubit<PracticeStates>{
     if(words != null){
 
       List<Words> processedWords = CorrectWordsProcessor.getScoredWords(words, QuotesController.currentQuote!);
-      emit(QuoteScoreState(userInput, processedWords));
+      emit(ScoreState(userInput, processedWords));
     }
 
   }
@@ -47,31 +47,44 @@ class PracticeCubit extends Cubit<PracticeStates>{
   }
 
   _emitQuoteState() async {
-    String? quoteBody = await _getQuote();
-    if(quoteBody != null) emit(QuoteState(quoteBody)); //QuoteState
+    try{
+      String? quoteBody = await _getQuote();
+      if (quoteBody != null) emit(QuoteState(quoteBody)); //QuoteState
+
+    } catch(e){
+      emit(ErrorState());
+    }
   }
 
   _emitHearState() async {
-    String? quoteBody = await _getQuote();
-    if(quoteBody != null) emit(HearState(quoteBody)); //HearState
+    try{
+      String? quoteBody = await _getQuote();
+      if (quoteBody != null) emit(HearState(quoteBody)); //HearState
+
+    } catch(e){
+      emit(ErrorState());
+    }
   }
 
 
 
-  static Future<String?> _getQuote(){
+  Future<String?> _getQuote(){
+    try {
+      switch (LevelController.level) {
+        case Level.beginner:
+          return QuotesController.getShortQuote();
 
-    switch (LevelController.level){
+        case Level.intermediate:
+          return QuotesController.getMediumQuote();
 
-      case Level.beginner:
-        return QuotesController.getShortQuote();
+        case Level.advanced:
+          return QuotesController.getLongQuote();
+      }
 
-      case Level.intermediate:
-        return QuotesController.getMediumQuote();
 
-      case Level.advanced:
-        return QuotesController.getLongQuote();
+    } catch (e) {
+      rethrow;
     }
-
   }
 
 

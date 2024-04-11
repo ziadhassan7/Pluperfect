@@ -21,7 +21,7 @@ class PracticeBottomToolbar extends StatelessWidget {
 
 
   shouldAllowGoingNextStep(PracticeStates state){
-    if(state is QuoteScoreState){
+    if(state is ScoreState){
       allowNextStep = true;
     } else {
       allowNextStep = false;

@@ -34,26 +34,25 @@ class HearState extends PracticeStates {
   List<Object> get props => [quote];
 }
 
-// Response (Question)
-class QuestionState extends PracticeStates {
-  final String question;
 
-  const QuestionState(this.question);
+
+// QuoteScore
+class ScoreState extends PracticeStates {
+  final AzureModel result;
+  final List<Words> words;
+
+  const ScoreState(this.result, this.words);
 
   @override
-  List<Object> get props => [question];
+  List<Object> get props => [result, words];
 }
 
 
 
-// QuoteScore
-class QuoteScoreState extends PracticeStates {
-  final AzureModel result;
-  final List<Words> words;
-
-  const QuoteScoreState(this.result, this.words);
+// Loading
+class ErrorState extends PracticeStates {
 
   @override
-  List<Object> get props => [result, words];
+  List<Object> get props => [];
 }
 

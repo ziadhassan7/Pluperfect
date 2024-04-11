@@ -21,7 +21,7 @@ class PracticeScoreWidget extends StatelessWidget {
 
       child: BlocBuilder<PracticeCubit, PracticeStates>(
           builder: (context, state){
-            if(state is QuoteScoreState){
+            if(state is ScoreState){
 
               AzureModel result = state.result;
 

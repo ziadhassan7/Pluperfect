@@ -4,7 +4,7 @@ import '../../../../../core/azure_speech/azure_model.dart';
 class CorrectWordsProcessor {
 
   //Get a list words with its score
-  static List<Words> getModifiedWords(List<Words> userWords, String quote){
+  static List<Words> getScoredWords(List<Words> userWords, String quote){
 
     List<Words> modifiedSentence = [];
     List quoteWords = quote.split(' ');
@@ -13,7 +13,7 @@ class CorrectWordsProcessor {
     for(int i = 0; i < quoteWords.length; i++){
 
       try{
-        modifiedSentence.add(_getScoredWord(userWords, quoteWords[i], i));
+        modifiedSentence.add(_compareSpokenWordWithQuote(userWords, quoteWords[i], i));
 
       } catch (e) {
         continue;
@@ -27,7 +27,7 @@ class CorrectWordsProcessor {
   //to the equivalent word of the user's spoken text
   // (compares each word to the three words in front of it)
   // (compare SpokenWord With Quote)
-  static Words _getScoredWord(List<Words> userInputWords, String targetWord, int targetIndex){
+  static Words _compareSpokenWordWithQuote(List<Words> userInputWords, String targetWord, int targetIndex){
 
     try{
 

@@ -23,7 +23,7 @@ class PracticeCubit extends Cubit<PracticeStates>{
 
     if(words != null){
 
-      List<Words> processedWords = CorrectWordsProcessor.getModifiedWords(words, QuotesController.currentQuote!);
+      List<Words> processedWords = CorrectWordsProcessor.getScoredWords(words, QuotesController.currentQuote!);
       emit(QuoteScoreState(userInput, processedWords));
     }
 

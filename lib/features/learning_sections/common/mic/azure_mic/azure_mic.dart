@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/azure_speech/azure_model.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/common/loading_widget.dart';
-import '../../../animation/listening_animation.dart';
-import '../../mic_widget.dart';
-import '../cubit/mic_cubit.dart';
-import '../cubit/mic_states.dart';
+import '../../animation/listening_animation.dart';
+import 'widget/mic_widget.dart';
+import 'cubit/mic_cubit.dart';
+import 'cubit/mic_states.dart';
 
 class AzureMic extends StatelessWidget {
   const AzureMic({super.key, required this.color, required this.onResponse, this.referenceText});

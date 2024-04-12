@@ -12,7 +12,7 @@ class ScreenTouchDetector extends StatelessWidget {
 
       onTap: () {
         //close any context menu opened
-        ContextMenu.close();
+        PopUpWord.close();
       },
 
       child: SizedBox(

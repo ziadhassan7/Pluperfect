@@ -3,12 +3,12 @@ import 'package:pluperfect/core/styles/app_screen.dart';
 import 'package:pluperfect/features/learning_sections/practice/presentation/views/pop_up_mic_warning/views/pop_up_mic_warning_view.dart';
 import '../../../../../../core/pop_up_widget/pop_up.dart';
 
-class ContextMenu{
+class PopUpWarning{
 
-  static late PopUp popUp;
+  static PopUp? _popUp;
 
   static void show(BuildContext context,) {
-    popUp = PopUp.show(context,
+    _popUp = PopUp.show(context,
         verticalPosition: _getVerticalPosition(context),
         horizontalPosition: _getHorizontalPosition(context),
         widget: PopUpMicWarningView());
@@ -16,7 +16,7 @@ class ContextMenu{
   }
 
   static close(){
-    popUp.closeAnyOpened();
+    if(_popUp != null) _popUp!.closeAnyOpened();
   }
 
 

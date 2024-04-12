@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:pluperfect/core/pop_up_widget/pop_up.dart';
 import 'views/pop_up_word_view.dart';
 
-class ContextMenu{
+class PopUpWord{
 
-  static late PopUp popUp;
+  static PopUp? _popUp;
 
   static void show(BuildContext context, TapUpDetails details, String word) {
-    popUp = PopUp.show(context,
+    _popUp = PopUp.show(context,
         verticalPosition: _getVerticalPosition(details),
         horizontalPosition: _getHorizontalPosition(details),
         widget: PopUpWordView(selectedText: word,));
@@ -15,7 +15,7 @@ class ContextMenu{
   }
 
   static close(){
-    popUp.closeAnyOpened();
+    if(_popUp != null) _popUp!.closeAnyOpened();
   }
 
 

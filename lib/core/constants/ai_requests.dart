@@ -108,42 +108,28 @@ class GrammarEvaluationRequest {
 
 class ChatOpener{
   static const String english =   '''
-    I want short answers throughout the conversation.
-  
-    I will give you some instructions and you will follow:
-    1- Ask me a question about anything.
-    2- when I answer go with the flow and keep asking me question based on what I said.
-    3- reply to this message with your question directly
-    4- reply with 2-3 lines maximum
-    
     First say Let's get started, 
-    and then start with a question about anything interesting to talk about.
+    and then ask me a question (about movies, free time, family, money, love, food, country, dreams, or anything)
     ''';
 
 
-  static const String germany = "Ich möchte während des gesamten Gesprächs kurze Antworten."
-      " Ich gebe Ihnen einige Anweisungen und Sie werden Folgendes befolgen:"
-      " 1- Stellen Sie mir zu irgendetwas eine Frage."
-      " 2- Wenn ich antworte, geh mit dem Strom und stelle mir weiterhin Fragen basierend auf dem, was ich gesagt habe."
-      " 3- Antworten Sie direkt auf diese Nachricht mit Ihrer Frage"
-      " 4- Antworten Sie mit maximal 2-3 Zeilen. Beginnen Sie mit einer Frage zu etwas Interessantem, worüber Sie sprechen möchten";
+  static const String germany = '''
+  Sagen Sie zuerst, fangen wir an,
+  und mir dann eine Frage stellen (über Filme, Freizeit, Familie, Geld, Liebe, Essen, Land, Träume oder irgendetwas anderes)
+  ''';
 
-  static const String frensh = "Je veux des réponses courtes tout au long de la conversation."
-      " Je vais vous donner quelques instructions et vous suivrez:"
-      " 1- Posez-moi une question sur n'importe quoi."
-      " 2- quand je réponds, suivez le courant et continuez à me poser des questions en fonction de ce que j'ai dit."
-      " 3- répondez directement à ce message avec votre question"
-      " 4- répondez en 2-3 lignes maximum. Commencez par une question sur tout ce dont il est intéressant de parler";
+  static const String frensh = '''
+  Dites d'abord, commençons,
+  puis posez-moi une question (sur les films, le temps libre, la famille, l'argent, l'amour, la nourriture, le pays, les rêves ou quoi que ce soit)
+  ''';
 
-  static const String italian = "Voglio risposte brevi durante la conversazione."
-      " Ti darò alcune istruzioni e tu seguirai:"
-      " 1- Fammi una domanda su qualsiasi cosa."
-      " 2- quando rispondo segui il flusso e continua a farmi domande in base a ciò che ho detto."
-      " 3- rispondi direttamente a questo messaggio con la tua domanda"
-      " 4- rispondi con 2-3 righe al massimo Inizia con una domanda su qualsiasi cosa interessante di cui parlare";
+  static const String italian = '''
+  Per prima cosa dici, cominciamo
+  e poi fammi una domanda (su film, tempo libero, famiglia, soldi, amore, cibo, paese, sogni o qualsiasi altra cosa)
+  ''';
 
-  static const String chinese = "我希望在整个谈话过程中得到简短的回答。"
-      " 我会给您一些指示，您将遵循："
-      " 1-向我询问有关任何事情的问题。 2-当我回答时，顺其自然，根据我所说的继续问我问题。"
-      " 3- 直接回复此消息并提出您的问题 4- 最多回复 2-3 行 从一个关于任何有趣的话题的问题开始";
+  static const String chinese = '''
+  首先说，让我们开始吧，
+  然后问我一个问题（关于电影、空闲时间、家庭、金钱、爱情、食物、国家、梦想或任何东西）
+  ''';
 }

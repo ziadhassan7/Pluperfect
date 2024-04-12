@@ -57,8 +57,8 @@ class AzureMicCubit extends Cubit<MicStates>{
   }
 
   void _showMissPressWarning(BuildContext context){
-    ContextMenu.show(context);
-    Future.delayed(const Duration(milliseconds: 500,), ()=> ContextMenu.close());
+    PopUpWarning.show(context);
+    Future.delayed(const Duration(milliseconds: 500,), ()=> PopUpWarning.close());
   }
 
   void _stopMicAndSend(Function(AzureModel) onResponse, {String? compareTo}){

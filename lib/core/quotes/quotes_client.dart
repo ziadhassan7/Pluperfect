@@ -5,8 +5,8 @@ import '../dio/api_provider.dart';
 
 class QuotesClient {
 
-  static const String _baseUrl = 'https://api.quotable.io';
-  static const String _randomEndpoint = '/quotes/random';
+  static const String _baseUrl = "https://api.quotable.io";
+  static const String _randomEndpoint = "/quotes/random";
 
   /// Quotes Api
   static final DioClient _dio = DioClient(_baseUrl);

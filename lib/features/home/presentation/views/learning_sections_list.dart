@@ -45,7 +45,7 @@ class LearningSectionsList extends StatelessWidget {
       onTap: ()=> AppRouter.navigateTo(context, page),
 
       child: Container(
-        padding: const CustomPadding(horizontal: 18, vertical: 32),
+        padding: const CustomPadding(horizontal: 22, vertical: 32),
         margin: const CustomPadding(vertical: 6),
 
         decoration: CustomDecoration(
@@ -60,11 +60,18 @@ class LearningSectionsList extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  ///Title
                   TextView(buttonTitle, scale: TypeScale.headline2,),
 
                   const SizedBox(height: 10,),
 
-                  TextView(buttonDescription, scale: TypeScale.caption, color: ColorTheme.text.withOpacity(0.5),),
+                  ///Description
+                  TextView(
+                    buttonDescription,
+                    scale: TypeScale.caption,
+                    color: ColorTheme.text.withOpacity(0.8),
+                    weight: FontWeight.w300,
+                  ),
                 ],
               ),
             ),
@@ -72,6 +79,7 @@ class LearningSectionsList extends StatelessWidget {
             const SizedBox(width: 28,),
 
 
+            ///Start icon
             Container(
                 alignment: Alignment.topRight,
                 child: circularSymbol(icon: "assets/start.svg")),
@@ -84,9 +92,9 @@ class LearningSectionsList extends StatelessWidget {
 
   Widget circularSymbol({required String icon}){
     return Container(
-      decoration: CustomDecoration(isCircular: true, backgroundColor: ColorTheme.isDark ? black.withOpacity(0.4) : white.withOpacity(0.4)),
-      padding: const CustomPadding.all(12),
-      child: SvgPicture.asset(icon, width: 24, color: ColorTheme.isDark ? white : black,),
+      decoration: CustomDecoration(isCircular: true, backgroundColor: white.withOpacity(0.4)),
+      padding: const CustomPadding.all(16),
+      child: SvgPicture.asset(icon, width: 18, color: black,),
     );
   }
 }

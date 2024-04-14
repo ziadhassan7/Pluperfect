@@ -34,7 +34,6 @@ class RecorderClient {
 
   static Future<String?> stop() async {
     String? path = await _record.stop();
-    print("recorder: $path");
     return path;
   }
 

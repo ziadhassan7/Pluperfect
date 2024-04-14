@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 
 class DioClient {
 
-  static final Dio _dio = Dio();
+  final Dio _dio = Dio();
   final Duration _timeout = const Duration(milliseconds: 30000);
 
   DioClient(String baseUrl){
@@ -12,7 +12,6 @@ class DioClient {
       ..options.connectTimeout = _timeout
       ..options.receiveTimeout = _timeout;
   }
-
 
   Future<Response> get(
       String url, {

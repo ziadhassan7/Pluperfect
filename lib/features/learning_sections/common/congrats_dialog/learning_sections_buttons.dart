@@ -36,7 +36,7 @@ class LearningSectionsButtons extends StatelessWidget {
               page: e.page,
               buttonTitle: e.title,
               buttonDescription: e.description,
-              color: e.buttonPopColor,
+              color: e.buttonColor,
               isSelected: e == currentPage
           ))
         ],

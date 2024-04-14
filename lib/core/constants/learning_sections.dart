@@ -26,15 +26,6 @@ enum LearningSections {
     }
   }
 
-  Color get buttonPopColor {
-    switch(this){
-      case LearningSections.practicePage:
-        return ColorTheme.violet;
-      case LearningSections.chatPage:
-        return ColorTheme.blue;
-    }
-  }
-
   String get title {
     switch(this){
       case LearningSections.practicePage:

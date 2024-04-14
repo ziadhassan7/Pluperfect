@@ -16,7 +16,7 @@ class TranslationDialogView extends StatelessWidget {
       children: [
         Container(
             decoration: BoxDecoration(
-                color: ColorTheme.violet,
+                color: ColorTheme.blue,
                 borderRadius: const BorderRadius.only(topRight: Radius.circular(25), topLeft: Radius.circular(25))
             ),
 

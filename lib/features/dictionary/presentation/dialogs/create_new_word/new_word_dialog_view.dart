@@ -35,7 +35,7 @@ class NewWordDialogView extends StatelessWidget {
 
             child: ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(ColorTheme.blue2),
+                backgroundColor: MaterialStateProperty.all<Color>(ColorTheme.blue),
               ),
 
               onPressed: () async {

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pluperfect/core/styles/color_theme.dart';
 import '../../../../../core/constants/learning_sections.dart';
 import '../../../common/bottom_toolbar/bottom_toolbar.dart';
 import '../../../common/congrats_dialog/congrats_dialog.dart';
@@ -41,11 +39,4 @@ class ChatBottomToolbar extends StatelessWidget {
     );
   }
 
-  Widget button({required String icon, required Function()? onPressed}){
-    return GestureDetector(
-      onTap: onPressed,
-
-      child: SvgPicture.asset(icon, color: ColorTheme.text,),
-    );
-  }
 }

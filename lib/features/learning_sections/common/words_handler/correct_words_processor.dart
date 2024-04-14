@@ -29,6 +29,8 @@ class CorrectWordsProcessor {
   // (compare SpokenWord With Quote)
   static Words _compareSpokenWordWithQuote(List<Words> userInputWords, String targetWord, int targetIndex){
 
+    print("Hey what! $targetWord");
+
     try{
 
       if (_theWordBeforeMatched(userInputWords, targetWord, targetIndex)) {
@@ -51,6 +53,7 @@ class CorrectWordsProcessor {
 
     //Not Matched: get the word with a score of 0
     } catch (e){
+      print("Hey what?? $e");
       return Words(word: targetWord, accuracyScore: 0.0, errorType: "");
     }
     return Words(word: targetWord, accuracyScore: 0.0, errorType: "");
@@ -61,7 +64,8 @@ class CorrectWordsProcessor {
   static bool _theWordBeforeMatched(List<Words> userInputWords, String targetWord, int targetIndex,){
 
     bool isTargetWordNotFirstWord = (targetIndex > 0); //cuz first word doesn't have a word before
-    bool wordBeforeMatched = (WordsComparison.compareIgnoreCase(targetWord, userInputWords[targetIndex - 1].word!));
+    bool wordBeforeMatched =
+        isTargetWordNotFirstWord && (WordsComparison.compareIgnoreCase(targetWord, userInputWords[targetIndex - 1].word!));
 
     return isTargetWordNotFirstWord && wordBeforeMatched;
   }
@@ -69,7 +73,8 @@ class CorrectWordsProcessor {
   static bool _theWordMatched(List<Words> userInputWords, String targetWord, int targetIndex,){
 
     bool inBoundsOfArray = (targetIndex < userInputWords.length);
-    bool wordMatched = (WordsComparison.compareIgnoreCase(targetWord, userInputWords[targetIndex].word!));
+    bool wordMatched =
+        inBoundsOfArray && (WordsComparison.compareIgnoreCase(targetWord, userInputWords[targetIndex].word!));
 
     return inBoundsOfArray && wordMatched;
   }
@@ -77,7 +82,8 @@ class CorrectWordsProcessor {
   static bool _theWordAfterMatched(List<Words> userInputWords, String targetWord, int targetIndex,){
 
     bool isTargetWordNotLastWord = (targetIndex < userInputWords.length - 1);
-    bool wordAfterMatched = (WordsComparison.compareIgnoreCase(targetWord, userInputWords[targetIndex + 1].word!));
+    bool wordAfterMatched =
+        isTargetWordNotLastWord && (WordsComparison.compareIgnoreCase(targetWord, userInputWords[targetIndex + 1].word!));
 
     return isTargetWordNotLastWord && wordAfterMatched;
   }

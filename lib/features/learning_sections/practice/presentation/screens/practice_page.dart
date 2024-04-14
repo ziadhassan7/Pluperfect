@@ -18,7 +18,7 @@ class PracticePage extends StatelessWidget {
   const PracticePage(this.level, {super.key});
 
   final Level level;
-  static final Color color = ColorTheme.blue2;
+  static final Color color = ColorTheme.blue;
   final int numberOfSteps = 6;
 
   static PracticeSection section = PracticeSection.quote;

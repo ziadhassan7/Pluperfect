@@ -19,7 +19,7 @@ class PracticePage extends StatelessWidget {
 
   final Level level;
   static final Color color = ColorTheme.blue2;
-  final int numberOfSteps = 5;
+  final int numberOfSteps = 6;
 
   static PracticeSection section = PracticeSection.quote;
 
@@ -38,12 +38,9 @@ class PracticePage extends StatelessWidget {
           child: BlocProvider(
             create: (context) => PracticeCubit(),
 
-            child: BlocBuilder<StepsCubit, StepsState>(
-              /*
+            child: BlocListener<StepsCubit, StepsState>(
               listener: (context, states){
                 if(states is NextState){
-                  print("debug: ${states.currentStep}");
-                  print("debug: ${section}");
 
                   if(states.currentStep >= 3){
                     section = PracticeSection.hear;
@@ -52,11 +49,9 @@ class PracticePage extends StatelessWidget {
                   }
                 }
               },
-              */
 
 
-              builder: (BuildContext context, StepsState state) {
-                return Stack(
+              child: Stack(
                   children: [
 
                     const ScreenTouchDetector(),
@@ -95,8 +90,7 @@ class PracticePage extends StatelessWidget {
                       ],
                     ),
                   ],
-                );
-              }
+                ),
             )
           ),
         ),

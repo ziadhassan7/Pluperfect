@@ -4,12 +4,13 @@ import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
 import 'package:pluperfect/core/styles/app_screen.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/features/learning_sections/conversation/presentation/view/chat_bottom_toolbar.dart';
+import '../../../../../core/constants/colors.dart';
 import '../../../../../core/styles/padding.dart';
 import '../../../common/animation/speaking_animation.dart';
 import '../../../common/close_page_controller.dart';
 import '../../../common/exit_button.dart';
 import '../../../common/steps_widget/steps_widget.dart';
-import '../view/loading_animation.dart';
+import '../view/thinking_animation.dart';
 import '../cubit/chat_cubit.dart';
 import '../cubit/chat_state.dart';
 
@@ -37,6 +38,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context){
 
+    Color loadingWidget = ColorTheme.isDark ? white: color;
     double screenHeight = AppScreen(context).height;
 
     return PopScope(
@@ -75,12 +77,12 @@ class _ChatPageState extends State<ChatPage> {
 
                         if(state is LoadingState){
 
-                          return const Center(child: LoadingAnimation(),);
+                          return Center(child: ThinkingAnimation(color: loadingWidget,),);
                         }
 
                         if(state is SpeakState){
 
-                          return speakWidget();
+                          return speakWidget(loadingWidget);
                         }
 
                         if(state is ResponseState){
@@ -111,8 +113,8 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  Widget speakWidget(){
-    return const SpeakingAnimation(size: 400,);
+  Widget speakWidget(Color color){
+    return SpeakingAnimation(size: 400, color: color,);
   }
 
 }

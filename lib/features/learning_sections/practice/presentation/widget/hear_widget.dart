@@ -6,9 +6,10 @@ import '../../../common/animation/speaking_animation.dart';
 import '../cubit/hear_quote_cubit.dart';
 
 class HearWidget extends StatefulWidget {
-  const HearWidget(this.statement, {super.key});
+  const HearWidget(this.statement, {super.key, required this.color});
 
   final String statement;
+  final Color color;
 
   @override
   State<HearWidget> createState() => _HearWidgetState();
@@ -40,7 +41,7 @@ class _HearWidgetState extends State<HearWidget> {
   }
 
   Widget speakingWidget(String statement){
-    return SpeakingAnimation(color: ColorTheme.blue2,);
+    return SpeakingAnimation(color: widget.color,);
   }
 
   Widget idleWidget(String statement){
@@ -53,24 +54,31 @@ class _HearWidgetState extends State<HearWidget> {
         Visibility(
           visible: isRepeatApplicable,
 
-          child: Row(
-            children: [
-              const Spacer(),
+          child: repeatAgain(),
+        )
+      ],
+    );
+  }
 
-              TextView("Didn't get it? Repeat Once", color: ColorTheme.blue2, scale: TypeScale.description,),
+  Widget repeatAgain(){
 
-              const Spacer(),
+    Color color = ColorTheme.isDark ? Colors.white : widget.color;
 
-              IconButton(
-                  onPressed: (){
-                    context.read<HearQuoteCubit>().start(widget.statement);
-                    //do not repeat again
-                    isRepeatApplicable = false;
-                  },
-                  icon: Icon(Icons.repeat_one_rounded, color: ColorTheme.blue2,)
-              )
-            ],
-          ),
+    return Row(
+      children: [
+        const Spacer(),
+
+        TextView("Didn't get it? Repeat Once", color: color, scale: TypeScale.description,),
+
+        const Spacer(),
+
+        IconButton(
+            onPressed: (){
+              context.read<HearQuoteCubit>().start(widget.statement);
+              //do not repeat again
+              isRepeatApplicable = false;
+            },
+            icon: Icon(Icons.repeat_one_rounded, color: color,)
         )
       ],
     );

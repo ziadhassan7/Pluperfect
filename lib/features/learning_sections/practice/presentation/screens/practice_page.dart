@@ -75,7 +75,7 @@ class PracticePage extends StatelessWidget {
 
 
                         /// Quotes
-                        const PracticeBox(),
+                        PracticeBox(color: color,),
 
 
                         const Spacer(),

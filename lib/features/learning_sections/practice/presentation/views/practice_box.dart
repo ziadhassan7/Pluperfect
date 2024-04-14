@@ -14,7 +14,9 @@ import 'clickable_word/clickable_word.dart';
 import 'clickable_word/clickable_words_stylized.dart';
 
 class PracticeBox extends StatefulWidget {
-  const PracticeBox({super.key});
+  const PracticeBox({super.key, required this.color});
+
+  final Color color;
 
   @override
   State<PracticeBox> createState() => _PracticeBoxState();
@@ -51,7 +53,7 @@ class _PracticeBoxState extends State<PracticeBox> {
             ///Hear
             if(state is HearState){
 
-              return HearWidget(state.quote,);
+              return HearWidget(state.quote, color: widget.color,);
             }
 
 
@@ -70,7 +72,7 @@ class _PracticeBoxState extends State<PracticeBox> {
             }
 
 
-            return Center(child: CircularProgressIndicator(color: ColorTheme.blue2,),);
+            return Center(child: CircularProgressIndicator(color: widget.color,),);
           },
         ),
       ),

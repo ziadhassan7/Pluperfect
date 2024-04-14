@@ -8,7 +8,10 @@ import 'package:pluperfect/features/learning_sections/practice/presentation/cubi
 import 'package:pluperfect/features/learning_sections/practice/presentation/screens/practice_page.dart';
 import 'package:pluperfect/features/learning_sections/common/bottom_toolbar/bottom_toolbar.dart';
 import 'package:pluperfect/features/learning_sections/practice/logic/utils/hear_user_input_controller.dart';
+import '../../../../../core/constants/learning_sections.dart';
 import '../../../../../core/file_util.dart';
+import '../../../common/congrats_dialog/congrats_dialog.dart';
+import '../../../common/steps_widget/cubit/steps_cubit.dart';
 
 
 class PracticeBottomToolbar extends StatelessWidget {
@@ -59,7 +62,20 @@ class PracticeBottomToolbar extends StatelessWidget {
           icon: 'assets/next_button.svg',
           onPressed: () {
 
-            context.read<PracticeCubit>().refresh(section: PracticePage.section);
+            if(allowNextStep){
+              context.read<StepsCubit>().nextStep(
+                  context,
+                  maximumSteps: maximumSteps,
+                  onStep: (){
+                    context.read<PracticeCubit>().refresh(section: PracticePage.section);
+                  },
+                  onStepsCompleted: (){
+                    CongratsDialog(context, currentPage: LearningSections.practicePage,);
+                  });
+
+            } else {
+              context.read<PracticeCubit>().refresh(section: PracticePage.section);
+            }
           }
       ),
 

@@ -70,7 +70,7 @@ class _PracticeBoxState extends State<PracticeBox> {
             }
 
 
-            return const Center(child: CircularProgressIndicator(),);
+            return Center(child: CircularProgressIndicator(color: ColorTheme.blue2,),);
           },
         ),
       ),

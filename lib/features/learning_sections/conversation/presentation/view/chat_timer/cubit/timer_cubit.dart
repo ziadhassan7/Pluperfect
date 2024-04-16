@@ -7,10 +7,13 @@ class TimerCubit extends Cubit<TimerStates>{
   TimerCubit() : super(IdleState());
 
   bool timerHasEnded = false;
+  Duration duration = const Duration(seconds: 30);
 
   startTimer(){
     emit(TimerStartState());
 
+    //turn off timer after 30 seconds
+    Future.delayed(duration, ()=> reset());
   }
 
   reset() {

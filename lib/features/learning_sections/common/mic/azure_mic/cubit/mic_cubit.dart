@@ -15,7 +15,7 @@ class AzureMicCubit extends Cubit<MicStates>{
 
   bool notMissPressed = false;
 
-  static late Timer timer;
+  static late Timer touchDelayTimer;
 
 
   startListening(){
@@ -27,7 +27,7 @@ class AzureMicCubit extends Cubit<MicStates>{
 
   finishedListening(BuildContext context, Function(AzureModel) onResponse, {String? compareTo})  async {
 
-    timer.cancel();
+    touchDelayTimer.cancel();
 
     if(notMissPressed) {
       _stopMicAndSend(onResponse, compareTo: compareTo);
@@ -38,14 +38,10 @@ class AzureMicCubit extends Cubit<MicStates>{
     notMissPressed = false;
   }
 
-  forceStopOnChatTimer(Function(AzureModel) onResponse){
-    _stopMicAndSend(onResponse);
-  }
-
 
   void _startMicIfNotMissPressed(){
     //start mic after some delay
-    timer = Timer(const Duration(milliseconds: 500), (){
+    touchDelayTimer = Timer(const Duration(milliseconds: 500), (){
 
       notMissPressed = true;
       RecorderClient.start();

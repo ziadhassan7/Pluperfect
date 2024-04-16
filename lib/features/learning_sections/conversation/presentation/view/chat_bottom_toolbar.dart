@@ -21,7 +21,6 @@ class ChatBottomToolbar extends StatelessWidget {
 
       //Mic
       micConfiguration: MicConfiguration(
-        openTimer: true,
         onResponse: (userInput) {
           //trigger a score widget
           context.read<StepsCubit>().nextStep(

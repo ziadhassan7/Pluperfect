@@ -34,7 +34,7 @@ class BottomToolbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MicStates state = context.watch<AzureMicCubit>().state;
+    MicStates state = context.watch<MicCubit>().state;
 
     //decoration
     return Container(

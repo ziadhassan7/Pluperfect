@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: ((context) => ThemeCubit()),),
-        BlocProvider(create: ((context) => AzureMicCubit()),),
+        BlocProvider(create: ((context) => MicCubit()),),
         BlocProvider(create: ((context) => ChatCubit()),),
         BlocProvider(create: ((context) => TimerCubit()),),
         BlocProvider(create: ((context) => StepsCubit()),),

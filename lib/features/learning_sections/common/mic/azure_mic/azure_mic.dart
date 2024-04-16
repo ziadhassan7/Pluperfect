@@ -26,11 +26,11 @@ class AzureMic extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onPanStart: (details){
-        context.read<AzureMicCubit>().startListening();
+        context.read<MicCubit>().startListening();
 
         micTimer = Timer(const Duration(seconds: 30), () {
           print("Timer ran");
-          context.read<AzureMicCubit>().finishedListening(context, onResponse,
+          context.read<MicCubit>().finishedListening(context, onResponse,
               compareTo: referenceText);
 
           forceStopButUserTouchesMic = true;
@@ -43,7 +43,7 @@ class AzureMic extends StatelessWidget {
       onPanEnd: (details){
         if(!forceStopButUserTouchesMic){
           context
-              .read<AzureMicCubit>()
+              .read<MicCubit>()
               .finishedListening(context, onResponse, compareTo: referenceText);
 
           micTimer.cancel();
@@ -54,7 +54,7 @@ class AzureMic extends StatelessWidget {
         forceStopButUserTouchesMic = false;
       },
 
-      child: BlocBuilder<AzureMicCubit, MicStates>(
+      child: BlocBuilder<MicCubit, MicStates>(
           builder: (context, state) {
 
             //Listening...

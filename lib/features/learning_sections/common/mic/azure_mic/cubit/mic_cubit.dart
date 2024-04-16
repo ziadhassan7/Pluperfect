@@ -9,9 +9,9 @@ import '../../../../practice/presentation/views/pop_up_mic_warning/pop_up_warnin
 import 'mic_states.dart';
 
 
-class AzureMicCubit extends Cubit<MicStates>{
+class MicCubit extends Cubit<MicStates>{
 
-  AzureMicCubit() : super(const IdleState());
+  MicCubit() : super(const IdleState());
 
   bool notMissPressed = false;
 

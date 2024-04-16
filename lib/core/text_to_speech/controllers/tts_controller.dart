@@ -24,11 +24,11 @@ class TtsController {
 
     await flutterTts.setSpeechRate(0.5);
 
-    await flutterTts.setPitch(0.8);
+    await flutterTts.setPitch(0.9);
 
     await flutterTts.setVoice({"name": "en-gb-x-gbb-network", "locale": "en-GB"});
     //{"name": "en-us-x-tpf-local", "locale": "en-US"} //1
-    //{"name": "en-gb-x-gbb-network", "locale": "en-GB"} //0.8
+    //{"name": "en-gb-x-gbb-network", "locale": "en-GB"} //0.9
     //{"name": "en-au-x-aub-network", "locale": "en-AU"} //0.8
   }
 

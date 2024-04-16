@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pluperfect/core/app_widgets/text_view/text_view.dart';
-import 'package:pluperfect/core/styles/app_screen.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/features/learning_sections/conversation/presentation/view/chat_bottom_toolbar.dart';
-import '../../../../../core/constants/colors.dart';
+import 'package:pluperfect/features/learning_sections/conversation/presentation/view/chat_response_box.dart';
+import 'package:pluperfect/features/learning_sections/conversation/presentation/view/chat_timer/chat_timer.dart';
 import '../../../../../core/styles/padding.dart';
-import '../../../common/animation/speaking_animation.dart';
 import '../../../common/close_page_controller.dart';
 import '../../../common/exit_button.dart';
 import '../../../common/steps_widget/steps_widget.dart';
-import '../view/thinking_animation.dart';
 import '../cubit/chat_cubit.dart';
-import '../cubit/chat_state.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -38,9 +34,6 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context){
 
-    Color loadingWidget = ColorTheme.isDark ? white: color;
-    double screenHeight = AppScreen(context).height;
-
     return PopScope(
       canPop: true,
       onPopInvoked: (didPop){
@@ -52,59 +45,47 @@ class _ChatPageState extends State<ChatPage> {
 
         body: SafeArea(
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: Stack(
               children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
 
-                ///Top Bar
-                Padding(
-                  padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
-                  child: Row(
+                    ///Top Bar
+                    Padding(
+                      padding: const CustomPadding(top: 26, bottom: 12, horizontal: 38),
+                      child: Expanded(
+                        child: Row(
+                          children: [
+                            const ExitButton(),
+
+                            StepsWidget(numberOfSteps: numberOfSteps, color: color),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    ///Chat Response Box
+                    ChatResponseBox(color),
+
+
+                    const Spacer(),
+
+                  ],
+                ),
+
+                ///Bottom Bar & Timer
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      const ExitButton(),
+                      ChatTimer(color: color,),
 
-                      StepsWidget(numberOfSteps: numberOfSteps, color: color),
+                      ChatBottomToolbar(color, maximumSteps: numberOfSteps,),
                     ],
                   ),
                 ),
-
-                ///Chat Box
-                Padding(
-                  padding: const CustomPadding(vertical: 45, horizontal: 25),
-
-                  child: BlocBuilder<ChatCubit, ChatStates>(
-                      builder: (context, state) {
-
-                        if(state is LoadingState){
-
-                          return Center(child: ThinkingAnimation(color: loadingWidget,),);
-                        }
-
-                        if(state is SpeakState){
-
-                          return speakWidget(loadingWidget);
-                        }
-
-                        if(state is ResponseState){
-                          return SizedBox(
-                            height: screenHeight*0.63,
-                            child: SingleChildScrollView(
-                              child: TextView(state.input ?? "", scale: TypeScale.comforta,),
-                            ),
-                          );
-                        }
-
-                        return const SizedBox.shrink();
-                      }
-                  ),
-                ),
-
-
-                /// Bottom View
-                const Spacer(),
-
-
-                ChatBottomToolbar(color, maximumSteps: numberOfSteps,),
               ],
             ),
           ),
@@ -113,8 +94,5 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  Widget speakWidget(Color color){
-    return SpeakingAnimation(size: 400, color: color,);
-  }
 
 }

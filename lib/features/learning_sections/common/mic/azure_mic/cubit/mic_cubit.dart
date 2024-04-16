@@ -38,6 +38,10 @@ class AzureMicCubit extends Cubit<MicStates>{
     notMissPressed = false;
   }
 
+  forceStopOnChatTimer(Function(AzureModel) onResponse){
+    _stopMicAndSend(onResponse);
+  }
+
 
   void _startMicIfNotMissPressed(){
     //start mic after some delay

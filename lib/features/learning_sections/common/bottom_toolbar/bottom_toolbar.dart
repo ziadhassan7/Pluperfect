@@ -9,10 +9,11 @@ import '../mic/azure_mic/azure_mic.dart';
 
 ///Mic Configuration
 class MicConfiguration{
-  MicConfiguration({required this.onResponse, this.referenceText,});
+  MicConfiguration({required this.onResponse, this.referenceText, this.openTimer = false});
 
   final Function(AzureModel) onResponse;
   final String? referenceText;
+  final bool openTimer;
 }
 
 
@@ -63,6 +64,7 @@ class BottomToolbar extends StatelessWidget {
               color: color,
               referenceText: micConfiguration.referenceText,
               onResponse: micConfiguration.onResponse,
+              openTimer: micConfiguration.openTimer,
             )),
           ),
 

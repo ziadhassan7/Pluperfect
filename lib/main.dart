@@ -5,6 +5,7 @@ import 'package:pluperfect/bloc_color_theme.dart';
 import 'package:pluperfect/core/styles/color_theme.dart';
 import 'package:pluperfect/core/system_util.dart';
 import 'package:pluperfect/features/dictionary/presentation/cubit/dictionary_cubit.dart';
+import 'package:pluperfect/features/learning_sections/conversation/presentation/view/chat_timer/cubit/timer_cubit.dart';
 import 'package:pluperfect/features/learning_sections/practice/presentation/cubit/hear_quote_cubit.dart';
 import 'package:pluperfect/features/learning_sections/common/steps_widget/cubit/steps_cubit.dart';
 import 'package:pluperfect/index/index_page.dart';
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: ((context) => ThemeCubit()),),
         BlocProvider(create: ((context) => AzureMicCubit()),),
         BlocProvider(create: ((context) => ChatCubit()),),
+        BlocProvider(create: ((context) => TimerCubit()),),
         BlocProvider(create: ((context) => StepsCubit()),),
         BlocProvider(create: ((context) => DictionaryCubit()),),
         BlocProvider(create: ((context) => HearQuoteCubit()),),

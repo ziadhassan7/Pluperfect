@@ -1,10 +1,9 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pluperfect/core/azure_speech/azure_model.dart';
 import 'package:pluperfect/core/styles/padding.dart';
 import 'package:pluperfect/features/learning_sections/common/loading_widget.dart';
-import 'package:pluperfect/features/learning_sections/conversation/presentation/view/chat_timer/cubit/timer_cubit.dart';
+import 'package:pluperfect/features/learning_sections/common/mic/azure_mic/controllers/mic_controller.dart';
 import '../../animation/listening_animation.dart';
 import 'widget/mic_widget.dart';
 import 'cubit/mic_cubit.dart';
@@ -18,40 +17,20 @@ class AzureMic extends StatelessWidget {
   final String? referenceText;
 
   final bool openTimer;
-  static late Timer micTimer;
 
-  static bool forceStopButUserTouchesMic = false;
 
   @override
   Widget build(BuildContext context) {
+
+    MicController micController = MicController(context, onResponse,
+      referenceText: referenceText, openTimer: openTimer);
+
     return GestureDetector(
       onPanStart: (details){
-        context.read<MicCubit>().startListening();
-
-        micTimer = Timer(const Duration(seconds: 30), () {
-          print("Timer ran");
-          context.read<MicCubit>().finishedListening(context, onResponse,
-              compareTo: referenceText);
-
-          forceStopButUserTouchesMic = true;
-        });
-
-        if (openTimer) {
-          context.read<TimerCubit>().startTimer();
-        }
+        micController.startListening();
       },
       onPanEnd: (details){
-        if(!forceStopButUserTouchesMic){
-          context
-              .read<MicCubit>()
-              .finishedListening(context, onResponse, compareTo: referenceText);
-
-          micTimer.cancel();
-
-          if (openTimer) context.read<TimerCubit>().reset();
-        }
-
-        forceStopButUserTouchesMic = false;
+        micController.finishListening();
       },
 
       child: BlocBuilder<MicCubit, MicStates>(

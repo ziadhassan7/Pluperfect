@@ -48,7 +48,7 @@ dependencies:
   dio: ^5.4.2+1
   sqflite: ^2.3.2
   flutter_svg: ^2.0.9
-  flutter_tts: ^3.8.5
+  flutter_tts: ^4.0.2
   record: ^5.0.4
   just_audio: ^0.9.36
   translator_plus: ^1.0.1

@@ -11,14 +11,16 @@ import 'cubit/mic_cubit.dart';
 import 'cubit/mic_states.dart';
 
 class AzureMic extends StatelessWidget {
-  const AzureMic({super.key, required this.color, required this.onResponse, this.referenceText,});
+  const AzureMic({super.key, required this.color, required this.onResponse, this.referenceText, this.openTimer = false});
 
   final Color color;
   final Function(AzureModel) onResponse;
   final String? referenceText;
 
-  final Duration duration = const Duration(seconds: 30);
+  final bool openTimer;
+  static late Timer micTimer;
 
+  static bool forceStopButUserTouchesMic = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +28,30 @@ class AzureMic extends StatelessWidget {
       onPanStart: (details){
         context.read<AzureMicCubit>().startListening();
 
-        context.read<TimerCubit>().startTimer();
-        //turn off mic and send request after 30 seconds
-        Future.delayed(duration, ()=> context.read<AzureMicCubit>().finishedListening(context, onResponse, compareTo: referenceText));
+        micTimer = Timer(const Duration(seconds: 30), () {
+          print("Timer ran");
+          context.read<AzureMicCubit>().finishedListening(context, onResponse,
+              compareTo: referenceText);
+
+          forceStopButUserTouchesMic = true;
+        });
+
+        if (openTimer) {
+          context.read<TimerCubit>().startTimer();
+        }
       },
       onPanEnd: (details){
-        context.read<AzureMicCubit>().finishedListening(context, onResponse, compareTo: referenceText);
-        context.read<TimerCubit>().reset();
+        if(!forceStopButUserTouchesMic){
+          context
+              .read<AzureMicCubit>()
+              .finishedListening(context, onResponse, compareTo: referenceText);
+
+          micTimer.cancel();
+
+          if (openTimer) context.read<TimerCubit>().reset();
+        }
+
+        forceStopButUserTouchesMic = false;
       },
 
       child: BlocBuilder<AzureMicCubit, MicStates>(

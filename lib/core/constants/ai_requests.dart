@@ -109,9 +109,9 @@ class GrammarEvaluationRequest {
 class ChatOpener{
   static const String english =   '''
     First say Let's get started, 
-    and then ask me a question (about movies, free time, family, money, love, food, country, dreams, or anything)
+    and then ask me a question (about free time, family, friendships, interests, movies, money, love interests, food, country, dreams, or anything),
+    and make your replies short
     ''';
-
 
   static const String germany = '''
   Sagen Sie zuerst, fangen wir an,

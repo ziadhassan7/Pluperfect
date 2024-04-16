@@ -21,11 +21,15 @@ class TtsController {
   }
 
   static setupVoiceTone(FlutterTts flutterTts) async {
-    await flutterTts.setSpeechRate(1.0);
 
-    await flutterTts.setPitch(1.0);
+    await flutterTts.setSpeechRate(0.5);
 
-    await flutterTts.setVoice({"name": "Karen", "locale": "en-AU"});
+    await flutterTts.setPitch(0.8);
+
+    await flutterTts.setVoice({"name": "en-gb-x-gbb-network", "locale": "en-GB"});
+    //{"name": "en-us-x-tpf-local", "locale": "en-US"} //1
+    //{"name": "en-gb-x-gbb-network", "locale": "en-GB"} //0.8
+    //{"name": "en-au-x-aub-network", "locale": "en-AU"} //0.8
   }
 
 

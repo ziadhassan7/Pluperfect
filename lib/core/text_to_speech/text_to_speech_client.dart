@@ -1,6 +1,5 @@
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:pluperfect/core/custom_log.dart';
-import 'package:pluperfect/core/text_to_speech/tts_languages_model.dart';
+import 'package:pluperfect/core/text_to_speech/controllers/tts_controller.dart';
 
 
 class TTSClient {
@@ -14,19 +13,8 @@ class TTSClient {
 
   static Future speak(String text) async{
 
-    String sourceLanguage = "en-US";
-
-    // Check if language is available, and not (auto)
-    if(sourceLanguage != "Auto Detect"){
-      String langCode = TTSLanguageModel.getLangCode(sourceLanguage) ?? "en-US";
-
-      if(await flutterTts.isLanguageAvailable(langCode)){
-        flutterTts.setLanguage(langCode);
-        Log("TTS", "available");
-      } else {
-        Log("TTS", "not available");
-      }
-    }
+    TtsController.setupLanguage(flutterTts);
+    TtsController.setupVoiceTone(flutterTts);
 
     return await flutterTts.speak(text);
   }

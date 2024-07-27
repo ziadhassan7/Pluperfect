@@ -1,16 +1,13 @@
-# pluperfect
+# Case Study 
+![info](https://github.com/user-attachments/assets/570ab787-c233-46a0-93ad-25acc8595a7a)
+![Execution](https://github.com/user-attachments/assets/2dd1b23d-8549-4201-9b42-60d79a5f2042)
+![Gamification](https://github.com/user-attachments/assets/ce55f5f3-6dbb-4ece-94a5-6af91c16e47b)
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<details>
+  <summary>Contact me</summary>
+  
+  Reach out via email: ziadh.business@gmail.com .
+  
+  Or LinkedIn: https://www.linkedin.com/in/ziadhassan7
+  
+</details>

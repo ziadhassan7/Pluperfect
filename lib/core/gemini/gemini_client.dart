@@ -15,8 +15,8 @@ class GeminiClient {
   /// Stream Output
   /// To speed up interactions, you can instantly listen to the
   /// streamed output.
-  static Stream<Candidates> getStreamGenerateOutput(String input){
-    return _gemini.streamGenerateContent(input);
+  static Stream<Candidates?> getStreamGenerateOutput(String input){
+    return _gemini.promptStream(parts: [Part.text(input)]);
   }
 
 
@@ -24,9 +24,9 @@ class GeminiClient {
   /// This feature lets you perform natural language processing (NLP) tasks
   /// such as text completion and summarization.
   static Future<String?> textOnly(String input) async {
-    Candidates? candidate = await _gemini.text(input);
+    Candidates? candidate = await _gemini.prompt(parts: [Part.text(input),]);
 
-    return candidate?.content?.parts?.first.text;
+    return candidate?.output;
   }
 
 

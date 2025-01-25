@@ -26,7 +26,7 @@ class GeminiChatClient {
     try {
       // Add user input to the chat list
       content.add(
-        Content(parts: [Parts(text: input)], role: 'user'),
+        Content(parts: [Part.text(input)], role: 'user'),
       );
 
       // Get reply

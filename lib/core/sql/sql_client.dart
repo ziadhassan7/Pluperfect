@@ -22,6 +22,7 @@ class SqlClient {
 
   //initialize database
   Future<Database> _initDB() async{
+    //Todo: BookDatabase change name
     String path = join(await getDatabasesPath(), 'BookDatabase.db');
     return await openDatabase(path, version: 2, onCreate: _createDB, onUpgrade: _onUpgrade);
   }
@@ -29,13 +30,13 @@ class SqlClient {
 
   //create new db
   Future<void> _createDB(Database db, int version) async {
-    // Book Table
+    // Dictionary Table
     await DictionaryTable.create(db);
   }
 
   // This is called for users who have old db
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
-    // Book Table
+    // Dictionary Table
     await DictionaryTable.upgrade(db, oldVersion, newVersion);
   }
 }

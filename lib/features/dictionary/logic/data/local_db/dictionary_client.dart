@@ -10,13 +10,13 @@ class DictionaryClient {
   DictionaryClient._init();
 
 /// Create
-  Future<void> createItem(DictionaryModel bookModel) async {
+  Future<void> createItem(DictionaryModel dicModel) async {
     final db = await SqlClient.instance.database;
 
     try{
       db!.insert(
         tableDictionary,
-        bookModel.toMap(),
+        dicModel.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
       print("Sql insert");

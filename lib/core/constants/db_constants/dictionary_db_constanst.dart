@@ -1,4 +1,4 @@
-/// Book Table - constants
+/// Dictionary Table - constants
 const String tableDictionary = "dictionary";
 
 const String columnDicId = "id";

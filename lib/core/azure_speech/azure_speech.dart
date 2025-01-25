@@ -12,7 +12,7 @@ class AzureSpeech {
   static const String _baseUrl = "https://westeurope.stt.speech.microsoft.com";
   static const String _speechEndpoint = "/speech/recognition/conversation/cognitiveservices/v1";
 
-  /// Use Quotable Api
+  /// Azure Api
   static final DioClient _dio = DioClient(_baseUrl);
 
 

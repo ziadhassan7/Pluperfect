@@ -12,7 +12,7 @@ class QuotesRepository {
     try{
       QuoteModel data = await QuotesClient.getQuote(minLength, maxLength);
       return data.quotes?.first.content;
-
+      //return GeminiClient.textOnly(QuoteRequest.getEnglish(minLength, maxLength));
 
     } catch (e){
       rethrow;

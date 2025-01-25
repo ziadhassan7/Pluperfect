@@ -25,7 +25,7 @@ class MicController {
 
     context.read<MicCubit>().startListening();
 
-    timeoutController.closeMicAfterTimeout();
+    //timeoutController.closeMicAfterTimeout();
   }
 
   finishListening(){
@@ -37,7 +37,7 @@ class MicController {
           .read<MicCubit>()
           .finishedListening(context, onResponse, compareTo: referenceText);
 
-      timeoutController.cancelTimeoutTrigger();
+      //timeoutController.cancelTimeoutTrigger();
     }
 
     timeoutButUserStillTouchesMic = false;
